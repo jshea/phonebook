@@ -1,0 +1,94 @@
+<!-- Name -->
+<h2>{{contact.firstname}} {{contact.lastname}}</h2>
+
+<div class="row">
+   <!-- Address -->
+   <div class="col-sm-4">
+      <strong>Address</strong>
+      <br>{{contact.address.street}}
+      <br>{{contact.address.city}} {{contact.address.state}} {{contact.address.zip}}
+   </div>
+
+   <!-- Phone Numbers -->
+   <div class="col-sm-4">
+      <strong>Phone numbers</strong>
+      <br>
+      <span ng-show="contact.phonenumbers.length == 0">No phone numbers</span>
+      <table class="table table-hover table-condensed" ng-hide="contact.phonenumbers.length == 0">
+         <thead>
+         <tr>
+            <th>Type</th>
+            <th>Number</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr ng-repeat="phonenumber in contact.phonenumbers">
+            <td>{{phonenumber.type}}</td>
+            <td>{{phonenumber.number}}</td>
+         </tr>
+         </tbody>
+      </table>
+   </div>
+
+   <!-- eMail -->
+   <div class="col-sm-4">
+      <strong>eMail</strong>
+      <span ng-show="contact.email.length == 0"><br>No email addresses</span>
+      <table class="table table-hover table-condensed" ng-hide="contact.email.length == 0">
+         <thead>
+         <tr>
+            <th>Type</th>
+            <th>Account</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr ng-repeat="em in contact.email">
+            <td>{{em.type}}</td>
+            <td>{{em.account}}</td>
+         </tr>
+         </tbody>
+      </table>
+   </div>
+</div>
+
+
+<div class="row">
+   <!-- Birthday -->
+   <div class="col-sm-4">
+      <strong>Birthday</strong>
+      <br>{{contact.birthday}}
+   </div>
+
+   <!-- Spouse -->
+   <div class="col-sm-4">
+      <strong>Spouse</strong>
+      <br>{{contact.spouse}}
+   </div>
+
+   <!-- Children -->
+   <div class="col-sm-4">
+      <strong>Children</strong>
+      <span ng-show="contact.children.length == 0"><br>No children</span>
+      <table class="table table-hover table-condensed" ng-hide="contact.children.length == 0">
+         <thead>
+         <tr>
+            <th>Sex</th>
+            <th>Name</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr ng-repeat="child in contact.children">
+            <td>{{child.sex}}</td>
+            <td>{{child.name}}</td>
+         </tr>
+         </tbody>
+      </table>
+   </div>
+</div>
+
+
+<form ng-submit="edit()" class="form-horizontal">
+   <div class="form-actions">
+      <button class="btn btn-primary">Edit</button>
+   </div>
+</form>

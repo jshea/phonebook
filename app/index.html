@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="phonebook">
+
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <title>Angular Phonebook</title>
+   <script src="lib/angular.min.js"></script>
+   <script src="lib/angular-resource.min.js"></script>
+   <script src="lib/angular-route.min.js"></script>
+   <script src="js/directives.js"></script>
+   <script src="js/services.js"></script>
+   <script src="js/controllers.js"></script>
+
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+   <div class="container">
+      <header>
+         <!-- Note use of Bootstrap jumbotron -->
+         <div class="jumbotron">
+            <img src="Phonebook.png" class="pull-right">
+            <h2>Angular Phonebook</h2>
+            <p>This is a learning and training example application. It is a phonebook/contact manager
+            that implements the basic CRUD elements of business/data applications.</p>
+         </div>
+      </header>
+
+      <nav class="row">
+         <!-- Note use of Bootstrap navigation via "pills" -->
+         <ul class="nav nav-pills">
+            <li id="menu-list"><a href="/#/">List</a></li>
+            <li id="menu-new"><a href="/#/new">New Contact</a></li>
+            <li id="menu-about"><a href="/#/about">About</a></li>
+         </ul>
+      </nav>
+
+      <!-- Note use of a loading display - from O'Reilly angular book? -->
+      <div butterbar>Loading...</div>
+
+      <div class="row">
+         <div class="col-md-10">
+            <!-- This is where Angular will swap in our templates -->
+            <div ng-view></div>
+         </div>
+      </div>
+
+   </div>
+
+   <script src="lib/jquery-2.0.3.min.js"></script>    <!-- Is this example doing anything that depends on jquery? -->
+   <script src="lib/bootstrap.min.js"></script>       <!-- Will use jquery if available (otherwise builtin jqLite), so loaded after -->
+</body>
+
+</html>
