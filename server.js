@@ -7,8 +7,16 @@
 var express = require("express"),
    app = express(),
    MongoClient = require("mongodb").MongoClient,
-   Server = require("mongodb").Server;
+   Server = require("mongodb").Server,
+   ObjectID = require("mongodb").ObjectID;
 
+// app.use(express.bodyParser());
+app.configure(function () {
+   app.use(express.methodOverride());  // Allows use of "put" & "del" methods?
+   app.use(express.bodyParser());      // This clears out rec.body?
+   app.use(express.static(__dirname + '/app'));
+//   app.use(app.router);
+});
 
 var mongoclient = new MongoClient(new Server("localhost", 27017));
 var db = mongoclient.db("contacts");
@@ -16,14 +24,15 @@ var db = mongoclient.db("contacts");
 
 /*
  * Get all contacts
+ *
  */
 app.get("/contacts", function (req, res) {
-   db.collection("people").find({}, function (err, doc) {
+   db.collection("people").find().toArray(function (err, docs) {
       if (err) {
          throw err;
       } else {
-         console.dir("Successfully retrieved all contacts");
-         res.send(doc);
+         console.dir("Successfully retrieved all contacts: " + JSON.stringify(docs));
+         res.send(docs);
       }
    });
 });
@@ -33,7 +42,9 @@ app.get("/contacts", function (req, res) {
  * Get a contact
  */
 app.get("/contacts/:id", function (req, res) {
-   db.collection("people").findOne({"id" : req.params.id}, function (err, doc) {
+   console.log("Get a contact: " + req.params.id);
+
+   db.collection("people").findOne({"_id" : new ObjectID(req.params.id)}, function (err, doc) {
       if (err) {
          throw err;
       } else {
@@ -45,18 +56,21 @@ app.get("/contacts/:id", function (req, res) {
 
 
 /*
- * Add a contact
+ * Add a contact.
+ *
  */
-app.post('/contacts', function (req, res) {
-   console.log('Adding a contact');
+app.post("/contacts", function (req, res) {
 
-   // Note the returned value (inserted) is an array even if it's one document
-   db.collection("students").insert(req.params, function (err, inserted) {
+   var person = req.body;
+   console.log("PUT /contacts, req.body: " + JSON.stringify(person));
+
+   db.collection("people").insert(person, function (err, result) {
       if (err) {
          throw err;
       } else {
-         console.dir("Successfully inserted: " + JSON.stringify(inserted));
-         res.send(inserted);
+         console.dir("Successfully inserted: " + JSON.stringify(result[0])); // Note the returned value (result) is an array even if it’s one document
+
+         res.send(result[0]);
       }
    });
 
@@ -66,15 +80,26 @@ app.post('/contacts', function (req, res) {
 /*
  * Update a contact
  */
-app.post('/contacts/:id', function (req, res) {
-   console.log('Updating a contact');
+app.post("/contacts/:id", function (req, res) {
+   console.log("Updating a contact");
 
-   db.collection("grades").save(req.params, function (err, saved) {
+   var person = req.body;
+
+   person._id = new ObjectID(person._id);   // Convert _id to a mongo ObjectID
+   db.collection("people").update({"_id" : person._id}, person, function (err, result) {
       if (err) {
          throw err;
       } else {
-         console.dir("Successfully updated: " + JSON.stringify(saved));
-         res.send(saved);
+         console.dir("Successfully updated: " + JSON.stringify(result));
+
+         db.collection("people").findOne({"_id" : person._id}, function (err, doc) {
+            if (err) {
+               throw err;
+            } else {
+               console.dir("Successfully retrieved one contact: " + JSON.stringify(doc));
+               res.send(doc);
+            }
+         });
       }
    });
 
@@ -84,14 +109,14 @@ app.post('/contacts/:id', function (req, res) {
 /*
  * Delete a contact
  */
-app.del('/contacts/:id', function (req, res) {
-   console.log('Deleting contact id', req.params.id);
+app.del("/contacts/:id", function (req, res) {
+   console.log("Deleting contact id", req.params.id);
 
-   db.collection("grades").remove({"_id" : req.params.id}, function (err, removed) {
+   db.collection("people").remove({"_id" : new ObjectID(req.params.id)}, function (err, removed) {
       if (err) {
          throw err;
       } else {
-         console.dir("Successfully updated " + removed + " documents!");
+         console.dir("Successfully removed " + removed + " documents!");
          res.send("Contact deleted", 200);
       }
    });
@@ -99,12 +124,22 @@ app.del('/contacts/:id', function (req, res) {
 
 
 /*
- * For any undefined route, return a 404.
+ * For any undefined routes, return a 404.
  */
 app.get("*", function (req, res) {
+   console.log("A GET that wasn't found", req.params);
    res.send("Page Not Found", 404);
 });
 app.post("*", function (req, res) {
+   console.log("A POST that wasn't found", req.params);
+   res.send("Page Not Found", 404);
+});
+app.put("*", function (req, res) {
+   console.log("A PUT that wasn't found", req.params);
+   res.send("Page Not Found", 404);
+});
+app.del("*", function (req, res) {
+   console.log("A DELETE that wasn't found", req.params);
    res.send("Page Not Found", 404);
 });
 
@@ -119,6 +154,7 @@ mongoclient.open(function (err, mongoclient) {
       console.log("Express server started on port 3000");
    });
 });
+
 
 /*
 // Find

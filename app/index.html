@@ -4,12 +4,12 @@
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-   <title>Angular Phonebook</title>
-   <script src="lib/angular.min.js"></script>
-   <script src="lib/angular-resource.min.js"></script>
-   <script src="lib/angular-route.min.js"></script>
+   <title>Phonebook - Angular</title>
+   <script src="lib/angular.js"></script>
+   <script src="lib/angular-resource.js"></script>
+   <script src="lib/angular-route.js"></script>
    <script src="js/directives.js"></script>
-   <script src="js/services.js"></script>
+   <!-- <script src="js/services.js"></script> -->
    <script src="js/controllers.js"></script>
 
    <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -17,15 +17,7 @@
 
 <body>
    <div class="container">
-      <header>
-         <!-- Note use of Bootstrap jumbotron -->
-         <div class="jumbotron">
-            <img src="Phonebook.png" class="pull-right">
-            <h2>Angular Phonebook</h2>
-            <p>This is a learning and training example application. It is a phonebook/contact manager
-            that implements the basic CRUD elements of business/data applications.</p>
-         </div>
-      </header>
+      <header> </header>
 
       <nav class="row">
          <!-- Note use of Bootstrap navigation via "pills" -->
@@ -48,8 +40,8 @@
 
    </div>
 
-   <script src="lib/jquery-2.0.3.min.js"></script>    <!-- Is this example doing anything that depends on jquery? -->
-   <script src="lib/bootstrap.min.js"></script>       <!-- Will use jquery if available (otherwise builtin jqLite), so loaded after -->
+   <script src="lib/jquery-2.1.0.js"></script>    <!-- Angular will use jquery if available (otherwise builtin jqLite) -->
+   <script src="lib/bootstrap.min.js"></script>   <!-- Requires jquery -->
 </body>
 
 </html>
