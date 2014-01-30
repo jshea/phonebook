@@ -284,8 +284,8 @@ function createPerson() {
 
    areaCode = generateAreaCode();
 
-   p.firstName = toProperCase(firstName[getRandomNumber(1, firstName.length)]);
-   p.lastName =  toProperCase(lastName[getRandomNumber(1, lastName.length)]);
+   p.firstname = toProperCase(firstName[getRandomNumber(1, firstName.length)]);
+   p.lastname =  toProperCase(lastName[getRandomNumber(1, lastName.length)]);
 
    zipStateCityElements = zipStateCity[getRandomNumber(1, zipStateCity.length)];
    p.address = {};
@@ -305,7 +305,7 @@ function createPerson() {
 
    p.email = [
       { type: "personal",
-         account: p.firstName.toLowerCase() + "." + p.lastName.toLowerCase() + "@" + eMail[getRandomNumber(1, eMail.length)]}
+         account: p.firstname.toLowerCase() + "." + p.lastname.toLowerCase() + "@" + eMail[getRandomNumber(1, eMail.length)]}
    ];
 
 console.log(JSON.stringify(p));

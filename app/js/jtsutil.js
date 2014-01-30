@@ -20,12 +20,18 @@ var JTS = JTS || {};            // Establish JTS namespace if it doesn't already
 
 
 /*
- * This version uses a passed in String. This isn't tested!
+ * Convert a string to initial cap.
  */
 JTS.toProperCase = function (string) {
-   return string.replace(/\w\S*/g, function (txt) {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-   });
+   function toProperCase(string) {
+      if (string !== undefined) {
+         return string.replace(/\w\S*/g, function (txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+         });
+      } else {
+         return "";
+      }
+   }
 };
 
 
@@ -60,5 +66,5 @@ JTS.formatPhoneNumber = function (phoneNumber) {
  * Credit: Mozilla Developer Center
  */
 function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+   return Math.floor(Math.random() * (max - min + 1)) + min;
 }

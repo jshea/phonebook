@@ -24,7 +24,7 @@
          <tbody>
          <tr ng-repeat="phonenumber in contact.phonenumbers">
             <td>{{phonenumber.type}}</td>
-            <td>{{phonenumber.number}}</td>
+            <td>{{phonenumber.number | tel}}</td>
          </tr>
          </tbody>
       </table>
@@ -86,6 +86,11 @@
    </div>
 </div>
 
+<!--<div class="row">-->
+   <!--<section id="map" ng-controller="MapCtrl" >-->
+      <!--<div ui-map="myMap" ui-options="mapOptions" class="map-canvas"></div>-->
+   <!--</section>-->
+<!--</div>-->
 
 <form ng-submit="edit()" class="form-horizontal">
    <div class="form-actions">

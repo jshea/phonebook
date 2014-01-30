@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module("phonebook", ["ngRoute", "phonebook.directives"]);
+var app = angular.module("phonebook", ["ngRoute", "phonebook.directives"]);   // "ui-map"
 
 app.config(["$routeProvider", function ($routeProvider) {
    $routeProvider
@@ -54,6 +54,12 @@ app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams) {
    $http.get("contacts/" + $routeParams.contactId)
       .success(function (data, status, headers, config) {
          $scope.contact = data;
+
+//         $scope.mapOptions = {
+//            center: new google.maps.LatLng(35.784, -78.670),
+//            zoom: 15,
+//            mapTypeId: google.maps.MapTypeId.ROADMAP
+//         };
       })
       .error(function (data, status, headers, config) {
          // called asynchronously if an error occurs or server returns response with an error status.
