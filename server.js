@@ -64,7 +64,7 @@ app.post("/contacts", function (req, res) {
    var person = req.body;
    console.log("PUT /contacts, req.body: " + JSON.stringify(person));
 
-   db.collection("people").insert(person, function (err, result) {
+   db.collection("people").insert(person, function (err, result) {      // insert takes an object or array of objects
       if (err) {
          throw err;
       } else {
@@ -124,6 +124,80 @@ app.del("/contacts/:id", function (req, res) {
 
 
 /*
+ * Delete all contacts
+ */
+app.del("/contacts", function (req, res) {
+   console.log("Deleting contact id", req.params.id);
+
+   db.collection("people").remove({}, function (err, removed) {
+      if (err) {
+         throw err;
+      } else {
+         console.dir("Successfully removed " + removed + " documents!");
+         res.send("Contact deleted", 200);
+      }
+   });
+});
+
+
+/**
+ * Reset the database. This deletes all data and loads the sample/test data
+ */
+app.post("/flintstones", function (req, res) {
+
+   db.collection("people").remove(function (err, removed) {
+      if (err) {
+         throw err;
+      } else {
+         console.dir("Successfully removed " + removed + " documents!");
+
+         db.collection("people").insert(testData, function (err, result) {      // insert takes an object or array of objects
+            if (err) {
+               throw err;
+            } else {
+               console.dir("Successfully inserted: " + JSON.stringify(result.length) + " documents"); // Note the returned value (result) is an array even if it’s one document
+
+               res.send(result);
+            }
+         });
+      }
+   });
+
+});
+
+
+/**
+ * Reset the database. This deletes all data and loads the sample/test data
+ */
+app.post("/reinitialize", function (req, res) {
+   var newPeople = [],
+      i;
+
+   for (i = 1; i <= 100; i++) {
+      newPeople.push(createPerson());
+   }
+
+   db.collection("people").remove(function (err, removed) {
+      if (err) {
+         throw err;
+      } else {
+         console.dir("Successfully removed " + removed + " documents!");
+
+         db.collection("people").insert(newPeople, function (err, result) {      // insert takes an object or array of objects
+            if (err) {
+               throw err;
+            } else {
+               console.dir("Successfully inserted: " + JSON.stringify(result.length) + " documents"); // Note the returned value (result) is an array even if it’s one document
+
+               res.send(result);
+            }
+         });
+      }
+   });
+
+});
+
+/*
  * For any undefined routes, return a 404.
  */
 app.get("*", function (req, res) {
@@ -154,6 +228,223 @@ mongoclient.open(function (err, mongoclient) {
       console.log("Express server started on port 3000");
    });
 });
+
+
+var firstName      = require('./data/firstname.json'),
+   lastName        = require('./data/lastname.json'),
+   zipStateCity    = require('./data/zipstatecity.json'),
+   streetExtension = require('./data/streetextension.json'),
+   streetName      = require('./data/streetname.json'),
+   eMail           = require('./data/email.json');
+
+
+/*   Utilities   */
+
+
+/*
+ * This version uses a passed in String. This isn't tested!
+ */
+function toProperCase(string) {
+   if (string !== undefined) {
+      return string.replace(/\w\S*/g, function (txt) {
+         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      });
+   } else {
+      return "";
+   }
+}
+
+
+// Generate an area code. Here an Area Code is a three digit number. There
+// are some rules for real area codes that are not honored here.
+function generateAreaCode() {
+   // Must be 3 digits, so 100 - 999 are valid values
+   var areaCode = getRandomNumber(101, 999);
+   return areaCode.toString();
+}
+
+
+// Generate a phone number. Here it's defined as a 7 digit number. There
+// are some rules for real phone numbers that are not honored here.
+function generatePhoneNumber() {
+   return getRandomNumber(1234567, 9999999); // lowerBound is a dummy min val for a phone number
+}
+
+
+function getRandomNumber(lowerBound, upperBound) {
+   // http://www.maconstateit.net/Tutorials/JavaScript/JS02/jsdhtml02-04.php
+   return Math.floor((upperBound - lowerBound + 1) * Math.random()) + lowerBound;
+}
+
+
+function createPerson() {
+   var zipStateCityElements,
+      areaCode,
+      p = {};
+
+   areaCode = generateAreaCode();
+
+   p.firstName = toProperCase(firstName[getRandomNumber(1, firstName.length)]);
+   p.lastName =  toProperCase(lastName[getRandomNumber(1, lastName.length)]);
+
+   zipStateCityElements = zipStateCity[getRandomNumber(1, zipStateCity.length)];
+   p.address = {};
+   p.address.street =
+      getRandomNumber(1, 9999) + " " +
+      toProperCase(streetName[getRandomNumber(1, streetName.length)]) + " " +
+      toProperCase(streetExtension[getRandomNumber(1, streetExtension.length)]);
+   p.address.city = toProperCase(zipStateCityElements[2]);
+   p.address.state = zipStateCityElements[1];
+   p.address.zip = zipStateCityElements[0];
+
+   p.phonenumbers = [
+      {"type": "mobile", number: areaCode + generatePhoneNumber() },
+      {"type": "home",   number: areaCode + generatePhoneNumber() },
+      {"type": "work",   number: areaCode + generatePhoneNumber() }
+   ];
+
+   p.email = [
+      { type: "personal",
+         account: p.firstName.toLowerCase() + "." + p.lastName.toLowerCase() + "@" + eMail[getRandomNumber(1, eMail.length)]}
+   ];
+
+console.log(JSON.stringify(p));
+
+   return p;
+}
+
+
+/**
+ * This is dummy test data loaded when the objectstore is created. Objectstore creation
+ * happens in request.onupgradeneeded
+ *
+ * @type {Array}
+ */
+var testData = [
+   {
+      "firstname": "Fred",
+      "lastname":  "Flintstone",
+      "address": {
+         "street": "345 Cave Stone Rd",
+         "city":   "Bedrock",
+         "state":  "NA",
+         "zip":    "123"
+      },
+      "phonenumbers": [
+         {
+            "type":   "mobile",
+            "number": "111"
+         }
+      ],
+      "email": [
+         {
+            "type":    "personal",
+            "account": "Fred@Flintstone.com"
+         }
+      ],
+      "birthday":  "1970-01-01",
+      "spouse":    "Wilma",
+      "children": [
+         {
+            "sex":  "girl",
+            "name": "Pebbles"
+         }
+      ]
+   },
+
+   {
+      "firstname":   "Wilma",
+      "lastname":    "Flintstone",
+      "address": {
+         "street": "345 Cave Stone Rd",
+         "city":   "Bedrock",
+         "state":  "NA",
+         "zip":    "123"
+      },
+      "phonenumbers": [
+         {
+            "type":   "mobile",
+            "number": "222"
+         }
+      ],
+      "email": [
+         {
+            "type":    "personal",
+            "account": "Wilma@Flintstone.com"
+         }
+      ],
+      "birthday":  "1970-02-01",
+      "spouse":    "Fred",
+      "children": [
+         {
+            "sex":  "girl",
+            "name": "Pebbles"
+         }
+      ]
+   },
+
+   {
+      "firstname":   "Barney",
+      "lastname":    "Rubble",
+      "address": {
+         "street": "123 Granite Way",
+         "city":        "Bedrock",
+         "state":       "NA",
+         "zip":         "123"
+      },
+      "phonenumbers": [
+         {
+            "type":   "work",
+            "number": "333"
+         }
+      ],
+      "email": [
+         {
+            "type":    "personal",
+            "account": "Barney@Rubble.com"
+         }
+      ],
+      "birthday":  "1970-03-01",
+      "spouse":    "Betty",
+      "children": [
+         {
+            "sex":  "boy",
+            "name": "Bam Bam"
+         }
+      ]
+   },
+
+   {
+      "firstname":   "Betty",
+      "lastname":    "Rubble",
+      "address": {
+         "street": "123 Granite Way",
+         "city":        "Bedrock",
+         "state":       "NA",
+         "zip":         "123"
+      },
+      "phonenumbers": [
+         {
+            "type":   "work",
+            "number": "333"
+         }
+      ],
+      "email": [
+         {
+            "type":    "personal",
+            "account": "Betty@Rubble.com"
+         }
+      ],
+      "birthday":  "1970-04-01",
+      "spouse":    "Barney",
+      "children": [
+         {
+            "sex":  "boy",
+            "name": "Bam Bam"
+         }
+      ]
+   }
+];
 
 
 /*
