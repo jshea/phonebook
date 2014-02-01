@@ -1,8 +1,6 @@
 <h3>Contacts List</h3>
 
-   <!-- What is this class for? -->
-<ul class="contacts">
-   <li ng-repeat="contact in contacts">
-      <div><a ng-href="/#/view/{{contact._id}}">{{contact.firstname}} {{contact.lastname}}</a></div>
-   </li>
-</ul>
+
+Filter <input type="text" ng-model="filterOptions.filterText" placeholder="Search">
+
+<div class="gridStyle" ng-grid="gridOptions"></div>

@@ -1,5 +1,7 @@
-// http://stackoverflow.com/questions/12700145/how-to-format-a-telephone-number-in-angularjs
-
+/*
+ * Angular custom filter to format telephone numbers.
+ *    http://stackoverflow.com/questions/12700145/how-to-format-a-telephone-number-in-angularjs
+ */
 angular.module('ng').filter('tel', function () {
    return function (tel) {
       if (!tel) { return ''; }

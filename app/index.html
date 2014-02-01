@@ -9,11 +9,15 @@
    <script src="lib/angular-resource.js"></script>
    <script src="lib/angular-route.js"></script>
    <script src="js/directives.js"></script>
-   <!-- <script src="js/services.js"></script> -->
    <script src="js/controllers.js"></script>
    <script src="js/filters.js"></script>
 
    <link href="css/bootstrap.min.css" rel="stylesheet">
+   <link href="css/phonebook.css" rel="stylesheet">
+
+   <!-- This is for using $resource for REST services -->
+   <!-- <script src="js/services.js"></script> -->
+
 </head>
 
 <body>
@@ -29,7 +33,7 @@
          </ul>
       </nav>
 
-      <!-- Note use of a loading display - from O'Reilly angular book? -->
+      <!-- Note use of a loading display - from O'Reilly angular book -->
       <div butterbar>Loading...</div>
 
       <div class="row">
@@ -42,10 +46,9 @@
    </div>
 
    <script src="lib/jquery-2.1.0.js"></script>    <!-- Angular will use jquery if available (otherwise builtin jqLite) -->
-   <script src="lib/bootstrap.min.js"></script>   <!-- Requires jquery -->
-   <!--<script src="bower_components/angular-ui-utils/modules/event/event.js "></script>-->
-   <!--<script src="bower_components/angular-ui-map/src/map.js"></script>-->
-   <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=onGoogleReady"></script></body>-->
+   <script src="lib/bootstrap.min.js"></script>   <!-- Bootstrap requires jquery -->
+   <script src="lib/ng-grid-2.0.7.min.js"></script>
+   <link  href="css/ng-grid.min.css" rel="stylesheet">
 </body>
 
 </html>

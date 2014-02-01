@@ -28,3 +28,6 @@ Local data storage for disconnected use [angular-local-storage](https://github.c
 
 ## Offline use
 Web/browser [appcache](http://appcachefacts.info/) and hybrid [phonegap](http://phonegap.com/)
+
+## Charting
+[ui-chart](http://ngmodules.org/modules/ui-chart) or others

@@ -2,7 +2,17 @@
 /*
  * Database is contacts
  * Collections are people, log
+ *
  * URL's are
+ *   GET    /contacts      Get all contacts
+ *   GET    /contacts/:id  Get one person by _id
+ *   POST   /contacts      Add
+ *   POST   /contacts/:id  Update
+ *   DELETE /contacts/:id  Delete a contact
+ *   DELETE /contacts      Delete all contacts
+ *   POST   /flintstones   Reset data to the Flintstones
+ *   POST   /reinitialize  Reset data to 10,000 generated people
+ *
  */
 var express = require("express"),
    app = express(),
@@ -31,7 +41,7 @@ app.get("/contacts", function (req, res) {
       if (err) {
          throw err;
       } else {
-         console.dir("Successfully retrieved all contacts: " + JSON.stringify(docs));
+         // console.dir("Successfully retrieved all contacts: " + JSON.stringify(docs));
          res.send(docs);
       }
    });
@@ -42,13 +52,13 @@ app.get("/contacts", function (req, res) {
  * Get a contact
  */
 app.get("/contacts/:id", function (req, res) {
-   console.log("Get a contact: " + req.params.id);
+   // console.log("Get a contact: " + req.params.id);
 
    db.collection("people").findOne({"_id" : new ObjectID(req.params.id)}, function (err, doc) {
       if (err) {
          throw err;
       } else {
-         console.dir("Successfully retrieved one contact: " + JSON.stringify(doc));
+         // console.dir("Successfully retrieved one contact: " + JSON.stringify(doc));
          res.send(doc);
       }
    });
@@ -62,13 +72,13 @@ app.get("/contacts/:id", function (req, res) {
 app.post("/contacts", function (req, res) {
 
    var person = req.body;
-   console.log("PUT /contacts, req.body: " + JSON.stringify(person));
+   // console.log("PUT /contacts, req.body: " + JSON.stringify(person));
 
    db.collection("people").insert(person, function (err, result) {      // insert takes an object or array of objects
       if (err) {
          throw err;
       } else {
-         console.dir("Successfully inserted: " + JSON.stringify(result[0])); // Note the returned value (result) is an array even if it’s one document
+         // console.dir("Successfully inserted: " + JSON.stringify(result[0])); // Note the returned value (result) is an array even if it’s one document
 
          res.send(result[0]);
       }
@@ -81,7 +91,7 @@ app.post("/contacts", function (req, res) {
  * Update a contact
  */
 app.post("/contacts/:id", function (req, res) {
-   console.log("Updating a contact");
+   // console.log("Updating a contact");
 
    var person = req.body;
 
@@ -90,13 +100,13 @@ app.post("/contacts/:id", function (req, res) {
       if (err) {
          throw err;
       } else {
-         console.dir("Successfully updated: " + JSON.stringify(result));
+         // console.dir("Successfully updated: " + JSON.stringify(result));
 
          db.collection("people").findOne({"_id" : person._id}, function (err, doc) {
             if (err) {
                throw err;
             } else {
-               console.dir("Successfully retrieved one contact: " + JSON.stringify(doc));
+               // console.dir("Successfully retrieved one contact: " + JSON.stringify(doc));
                res.send(doc);
             }
          });
@@ -110,13 +120,13 @@ app.post("/contacts/:id", function (req, res) {
  * Delete a contact
  */
 app.del("/contacts/:id", function (req, res) {
-   console.log("Deleting contact id", req.params.id);
+   // console.log("Deleting contact id", req.params.id);
 
    db.collection("people").remove({"_id" : new ObjectID(req.params.id)}, function (err, removed) {
       if (err) {
          throw err;
       } else {
-         console.dir("Successfully removed " + removed + " documents!");
+         // console.dir("Successfully removed " + removed + " documents!");
          res.send("Contact deleted", 200);
       }
    });
@@ -127,13 +137,13 @@ app.del("/contacts/:id", function (req, res) {
  * Delete all contacts
  */
 app.del("/contacts", function (req, res) {
-   console.log("Deleting contact id", req.params.id);
+   // console.log("Deleting contact id", req.params.id);
 
    db.collection("people").remove({}, function (err, removed) {
       if (err) {
          throw err;
       } else {
-         console.dir("Successfully removed " + removed + " documents!");
+         // console.dir("Successfully removed " + removed + " documents!");
          res.send("Contact deleted", 200);
       }
    });
@@ -149,13 +159,13 @@ app.post("/flintstones", function (req, res) {
       if (err) {
          throw err;
       } else {
-         console.dir("Successfully removed " + removed + " documents!");
+         // console.dir("Successfully removed " + removed + " documents!");
 
          db.collection("people").insert(testData, function (err, result) {      // insert takes an object or array of objects
             if (err) {
                throw err;
             } else {
-               console.dir("Successfully inserted: " + JSON.stringify(result.length) + " documents"); // Note the returned value (result) is an array even if it’s one document
+               // console.dir("Successfully inserted: " + JSON.stringify(result.length) + " documents"); // Note the returned value (result) is an array even if it’s one document
 
                res.send(result);
             }
@@ -173,7 +183,7 @@ app.post("/reinitialize", function (req, res) {
    var newPeople = [],
       i;
 
-   for (i = 1; i <= 100; i++) {
+   for (i = 1; i <= 10000; i++) {
       newPeople.push(createPerson());
    }
 
@@ -181,13 +191,13 @@ app.post("/reinitialize", function (req, res) {
       if (err) {
          throw err;
       } else {
-         console.dir("Successfully removed " + removed + " documents!");
+         // console.dir("Successfully removed " + removed + " documents!");
 
          db.collection("people").insert(newPeople, function (err, result) {      // insert takes an object or array of objects
             if (err) {
                throw err;
             } else {
-               console.dir("Successfully inserted: " + JSON.stringify(result.length) + " documents"); // Note the returned value (result) is an array even if it’s one document
+               // console.dir("Successfully inserted: " + JSON.stringify(result.length) + " documents"); // Note the returned value (result) is an array even if it’s one document
 
                res.send(result);
             }
@@ -201,19 +211,19 @@ app.post("/reinitialize", function (req, res) {
  * For any undefined routes, return a 404.
  */
 app.get("*", function (req, res) {
-   console.log("A GET that wasn't found", req.params);
+   // console.log("A GET that wasn't found", req.params);
    res.send("Page Not Found", 404);
 });
 app.post("*", function (req, res) {
-   console.log("A POST that wasn't found", req.params);
+   // console.log("A POST that wasn't found", req.params);
    res.send("Page Not Found", 404);
 });
 app.put("*", function (req, res) {
-   console.log("A PUT that wasn't found", req.params);
+   // console.log("A PUT that wasn't found", req.params);
    res.send("Page Not Found", 404);
 });
 app.del("*", function (req, res) {
-   console.log("A DELETE that wasn't found", req.params);
+   // console.log("A DELETE that wasn't found", req.params);
    res.send("Page Not Found", 404);
 });
 
@@ -225,7 +235,7 @@ mongoclient.open(function (err, mongoclient) {
    if (err) { throw err; }
 
    app.listen(3000, function () {
-      console.log("Express server started on port 3000");
+      // console.log("Express server started on port 3000");
    });
 });
 
@@ -308,7 +318,7 @@ function createPerson() {
          account: p.firstname.toLowerCase() + "." + p.lastname.toLowerCase() + "@" + eMail[getRandomNumber(1, eMail.length)]}
    ];
 
-console.log(JSON.stringify(p));
+// console.log(JSON.stringify(p));
 
    return p;
 }
@@ -453,12 +463,12 @@ var query = { "grade" : 100 };
 
 db.collection("grades").find(query).toArray(function(err, docs) {
    if (err) { throw err; }
-   console.dir(docs);
+   // console.dir(docs);
 });
 
 db.collection("grades").find(query).each(function(err, docs) {
    if (err) { throw err; }
-   console.dir(docs);
+   // console.dir(docs);
 });
 
 
@@ -468,7 +478,7 @@ var query = { "grade" : 100 };
 
 db.collection("grades").findOne(query, function(err, doc) {
    if (err) { throw err; }
-   console.dir(doc);
+   // console.dir(doc);
 });
 
 // FindAndModify
@@ -481,10 +491,10 @@ db.collection("counters").findAndModify(query, sort, operator, options, function
    if (err) { throw err; }
 
    if (!doc) {
-      console.log("No counter found for comments.");
+      // console.log("No counter found for comments.");
    }
    else {
-      console.log("Number of comments: " + doc.counter);
+      // console.log("Number of comments: " + doc.counter);
    }
 });
 
@@ -495,7 +505,7 @@ var doc = { "_id" : "calvin", "age" : 6 };
 
 db.collection("students").insert(doc, function(err, inserted) {
     if (err) { throw err; }
-    console.dir("Successfully inserted: " + JSON.stringify(inserted));
+    // console.dir("Successfully inserted: " + JSON.stringify(inserted));
 });
 
 
@@ -512,7 +522,7 @@ db.collection("grades").findOne(query, function(err, doc) {
 
    db.collection("grades").save(doc, function(err, saved) {
       if (err) { throw err; }
-      console.dir("Successfully saved " + saved + " document!");
+      // console.dir("Successfully saved " + saved + " document!");
       return saved;
    });
 });
@@ -524,7 +534,7 @@ doc["date_returned"] = new Date();
 
 db.collection("grades").update(query, doc, function(err, updated) {
    if (err) { throw err; }
-   console.dir("Successfully updated " + updated + " document!");
+   // console.dir("Successfully updated " + updated + " document!");
 });
 
  // Multi update
@@ -534,7 +544,7 @@ var options = { "multi" : true };
 
 db.collection("grades").update(query, operator, options, function(err, updated) {
    if (err) { throw err; }
-   console.dir("Successfully updated " + updated + " documents!");
+   // console.dir("Successfully updated " + updated + " documents!");
 });
 
  // Upsert
@@ -546,7 +556,7 @@ var options = { "upsert" : true };
 
 db.collection("grades").update(query, operator, options, function(err, upserted) {
     if (err) { throw err; }
-    console.dir("Successfully upserted " + upserted + " document!");
+    // console.dir("Successfully upserted " + upserted + " document!");
 });
 
  // Remove
@@ -554,7 +564,7 @@ var query = { "assignment" : "hw3" };
 
 db.collection("grades").remove(query, function(err, removed) {
    if (err) { throw err; }
-   console.dir("Successfully updated " + removed + " documents!");
+   // console.dir("Successfully updated " + removed + " documents!");
 });
 
 */
