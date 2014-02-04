@@ -37,7 +37,7 @@ var db = mongoclient.db("contacts");
  *
  */
 app.get("/contacts", function (req, res) {
-   db.collection("people").find().toArray(function (err, docs) {
+   db.collection("people").find({}, {sort: {lastname: 1, firstname: 1}}).toArray(function (err, docs) {
       if (err) {
          throw err;
       } else {
@@ -94,8 +94,8 @@ app.post("/contacts/:id", function (req, res) {
    // console.log("Updating a contact");
 
    var person = req.body;
-
    person._id = new ObjectID(person._id);   // Convert _id to a mongo ObjectID
+
    db.collection("people").update({"_id" : person._id}, person, function (err, result) {
       if (err) {
          throw err;
@@ -235,7 +235,7 @@ mongoclient.open(function (err, mongoclient) {
    if (err) { throw err; }
 
    app.listen(3000, function () {
-      // console.log("Express server started on port 3000");
+      console.log("Express server started on port 3000");
    });
 });
 
@@ -317,6 +317,8 @@ function createPerson() {
       { type: "personal",
          account: p.firstname.toLowerCase() + "." + p.lastname.toLowerCase() + "@" + eMail[getRandomNumber(1, eMail.length)]}
    ];
+
+   p.birthday = new Date(getRandomNumber(1, new Date().getTime()));
 
 // console.log(JSON.stringify(p));
 

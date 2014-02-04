@@ -1,0 +1,123 @@
+<h2>Edit Contact</h2>
+
+<form name="contactForm" ng-submit="save()" novalidate> <!-- Disable HTML5 validation, we'll use Angular -->
+
+   <!-- First Name -->
+   <div class="form-group" ng-class="{ 'has-error' : contactForm.firstname.$invalid && !contactForm.firstname.$pristine }">
+      <!-- control-label: Bootstrap includes validation styles for error, warning, and success states on form controls. -->
+      <label class="control-label" for="firstname">First Name:</label>
+      <!-- Note focus and required -->
+      <input type="text" name="firstname" ng-model="contact.firstname" class="form-control" focus required>
+      <p ng-show="contactForm.firstname.$invalid && !contactForm.firstname.$pristine" class="help-block">First name is required.</p>
+   </div>
+
+   <!-- Last Name -->
+   <div class="form-group" ng-class="{ 'has-error' : contactForm.lastname.$invalid && !contactForm.lastname.$pristine }">
+      <label class="control-label" for="lastname">Last Name:</label>
+      <input type="text" name="lastname" ng-model="contact.lastname" class="form-control" required>
+      <p ng-show="contactForm.lastname.$invalid && !contactForm.lastname.$pristine" class="help-block">Last name is required.</p>
+   </div>
+
+
+   <!-- Address -->
+   <div class="form-group">
+      <label class="control-label" for="street">Street:</label>
+      <input type="text" name="street" ng-model="contact.address.street" class="form-control">
+   </div>
+   <div class="form-group">
+      <label class="control-label" for="city">City:</label>
+      <input type="text" name="city" ng-model="contact.address.city" class="form-control">
+   </div>
+   <div class="form-group">
+      <label class="control-label" for="state">State:</label>
+      <input type="text" name="state" ng-model="contact.address.state" class="form-control">
+   </div>
+   <div class="form-group">
+      <label class="control-label" for="zip">Zip:</label>
+      <input type="text" name="zip" ng-model="contact.address.zip" ng-pattern="/\d{5}/" class="form-control">
+   </div>
+
+
+   <!-- Phone Numbers -->
+   <div class="form-group">
+      <label class="control-label" for="phoneNumbers">Phone numbers:</label>
+
+      <div id="phoneNumbers" ng-controller="PhonenumberCtrl">
+         <div ng-repeat="phonenumber in contact.phonenumbers">
+            <input type="text" name="type" placeholder="type"   ng-model="phonenumber.type"   >
+            <input type="tel"  name="number" placeholder="number" ng-model="phonenumber.number" >
+            <button type="button" class="btn btn-xs btn-danger" ng-click="removeNumber($index)">
+               <span class="glyphicon glyphicon-minus"> Delete</span>
+            </button>
+         </div>
+         <button type="button" class="btn btn-xs btn-success" ng-click="addNumber()">
+            <span class="glyphicon glyphicon-plus"> Add</span>
+         </button>
+      </div>
+   </div>
+
+
+   <!-- eMail -->
+   <div class="form-group" ng-class="{ 'has-error' : contactForm.emailnumber.$invalid && !contactForm.emailnumber.$pristine }">
+      <label class="control-label" for="email">Email Accounts:</label>
+
+      <div id="eMail" ng-controller="EmailCtrl">
+         <div ng-repeat="e in contact.email">
+            <input type="text"  name="emailtype"   placeholder="type"    ng-model="e.type"   >
+            <input type="email" name="emailnumber" placeholder="account" ng-model="e.account" >
+            <p ng-show="contactForm.emailnumber.$invalid && !contactForm.emailnumber.$pristine" class="help-block">Enter a valid email.</p>
+
+            <button type="button" class="btn btn-xs btn-danger" ng-click="removeEmail($index)">
+               <span class="glyphicon glyphicon-minus"> Delete</span>
+            </button>
+         </div>
+         <button type="button" class="btn btn-xs btn-success" ng-click="addEmail()">
+            <span class="glyphicon glyphicon-plus"> Add</span>
+         </button>
+      </div>
+   </div>
+
+
+   <!-- Birthday -->
+   <div class="form-group">
+      <label class="control-label" for="birthday">Birthday:</label>
+      <input type="date" name="birthday" ng-model="contact.birthday" class="form-control" id="birthday">
+   </div>
+
+
+   <!-- Spouse -->
+   <div class="form-group">
+      <label class="control-label" for="spouse">Spouse:</label>
+      <input type="text" name="spouse" ng-model="contact.spouse" class="form-control" id="spouse">
+   </div>
+
+
+   <!-- Children -->
+   <div class="form-group">
+      <label class="control-label" for="children">Children:</label>
+
+      <div id="children" ng-controller="ChildrenCtrl">
+         <div ng-repeat="c in contact.children">
+            <input type="text" name="sex" placeholder="sex"  ng-model="c.sex"   >
+            <input type="tel"  name="name" placeholder="name" ng-model="c.name" >
+            <button type="button" class="btn btn-xs btn-danger" ng-click="removeChild($index)">
+               <span class="glyphicon glyphicon-minus"> Delete</span>
+            </button>
+         </div>
+         <button type="button" class="btn btn-xs btn-success" ng-click="addChild()">
+            <span class="glyphicon glyphicon-plus"> Add</span>
+         </button>
+      </div>
+   </div>
+
+
+   <div>
+      <span ng-show="contact._id">
+         <button class="btn btn-primary" ng-disabled="contactForm.$invalid">Save</button>
+      </span>
+      <span ng-hide="contact._id">
+         <button class="btn btn-primary" ng-disabled="contactForm.$invalid">Add</button>
+      </span>
+      <button class="btn" type="button" ng-click="remove()" ng-show="contact._id">Delete</button>
+   </div>
+</form>

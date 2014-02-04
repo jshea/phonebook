@@ -1,5 +1,7 @@
 "use strict";
 
+// db.people.aggregate([{$group: {_id: "$address.state", count: {$sum: 1}} }, {$sort: {_id: 1}} ])
+
 var app = angular.module("phonebook", ["ngRoute", "ngGrid", "phonebook.directives"]);   // "ui-map", "ngTable"
 
 app.config(["$routeProvider", function ($routeProvider) {
@@ -55,12 +57,14 @@ app.controller("ListCtrl", function ($scope, $http, $location) {
          // Make a row clickable
          // http://stackoverflow.com/questions/19822133/angularjs-ng-grid-pass-row-column-field-into-ng-click-event
          {
-            field: "lastname", //  + ', ' + firstname",
+            field: "lastname + ', ' + firstname",
             displayName: "Last",
             cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><a ng-click="loadById(row)">{{row.getProperty(col.field)}}</a></div>'
          },
-         {field: "firstname", displayName: "First"},
-         {field: "phonenumbers[0].number", displayName: "Phone", cellFilter: "tel"}
+         {field: "phonenumbers[0].number", displayName: "Phone", cellFilter: "tel"},
+         // These are here for the filtering to work.
+         {field: "firstname", visible: false},
+         {field: "lastname", visible: false}
       ],
       enableColumnReordering: true,
       enableSorting: true,

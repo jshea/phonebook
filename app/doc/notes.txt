@@ -1,0 +1,32 @@
+Use resolve to prevent route changing until data is ready/rendered
+   http://www.ng-newsletter.com/advent2013/#!/day/3
+
+Setting configs in angular. Could this be used to set the destination
+for data retrieval/storage (RESTful service vs local storage)?
+   http://www.ng-newsletter.com/advent2013/#!/day/5
+
+Move list screen filters to the controller for performance.
+   http://www.ng-newsletter.com/advent2013/#!/day/7
+
+Move the $http calls from the individual controllers to a provider?
+   http://www.ng-newsletter.com/advent2013/#!/day/8
+
+Splash Screen
+   http://www.ng-newsletter.com/advent2013/#!/day/21
+
+
+These are items that are not working or I just don't understand!
+
+# resources
+
+## Performing an update
+Instead of calling the POST method /contact/:id, it's calling /contact (as a POST) without the ID.
+
+## Performing a delete
+Instead of calling the DELETE method /contact/:id, it's calling /contact (as a DELETE) without the ID.
+
+A [NodeJS](http://nodejs.org/)/[ExpressJS](http://expressjs.com/) REST Web Service
+that accesses a [MongoDB](http://www.mongodb.org/) database for persistence.
+
+# MongoDB/mongodb-native-driver
+The `save()` method doesn't do an update it's inserting.
