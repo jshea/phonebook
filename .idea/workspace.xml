@@ -1,22 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="34966a91-47c5-4fe4-a426-30dc5a769eb5" name="Default" comment="Added dummy data generation api to server.js.&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/edit copy.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/doc/notes.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/doc/server.resource.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PopupAbout.txt" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/js/old/services.js" afterPath="$PROJECT_DIR$/app/doc/services.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/lib/angular-resource.js" afterPath="$PROJECT_DIR$/app/doc/angular-resource.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/app/css/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/bootstrap.min.js" afterPath="$PROJECT_DIR$/app/lib/bootstrap.min.js" />
+    <list default="true" id="34966a91-47c5-4fe4-a426-30dc5a769eb5" name="Default" comment="Add sorting for list in server.js.&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/ext/win32/ia32/bson.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/ext/win32/x64/bson.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/tools/jasmine-1.1.0/jasmine_favicon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/CONTRIBUTING.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/tools/jasmine-1.1.0/MIT.LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/build/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/ext/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/Readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/admin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/collection/aggregation.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/aggregation_cursor.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/connection/base.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/base64.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/base64.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/base64.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/base64.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/commands/base_command.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/lib/bson/binary.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/lib/bson/binary_parser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/binding.gyp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/binding.gyp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/ext/bson.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/ext/bson.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/browser_build/bson.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/lib/bson/bson.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/build/bson.target.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/build_browser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/builderror.log" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/builderror.log" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/gridfs/chunk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/lib/bson/code.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/collection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/command_cursor.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/collection/commands.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/build/config.gypi" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/config.gypi" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/connection/connection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/connection/connection_pool.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/connection/connection_utils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/collection/core.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/cursor.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/cursorstream.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/db.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/commands/db_command.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/lib/bson/db_ref.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/commands/delete_command.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/lib/bson/double.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/lib/bson/float_parser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/collection/geo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/commands/get_more_command.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/tools/gleak.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/gridfs/grid.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/gridfs/gridstore.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/build/gyp-mac-tool" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/gyp-mac-tool" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/connection/repl_set/ha.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/collection/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/ext/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/lib/bson/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/commands/insert_command.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/tools/jasmine-1.1.0/jasmine-html.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/tools/jasmine-1.1.0/jasmine.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/tools/jasmine-1.1.0/jasmine.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/kerberos.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/kerberos.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/kerberos.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/kerberos.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/kerberos.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/kerberos.target.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/kerberos_context.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/kerberos_context.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/kerberos_sspi.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/kerberos_sspi.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/test/kerberos_tests.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/test/kerberos_win32_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/kerberosgss.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/kerberosgss.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/commands/kill_cursor_command.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/lib/bson/long.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/lib/bson/max_key.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/lib/bson/min_key.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/mongo_client.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/responses/mongo_reply.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/auth_processes/mongodb.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/auth/mongodb_cr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/auth/mongodb_gssapi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/auth/mongodb_plain.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/auth/mongodb_sspi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/auth/mongodb_x509.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/connection/mongos.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/ext/nan.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/lib/bson/objectid.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/connection/repl_set/options.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/browser_build/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/connection/repl_set/strategies/ping_strategy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/collection/query.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/commands/query_command.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/connection/read_preference.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/gridfs/readstream.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/connection/repl_set/repl_set.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/connection/repl_set/repl_set_state.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/scope.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer_descriptor.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer_descriptor.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer_descriptor.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/test/win32/security_buffer_descriptor_tests.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/test/win32/security_buffer_tests.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_context.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_context.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_context.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_credentials.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_credentials.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_credentials.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/test/win32/security_credentials_tests.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/connection/server.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/connection/server_capabilities.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/collection/shared.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/sspi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/connection/repl_set/strategies/statistics_strategy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/lib/bson/symbol.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/t.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/lib/bson/timestamp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/commands/update_command.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/connection/url_parser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongodb/utils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/worker.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/worker.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/worker.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/worker.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/bson/ext/wscript" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace[Conflict].xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TODO.md" afterPath="$PROJECT_DIR$/TODO.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers.js" afterPath="$PROJECT_DIR$/app/js/controllers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/edit.html" afterPath="$PROJECT_DIR$/app/views/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/jtsutil.js" afterPath="$PROJECT_DIR$/app/js/jtsutil.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/list.html" afterPath="$PROJECT_DIR$/app/views/list.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/viewDetail.html" afterPath="$PROJECT_DIR$/app/views/viewDetail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Phonebook.iws" />
@@ -40,21 +179,40 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="server.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server.js">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="186" column="37" selection-start="4946" selection-end="4946" vertical-scroll-proportion="0.0" vertical-offset="2125" max-vertical-offset="6810">
-              <folding>
-                <element signature="e#9329#11882#0" expanded="false" />
-              </folding>
+            <state line="40" column="24" selection-start="1284" selection-end="1291" vertical-scroll-proportion="0.0" vertical-offset="88" max-vertical-offset="885">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controllers.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
+      <file leaf-file-name="TODO.md" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TODO.md">
+          <provider editor-type-id="text-editor">
+            <state line="49" column="0" selection-start="1388" selection-end="1388" vertical-scroll-proportion="0.0" vertical-offset="735" max-vertical-offset="825">
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="viewDetail.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/viewDetail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="6" selection-start="1659" selection-end="1659" vertical-scroll-proportion="0.30208334" vertical-offset="625" max-vertical-offset="3555">
+            <state line="27" column="14" selection-start="876" selection-end="876" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1575">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/edit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="95" column="52" selection-start="3857" selection-end="3869" vertical-scroll-proportion="0.0" vertical-offset="1425" max-vertical-offset="1890">
               <folding />
             </state>
           </provider>
@@ -73,7 +231,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/list.html" />
         <option value="$PROJECT_DIR$/PopupAbout.txt" />
         <option value="$PROJECT_DIR$/app/views/viewDetail.html" />
         <option value="$PROJECT_DIR$/app/views/form.html" />
@@ -81,8 +238,6 @@
         <option value="$PROJECT_DIR$/web-server.js" />
         <option value="$PROJECT_DIR$/app/js/services.js" />
         <option value="$PROJECT_DIR$/MongoWS.js" />
-        <option value="$PROJECT_DIR$/app/views/edit.html" />
-        <option value="$PROJECT_DIR$/app/js/controllers.js" />
         <option value="$PROJECT_DIR$/app/views/about.html" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/app/js/jtsutil.js" />
@@ -91,13 +246,17 @@
         <option value="$PROJECT_DIR$/data/zipstatecity.json" />
         <option value="$PROJECT_DIR$/app/doc/notes.txt" />
         <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/app/views/edit.html" />
         <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/app/views/list.html" />
+        <option value="$PROJECT_DIR$/app/js/controllers.js" />
+        <option value="$PROJECT_DIR$/TODO.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1131" />
+    <option name="width" value="1920" />
     <option name="height" value="1117" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -126,7 +285,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -155,7 +313,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mongodb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Phonebook" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Phonebook" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -191,62 +367,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Phonebook" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Phonebook" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Phonebook" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Phonebook" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Phonebook" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Phonebook" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -257,7 +380,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../AngularCRUD" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Development/Archive/Timecard/TimecardReviewMobile/TC Review jqm" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
   </component>
@@ -299,6 +422,14 @@
     </option>
   </component>
   <component name="RunManager" selected="Node.js.AngularPhonebook">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -309,23 +440,15 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
@@ -377,7 +500,11 @@
       <created>1391103423269</created>
       <updated>1391103423270</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add sorting for list in server.js.&#10;">
+      <created>1391548363543</created>
+      <updated>1391548363543</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -401,14 +528,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1131" height="1117" extended-state="0" />
+    <frame x="0" y="22" width="1920" height="1117" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24944974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22162162" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17693523" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3916084" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -439,7 +566,8 @@
     </option>
     <MESSAGE value="Convert from $resource to $http. Major changes (now working!) to server.js." />
     <MESSAGE value="Added dummy data generation api to server.js." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added dummy data generation api to server.js." />
+    <MESSAGE value="Add sorting for list in server.js.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add sorting for list in server.js.&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -455,43 +583,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data/streetname.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="0" selection-start="1898" selection-end="1898" vertical-scroll-proportion="0.0" vertical-offset="987" max-vertical-offset="4155">
-          <folding>
-            <element signature="e#9329#11882#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="135" column="0" selection-start="3837" selection-end="3837" vertical-scroll-proportion="0.0" vertical-offset="2025" max-vertical-offset="2115">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="106" selection-start="1854" selection-end="1854" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="1222" selection-end="1222" vertical-scroll-proportion="0.0" vertical-offset="690" max-vertical-offset="2220">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/directives.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="4" selection-start="525" selection-end="525" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="555" />
@@ -516,9 +607,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="23" selection-start="2721" selection-end="2721" vertical-scroll-proportion="0.0" vertical-offset="1380" max-vertical-offset="2145">
-          <folding />
-        </state>
+        <state line="92" column="23" selection-start="2721" selection-end="2721" vertical-scroll-proportion="0.0" vertical-offset="1380" max-vertical-offset="2145" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/directives.js">
@@ -550,9 +639,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="0" selection-start="2706" selection-end="2706" vertical-scroll-proportion="0.0" vertical-offset="1233" max-vertical-offset="2115">
-          <folding />
-        </state>
+        <state line="93" column="0" selection-start="2706" selection-end="2706" vertical-scroll-proportion="0.0" vertical-offset="1233" max-vertical-offset="2115" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/list.html">
@@ -596,9 +683,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="35" selection-start="917" selection-end="917" vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1560">
-          <folding />
-        </state>
+        <state line="28" column="35" selection-start="917" selection-end="917" vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1560" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/directives.js">
@@ -625,9 +710,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="17" selection-start="2650" selection-end="2650" vertical-scroll-proportion="0.0" vertical-offset="649" max-vertical-offset="1515">
-          <folding />
-        </state>
+        <state line="92" column="17" selection-start="2650" selection-end="2650" vertical-scroll-proportion="0.0" vertical-offset="649" max-vertical-offset="1515" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/directives.js">
@@ -645,74 +728,19 @@
         <state line="7" column="32" selection-start="341" selection-end="341" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="345" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="210" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/directives.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="4" selection-start="525" selection-end="525" vertical-scroll-proportion="0.33411488" vertical-offset="0" max-vertical-offset="853" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="0" selection-start="4655" selection-end="4655" vertical-scroll-proportion="0.0" vertical-offset="1168" max-vertical-offset="1875" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/firstname.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="49224" selection-start="49224" selection-end="49224" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="606">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/lastname.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="873022" selection-end="873022" vertical-scroll-proportion="0.023923445" vertical-offset="0" max-vertical-offset="627">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/about.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="1276" selection-end="1276" vertical-scroll-proportion="0.7734375" vertical-offset="0" max-vertical-offset="640" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/doc/services.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="4" selection-start="19" selection-end="19" vertical-scroll-proportion="0.030895984" vertical-offset="0" max-vertical-offset="971" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/filters.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="971" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/doc/notes.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="1" selection-start="610" selection-end="610" vertical-scroll-proportion="0.26261586" vertical-offset="0" max-vertical-offset="971" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/doc/server.resource.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.3726513" vertical-offset="1315" max-vertical-offset="2880">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/jtsutil.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="448" selection-end="454" vertical-scroll-proportion="0.38951695" vertical-offset="146" max-vertical-offset="1140">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.3726513" vertical-offset="1315" max-vertical-offset="2880" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="0" selection-start="1273" selection-end="1273" vertical-scroll-proportion="0.7708119" vertical-offset="0" max-vertical-offset="973">
-          <folding />
-        </state>
+        <state line="50" column="0" selection-start="1273" selection-end="1273" vertical-scroll-proportion="0.7708119" vertical-offset="0" max-vertical-offset="973" />
       </provider>
       <provider editor-type-id="MarkdownPreviewEditor">
         <state />
@@ -720,53 +748,118 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="948">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="948" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/css/phonebook.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="948">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="948" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/email.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/firstname.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="49224" selection-start="49224" selection-end="49224" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="606" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/lastname.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="873022" selection-end="873022" vertical-scroll-proportion="-0.625" vertical-offset="0" max-vertical-offset="105" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/streetextension.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="871" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/streetname.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="456">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="456" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
+    <entry file="file://$PROJECT_DIR$/data/zipstatecity.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="215" selection-end="215" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="885">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442155" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/viewDetail.html">
+    <entry file="file://$PROJECT_DIR$/app/views/list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="17" selection-start="1774" selection-end="1774" vertical-scroll-proportion="-16.416666" vertical-offset="626" max-vertical-offset="1575">
-          <folding />
-        </state>
+        <state line="4" column="41" selection-start="150" selection-end="150" vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="195" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
+    <entry file="file://$PROJECT_DIR$/app/views/about.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="186" column="37" selection-start="4946" selection-end="4946" vertical-scroll-proportion="0.0" vertical-offset="2125" max-vertical-offset="6810">
-          <folding>
-            <element signature="e#9329#11882#0" expanded="false" />
-          </folding>
+        <state line="33" column="0" selection-start="1276" selection-end="1276" vertical-scroll-proportion="-20.625" vertical-offset="0" max-vertical-offset="615" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="52" selection-start="3857" selection-end="3869" vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="1890">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="6" selection-start="1659" selection-end="1659" vertical-scroll-proportion="0.30208334" vertical-offset="625" max-vertical-offset="3555">
+        <state line="183" column="7" selection-start="5792" selection-end="5792" vertical-scroll-proportion="0.0" vertical-offset="2145" max-vertical-offset="3600" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/viewDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="14" selection-start="876" selection-end="876" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1575">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/filters.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="23" selection-start="226" selection-end="229" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/directives.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="4" selection-start="525" selection-end="525" vertical-scroll-proportion="0.31456953" vertical-offset="0" max-vertical-offset="906" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/jtsutil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="0" selection-start="448" selection-end="454" vertical-scroll-proportion="0.0" vertical-offset="234" max-vertical-offset="1140" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="399" column="0" selection-start="10915" selection-end="10915" vertical-scroll-proportion="-0.42021924" vertical-offset="6330" max-vertical-offset="9180" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/edit copy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="84" selection-start="697" selection-end="706" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="1935" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/doc/notes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="539" selection-end="539" vertical-scroll-proportion="0.21924482" vertical-offset="0" max-vertical-offset="821" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="24" selection-start="1284" selection-end="1291" vertical-scroll-proportion="0.0" vertical-offset="88" max-vertical-offset="885">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TODO.md">
+      <provider editor-type-id="text-editor">
+        <state line="49" column="0" selection-start="1388" selection-end="1388" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="825">
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="MarkdownPreviewEditor">
+        <state />
       </provider>
     </entry>
   </component>

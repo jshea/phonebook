@@ -33,6 +33,22 @@ var db = mongoclient.db("contacts");
 
 
 /*
+ * Get contacts info for a picklist. This is a subset of the data fields.
+ *
+ */
+app.get("/contactpicklist", function (req, res) {
+   db.collection("people").find({}, {fields: {"lastname": 1, "firstname": 1, "phonenumbers": 1}, "sort": {"lastname": 1, "firstname": 1}}).toArray(function (err, docs) {
+      if (err) {
+         throw err;
+      } else {
+         // console.dir("Successfully retrieved all contacts: " + JSON.stringify(docs));
+         res.send(docs);
+      }
+   });
+});
+
+
+/*
  * Get all contacts
  *
  */
@@ -145,6 +161,25 @@ app.del("/contacts", function (req, res) {
       } else {
          // console.dir("Successfully removed " + removed + " documents!");
          res.send("Contact deleted", 200);
+      }
+   });
+});
+
+
+// End of CRUD
+
+
+/*
+ * Get a count by state of all contacts
+ * db.people.aggregate([{$group: {_id: "$address.state", count: {$sum: 1}} }, {$sort: {_id: 1}} ])
+ */
+app.get("/metrics/state", function (req, res) {
+   db.collection("people").aggregate([{$group: {_id: "$address.state", count: {$sum: 1}} }, {$sort: {_id: 1}} ], function (err, docs) {
+      if (err) {
+         throw err;
+      } else {
+         // console.dir("Successfully retrieved all contacts: " + JSON.stringify(docs));
+         res.send(docs);
       }
    });
 });
@@ -327,8 +362,7 @@ function createPerson() {
 
 
 /**
- * This is dummy test data loaded when the objectstore is created. Objectstore creation
- * happens in request.onupgradeneeded
+ * This is dummy test data for the flintstones method
  *
  * @type {Array}
  */

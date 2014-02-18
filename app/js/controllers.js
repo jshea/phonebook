@@ -1,7 +1,5 @@
 "use strict";
 
-// db.people.aggregate([{$group: {_id: "$address.state", count: {$sum: 1}} }, {$sort: {_id: 1}} ])
-
 var app = angular.module("phonebook", ["ngRoute", "ngGrid", "phonebook.directives"]);   // "ui-map", "ngTable"
 
 app.config(["$routeProvider", function ($routeProvider) {
@@ -39,7 +37,7 @@ app.config(["$routeProvider", function ($routeProvider) {
 
 app.controller("ListCtrl", function ($scope, $http, $location) {
 
-   $http.get("contacts")
+   $http.get("contactpicklist")
       .success(function (data, status, headers, config) {
          $scope.contacts = data;
       })
@@ -58,17 +56,22 @@ app.controller("ListCtrl", function ($scope, $http, $location) {
          // http://stackoverflow.com/questions/19822133/angularjs-ng-grid-pass-row-column-field-into-ng-click-event
          {
             field: "lastname + ', ' + firstname",
-            displayName: "Last",
+            displayName: "Name",
             cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><a ng-click="loadById(row)">{{row.getProperty(col.field)}}</a></div>'
          },
          {field: "phonenumbers[0].number", displayName: "Phone", cellFilter: "tel"},
          // These are here for the filtering to work.
          {field: "firstname", visible: false},
-         {field: "lastname", visible: false}
+         {field: "lastname",  visible: false},
+         {field: "phonenumbers[0].number", visible: false}
       ],
       enableColumnReordering: true,
       enableSorting: true,
       filterOptions: $scope.filterOptions
+   };
+
+   $scope.totalFilteredItemsLength = function () {
+      return self.filteredRows.length;
    };
 
    $scope.loadById = function (row) {
