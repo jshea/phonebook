@@ -30,21 +30,21 @@ Install the latest stable version from http://nodejs.org/
 
 Install modules required for MongoDB driver, RESTful Web Services and date/time parsing.
 
-At the commandline run
+At the commandline, change directory to Phonebook (containing server.js) and run the following commands:
 ````
-npm install -g express
-npm install -g mongodb
-npm install -g moment
+npm install express
+npm install mongodb
+npm install moment
 ````
 
 ## Running MongoDB and NodeJS
 
 Start the database server
 ````
-"\mongo\mongod" --dbpath=\mongodata
+\mongo\mongod --dbpath=\mongodata
 ````
 
 Start the Web Service after starting the database
 ````
-"node" \YOUR PATH TO THE APPLICATION\server.js
+node \YOUR PATH TO THE APPLICATION\server.js
 ````
