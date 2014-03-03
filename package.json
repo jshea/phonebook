@@ -1,7 +1,29 @@
 {
-  "name": "angularjs-phonebook",
-  "version": "0.0.1",
+  "name": "Phonebook",
+  "version": "0.0.0",
+  "description": "phonebook-angular =================",
+  "main": "server.js",
   "dependencies": {
-    "express": "3.1.0"
-  }
+    "mongodb": "~1.3.23",
+    "express": "~3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jshea/phonebook-angular.git"
+  },
+  "keywords": [
+    "angularjs",
+    "learning"
+  ],
+  "author": "Jim Shea",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/jshea/phonebook-angular/issues"
+  },
+  "homepage": "https://github.com/jshea/phonebook-angular"
 }

@@ -17,7 +17,7 @@ that maintains data in [MongoDB](http://mongodb.org).
 Download latest stable version from http://mongodb.org/
 ````
 create an application folder: \mongo
-expand the contents of the downloaded \bin folder into \mongo
+expand the contents of the downloaded zip file's \bin folder into \mongo
 ````
 Create a data directory for MongoDB. Example `\mongodata`. MongoDB will
 create the database and collection automatically at runtime if they don't already
@@ -28,13 +28,10 @@ exist. Databases and Collections don't have to be created in a separate step.
 
 Install the latest stable version from http://nodejs.org/
 
-Install modules required for MongoDB driver, RESTful Web Services and date/time parsing.
-
-At the commandline, change directory to Phonebook (containing server.js) and run the following commands:
+Install modules required for MongoDB driver, RESTful Web Services and date/time parsing. At the commandline,
+change directory to Phonebook (containing server.js) and run the following command:
 ````
-npm install express
-npm install mongodb
-npm install moment
+npm install
 ````
 
 ## Running MongoDB and NodeJS

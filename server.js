@@ -234,7 +234,7 @@ app.post("/reinitialize", function (req, res) {
             } else {
                // console.dir("Successfully inserted: " + JSON.stringify(result.length) + " documents"); // Note the returned value (result) is an array even if it’s one document
 
-               res.send(result);
+               res.send({result: "success"});
             }
          });
       }

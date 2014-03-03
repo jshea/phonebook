@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module("phonebook", ["ngRoute", "ngGrid", "phonebook.directives"]);   // "ui-map", "ngTable"
+var app = angular.module("phonebook", ["ngRoute", "ngGrid", "ui.bootstrap", "phonebook.directives"]);   // "ui-map", "ngTable"
 
 app.config(["$routeProvider", function ($routeProvider) {
    $routeProvider
@@ -86,9 +86,11 @@ app.controller("ListCtrl", function ($scope, $http, $location) {
 
 
 app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams) {
+   // contactId is what the parameter was named in our routes
    $http.get("contacts/" + $routeParams.contactId)
       .success(function (data, status, headers, config) {
          $scope.contact = data;
+         $scope.age = moment().diff(data.birthday, "years");
 
 //         $scope.mapOptions = {
 //            center: new google.maps.LatLng(35.784, -78.670),
@@ -179,7 +181,7 @@ app.controller("PhonenumberCtrl", function ($scope) {
 
    $scope.addNumber = function () {
       // In case phonenumbers isn't defined, initialize it to an empty array
-      if ($scope.contact.phonenumbers === null) {
+      if (typeof $scope.contact.phonenumbers === "undefined" || $scope.contact.phonenumbers === null) {
          $scope.contact.phonenumbers = [];
       }
       var phonenumbers = $scope.contact.phonenumbers;
@@ -196,7 +198,7 @@ app.controller("EmailCtrl", function ($scope) {
 
    $scope.addEmail = function () {
       // In case email isn't defined, initialize it to an empty array
-      if ($scope.contact.email === null) {
+      if (typeof $scope.contact.email === "undefined" || $scope.contact.email === null) {
          $scope.contact.email = [];
       }
       var email = $scope.contact.email;
@@ -213,7 +215,7 @@ app.controller("ChildrenCtrl", function ($scope) {
 
    $scope.addChild = function () {
       // In case children isn't defined, initialize it to an empty array
-      if ($scope.contact.children === null) {
+      if (typeof $scope.contact.children === "undefined" || $scope.contact.children === null) {
          $scope.contact.children = [];
       }
       var children = $scope.contact.children;

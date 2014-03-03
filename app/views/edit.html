@@ -18,94 +18,106 @@
    </div>
 
 
-   <!-- Address -->
-   <div class="form-group">
-      <label class="control-label" for="street">Street:</label>
-      <input type="text" ng-model="contact.address.street" class="form-control" id="street">
-   </div>
-   <div class="form-group">
-      <label class="control-label" for="city">City:</label>
-      <input type="text" ng-model="contact.address.city" class="form-control" id="city">
-   </div>
-   <div class="form-group">
-      <label class="control-label" for="state">State:</label>
-      <input type="text" ng-model="contact.address.state" class="form-control" id="state">   <!-- TODO - Convert to dropdown -->
-   </div>
-   <div class="form-group">
-      <label class="control-label" for="zip">Zip:</label>
-      <input type="text" ng-model="contact.address.zip" class="form-control" id="zip">
-   </div>
+   <tabset>
 
+      <tab heading="Address">
 
-   <!-- Phone Numbers -->
-   <div class="form-group">
-      <label class="control-label" for="phoneNumbers">Phone numbers:</label>
-
-      <div id="phoneNumbers" ng-controller="PhonenumberCtrl">
-         <div ng-repeat="phonenumber in contact.phonenumbers">
-            <input type="text" placeholder="type"   ng-model="phonenumber.type"   >    <!-- TODO - Convert to dropdown -->
-            <input type="tel"  placeholder="number" ng-model="phonenumber.number" >
-            <button type="button" class="btn btn-xs btn-danger" ng-click="removeNumber($index)">
-               <span class="glyphicon glyphicon-minus"> Delete</span>
-            </button>
+         <div class="form-group">
+            <label class="control-label" for="street">Street:</label>
+            <input type="text" ng-model="contact.address.street" class="form-control" id="street">
          </div>
-         <button type="button" class="btn btn-xs btn-success" ng-click="addNumber()">
-            <span class="glyphicon glyphicon-plus"> Add</span>
-         </button>
-      </div>
-   </div>
-
-
-   <!-- eMail -->
-   <div class="form-group">
-      <label class="control-label" for="phoneNumbers">Email Accounts:</label>
-
-      <div id="eMail" ng-controller="EmailCtrl">
-         <div ng-repeat="e in contact.email">
-            <input type="text" placeholder="type"    ng-model="e.type"   >             <!-- TODO - Convert to dropdown -->
-            <input type="email"  placeholder="account" ng-model="e.account" >
-            <button type="button" class="btn btn-xs btn-danger" ng-click="removeEmail($index)">
-               <span class="glyphicon glyphicon-minus"> Delete</span>
-            </button>
+         <div class="form-group">
+            <label class="control-label" for="city">City:</label>
+            <input type="text" ng-model="contact.address.city" class="form-control" id="city">
          </div>
-         <button type="button" class="btn btn-xs btn-success" ng-click="addEmail()">
-            <span class="glyphicon glyphicon-plus"> Add</span>
-         </button>
-      </div>
-   </div>
-
-
-   <!-- Birthday -->
-   <div class="form-group">
-      <label class="control-label" for="birthday">Birthday:</label>
-      <input type="date" ng-model="contact.birthday" class="form-control" id="birthday">
-   </div>
-
-
-   <!-- Spouse -->
-   <div class="form-group">
-      <label class="control-label" for="spouse">Spouse:</label>
-      <input type="text" ng-model="contact.spouse" class="form-control" id="spouse">
-   </div>
-
-
-   <!-- Children -->
-   <div class="form-group">
-      <label class="control-label" for="children">Children:</label>
-
-      <div id="children" ng-controller="ChildrenCtrl">
-         <div ng-repeat="c in contact.children">
-            <input type="text" placeholder="sex"  ng-model="c.sex"   >                 <!-- TODO - Convert to dropdown -->
-            <input type="tel"  placeholder="name" ng-model="c.name" >
-            <button type="button" class="btn btn-xs btn-danger" ng-click="removeChild($index)">
-               <span class="glyphicon glyphicon-minus"> Delete</span>
-            </button>
+         <div class="form-group">
+            <label class="control-label" for="state">State:</label>
+            <input type="text" ng-model="contact.address.state" class="form-control" id="state">   <!-- TODO - Convert to dropdown -->
          </div>
-         <button type="button" class="btn btn-xs btn-success" ng-click="addChild()">
-            <span class="glyphicon glyphicon-plus"> Add</span>
-         </button>
-      </div>
-   </div>
+         <div class="form-group">
+            <label class="control-label" for="zip">Zip:</label>
+            <input type="text" ng-model="contact.address.zip" class="form-control" id="zip">
+         </div>
+
+      </tab>
+
+
+      <tab heading="Contact Info">
+
+         <div class="form-group">
+            <label class="control-label" for="phoneNumbers">Phone numbers:</label>
+
+            <!--Phone-->
+            <div id="phoneNumbers" ng-controller="PhonenumberCtrl">
+               <div ng-repeat="phonenumber in contact.phonenumbers">
+                  <input type="text" placeholder="type"   ng-model="phonenumber.type"   >    <!-- TODO - Convert to dropdown -->
+                  <input type="tel"  placeholder="number" ng-model="phonenumber.number" >
+                  <button type="button" class="btn btn-xs btn-danger" ng-click="removeNumber($index)">
+                     <span class="glyphicon glyphicon-minus"> Delete</span>
+                  </button>
+               </div>
+               <button type="button" class="btn btn-xs btn-success" ng-click="addNumber()">
+                  <span class="glyphicon glyphicon-plus"> Add</span>
+               </button>
+            </div>
+         </div>
+
+
+         <!-- eMail -->
+         <div class="form-group">
+            <label class="control-label" for="phoneNumbers">Email Accounts:</label>
+
+            <div id="eMail" ng-controller="EmailCtrl">
+               <div ng-repeat="e in contact.email">
+                  <input type="text" placeholder="type"    ng-model="e.type"   >             <!-- TODO - Convert to dropdown -->
+                  <input type="email"  placeholder="account" ng-model="e.account" >
+                  <button type="button" class="btn btn-xs btn-danger" ng-click="removeEmail($index)">
+                     <span class="glyphicon glyphicon-minus"> Delete</span>
+                  </button>
+               </div>
+               <button type="button" class="btn btn-xs btn-success" ng-click="addEmail()">
+                  <span class="glyphicon glyphicon-plus"> Add</span>
+               </button>
+            </div>
+         </div>
+      </tab>
+
+      <tab heading="Personal">
+
+         <!-- Birthday -->
+         <div class="form-group">
+            <label class="control-label" for="birthday">Birthday:</label>
+            <input type="date" ng-model="contact.birthday" class="form-control" id="birthday">
+         </div>
+
+
+         <!-- Spouse -->
+         <div class="form-group">
+            <label class="control-label" for="spouse">Spouse:</label>
+            <input type="text" ng-model="contact.spouse" class="form-control" id="spouse">
+         </div>
+
+
+         <!-- Children -->
+         <div class="form-group">
+            <label class="control-label" for="children">Children:</label>
+
+            <div id="children" ng-controller="ChildrenCtrl">
+               <div ng-repeat="c in contact.children">
+                  <input type="text" placeholder="sex"  ng-model="c.sex"   >                 <!-- TODO - Convert to dropdown -->
+                  <input type="tel"  placeholder="name" ng-model="c.name" >
+                  <button type="button" class="btn btn-xs btn-danger" ng-click="removeChild($index)">
+                     <span class="glyphicon glyphicon-minus"> Delete</span>
+                  </button>
+               </div>
+               <button type="button" class="btn btn-xs btn-success" ng-click="addChild()">
+                  <span class="glyphicon glyphicon-plus"> Add</span>
+               </button>
+            </div>
+         </div>
+      </tab>
+
+   </tabset>
 
 
    <div>
