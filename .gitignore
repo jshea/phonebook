@@ -1,0 +1,7 @@
+# Don't track bower components. They are installed
+# with "bower install" based upon the bower.json file.
+app/bower_components/**
+
+# Don't track node_modules. They are installed
+# with "npm install" based upon the package.json file.
+node_modules/**

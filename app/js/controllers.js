@@ -1,6 +1,17 @@
 "use strict";
 
-var app = angular.module("phonebook", ["ngRoute", "ngGrid", "ui.bootstrap", "phonebook.directives"]);   // "ui-map", "ngTable"
+// Note we're importing Angular plugins as well as our own
+var app = angular.module("phonebook", ["ngRoute",                 // Routing service, $routProvider
+                                       "ngGrid",                  // Grid plugin (list of people on opening screen)
+                                       "ui.bootstrap",            // Angular directives implementing Bootstrap (tabs)
+                                       "snap",                    // Side drawer
+//                                     "ui.tinymce",              // wysiwyg editor
+//                                     "ui-map",                  // Google maps
+                                       "phonebook.directives"]);  // Our directives
+
+app.config(function (snapRemoteProvider) {
+   snapRemoteProvider.globalOptions.disable = 'right';
+});
 
 app.config(["$routeProvider", function ($routeProvider) {
    $routeProvider
@@ -24,6 +35,11 @@ app.config(["$routeProvider", function ($routeProvider) {
          templateUrl: "/views/edit.html"
       })
 
+      .when("/load", {
+         controller: "LoadDataCtrl",
+         templateUrl: "/views/list.html" // Why is templateUrl necessary? When removed, this route doesn't work!
+      })
+
       .when("/about", {
          controller: "AboutCtrl",
          templateUrl: "/views/about.html"
@@ -36,6 +52,7 @@ app.config(["$routeProvider", function ($routeProvider) {
 
 
 app.controller("ListCtrl", function ($scope, $http, $location) {
+   $scope.contacts = [];
 
    $http.get("contactpicklist")
       .success(function (data, status, headers, config) {
@@ -44,10 +61,6 @@ app.controller("ListCtrl", function ($scope, $http, $location) {
       .error(function (data, status, headers, config) {
          // called asynchronously if an error occurs or server returns response with an error status.
       });
-
-   $scope.filterOptions = {
-      filterText: ""
-   };
 
    $scope.gridOptions = {
       data: "contacts",
@@ -70,8 +83,14 @@ app.controller("ListCtrl", function ($scope, $http, $location) {
       filterOptions: $scope.filterOptions
    };
 
+   $scope.filterOptions = {
+      filterText: ""
+   };
+
+   // The desire is to show the filtered size of the grid (grid.length?). Not working here
+   // but works in the browser console!
    $scope.totalFilteredItemsLength = function () {
-      return self.filteredRows.length;
+      return $scope.gridOptions.ngGrid.filteredRows.length;
    };
 
    $scope.loadById = function (row) {
@@ -104,6 +123,20 @@ app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams) {
 
    $scope.edit = function () {
       $location.path("/edit/" + $scope.contact._id);
+   };
+
+   $scope.remove = function () {
+      $http.delete("contacts/" + $scope.contact._id)
+         .success(function (data, status, headers, config) {
+            $scope.contact = data;
+            $location.path("/");
+         })
+         .error(function (data, status, headers, config) {
+            // called asynchronously if an error occurs or server returns response with an error status.
+         });
+
+//       Contact.delete(contact._id); // Should also be able to do it this way if Contact is injected
+      $location.path("/");
    };
 
    $("#menu-list").removeClass("active");
@@ -234,3 +267,27 @@ app.controller("AboutCtrl", [
       $("#menu-new").removeClass("active");
       $("#menu-about").addClass("active");
    }]);
+
+
+/*
+ * Controller for reinitializing the database
+ */
+
+app.controller("LoadDataCtrl", function ($scope, $location, $http) {
+//   console.log("Made it to LoadDataCtrl");
+   $scope.contacts = [];
+
+   $http.post("reinitialize")
+      .success(function (data, status, headers, config) {
+         $scope.contacts = data;
+         $location.path("/");
+      })
+      .error(function (data, status, headers, config) {
+         // called asynchronously if an error occurs or server returns response with an error status.
+         console.log("Error calling /reinitialize");
+      });
+
+   $("#menu-list").addClass("active");
+   $("#menu-new").removeClass("active");
+   $("#menu-about").removeClass("active");
+});

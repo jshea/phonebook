@@ -18,18 +18,17 @@ var express = require("express"),
    app = express(),
    MongoClient = require("mongodb").MongoClient,
    Server = require("mongodb").Server,
-   ObjectID = require("mongodb").ObjectID;
+   ObjectID = require("mongodb").ObjectID;      // Used to create Mongo ObjectID's from string representations of _id
 
 // app.use(express.bodyParser());
 app.configure(function () {
-   app.use(express.methodOverride());  // Allows use of "put" & "del" methods?
-   app.use(express.bodyParser());      // This clears out rec.body?
-   app.use(express.static(__dirname + '/app'));
-//   app.use(app.router);
+   app.use(express.methodOverride());           // Allows use of "put" & "del" methods?
+   app.use(express.bodyParser());               // This clears out rec.body?
+   app.use(express.static(__dirname + '/app')); // Serve static files from the "app" subfolder
 });
 
-var mongoclient = new MongoClient(new Server("localhost", 27017));
-var db = mongoclient.db("contacts");
+var mongoclient = new MongoClient(new Server("localhost", 27017));  // Connect to Mongo on the local host, default port
+var db = mongoclient.db("contacts");                                // Create a handle to the contacts database
 
 
 /*
@@ -274,7 +273,7 @@ mongoclient.open(function (err, mongoclient) {
    });
 });
 
-
+// Load data for creating test data/dummey people objects
 var firstName      = require('./data/firstname.json'),
    lastName        = require('./data/lastname.json'),
    zipStateCity    = require('./data/zipstatecity.json'),
@@ -300,8 +299,10 @@ function toProperCase(string) {
 }
 
 
-// Generate an area code. Here an Area Code is a three digit number. There
-// are some rules for real area codes that are not honored here.
+/*
+ * Generate an area code. Here an Area Code is a three digit number. There
+ * are some rules for real area codes that are not honored here.
+ */
 function generateAreaCode() {
    // Must be 3 digits, so 100 - 999 are valid values
    var areaCode = getRandomNumber(101, 999);
@@ -309,19 +310,25 @@ function generateAreaCode() {
 }
 
 
-// Generate a phone number. Here it's defined as a 7 digit number. There
-// are some rules for real phone numbers that are not honored here.
+/*
+ * Generate a phone number. Here it's defined as a 7 digit number. There
+ * are some rules for real phone numbers that are not honored here.
+ */
 function generatePhoneNumber() {
    return getRandomNumber(1234567, 9999999); // lowerBound is a dummy min val for a phone number
 }
 
-
+/*
+ * Generate a random number who's value is between lowerBound and upperBound
+ */
 function getRandomNumber(lowerBound, upperBound) {
    // http://www.maconstateit.net/Tutorials/JavaScript/JS02/jsdhtml02-04.php
    return Math.floor((upperBound - lowerBound + 1) * Math.random()) + lowerBound;
 }
 
-
+/*
+ * Create a dummy person object with randomly selected data values for each
+ */
 function createPerson() {
    var zipStateCityElements,
       areaCode,
@@ -329,15 +336,15 @@ function createPerson() {
 
    areaCode = generateAreaCode();
 
-   p.firstname = toProperCase(firstName[getRandomNumber(1, firstName.length)]);
-   p.lastname =  toProperCase(lastName[getRandomNumber(1, lastName.length)]);
+   p.firstname = toProperCase(firstName[getRandomNumber(1, firstName.length - 1)]);
+   p.lastname =  toProperCase(lastName[getRandomNumber(1, lastName.length - 1)]);
 
-   zipStateCityElements = zipStateCity[getRandomNumber(1, zipStateCity.length)];
+   zipStateCityElements = zipStateCity[getRandomNumber(1, zipStateCity.length - 1)];
    p.address = {};
    p.address.street =
       getRandomNumber(1, 9999) + " " +
-      toProperCase(streetName[getRandomNumber(1, streetName.length)]) + " " +
-      toProperCase(streetExtension[getRandomNumber(1, streetExtension.length)]);
+      toProperCase(streetName[getRandomNumber(1, streetName.length - 1)]) + " " +
+      toProperCase(streetExtension[getRandomNumber(1, streetExtension.length - 1)]);
    p.address.city = toProperCase(zipStateCityElements[2]);
    p.address.state = zipStateCityElements[1];
    p.address.zip = zipStateCityElements[0];
@@ -362,7 +369,7 @@ function createPerson() {
 
 
 /**
- * This is dummy test data for the flintstones method
+ * This is dummy test data for the /flintstones endpoint
  *
  * @type {Array}
  */

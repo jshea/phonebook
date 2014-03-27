@@ -13,7 +13,9 @@
    <div class="col-sm-4">
       <strong>Phone numbers</strong>
       <br>
+      <!-- show the no data message when there's no data -->
       <span ng-show="contact.phonenumbers.length == 0">No phone numbers</span>
+      <!-- hide the data display when there's no data -->
       <table class="table table-hover table-condensed" ng-hide="contact.phonenumbers.length == 0">
          <thead>
          <tr>
@@ -22,6 +24,7 @@
          </tr>
          </thead>
          <tbody>
+         <!-- Iterate through the phonenumbers, printing each one out -->
          <tr ng-repeat="phonenumber in contact.phonenumbers">
             <td>{{phonenumber.type}}</td>
             <td>{{phonenumber.number | tel}}</td>
@@ -86,14 +89,14 @@
    </div>
 </div>
 
-<!--<div class="row">-->
-   <!--<section id="map" ng-controller="MapCtrl" >-->
-      <!--<div ui-map="myMap" ui-options="mapOptions" class="map-canvas"></div>-->
-   <!--</section>-->
-<!--</div>-->
+<!--
+<div class="row">
+   <section id="map" ng-controller="MapCtrl" >
+      <div ui-map="myMap" ui-options="mapOptions" class="map-canvas"></div>
+   </section>
+</div>
+-->
 
-<form ng-submit="edit()" class="form-horizontal">
-   <div class="form-actions">
-      <button class="btn btn-primary">Edit</button>
-   </div>
-</form>
+<!-- edit and remove are functions we've defined in our controller -->
+<button type="button" ng-click="edit()"   class="btn btn-primary">Edit</button>
+<button type="button" ng-click="remove()" class="btn btn-danger" >Delete</button>

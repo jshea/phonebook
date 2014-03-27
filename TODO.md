@@ -9,9 +9,6 @@ Add mapping (Google maps) of the users home with [ui-map](https://github.com/ang
 ## Date picker
 Add a date picker for the birthday [ui datepicker](http://angular-ui.github.io/bootstrap/#/datepicker)
 
-## Tabs
-Add tabs for the new/edit screen [ui tabs](http://angular-ui.github.io/bootstrap/#/tabs)
-
 ## TinyMCE
 WYSIWYG text editing [ui tinymce](https://github.com/angular-ui/ui-tinymce)
 

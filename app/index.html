@@ -5,51 +5,73 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
    <title>Phonebook - Angular</title>
-   <script src="lib/angular.min.js"></script>
-   <script src="lib/angular-route.min.js"></script>
-   <script src="lib/ui-bootstrap-tpls-0.10.0.min.js"></script>
-   <script src="js/directives.js"></script>
-   <script src="js/controllers.js"></script>
-   <script src="js/filters.js"></script>
 
-   <link href="css/bootstrap.min.css" rel="stylesheet">
+   <!-- Load the JS libraries and our files that are required for the main screen to load -->
+   <script src="lib/angular.js"></script>
+   <script src="lib/angular-route.js"></script>
+   <script src="lib/ui-bootstrap-tpls-0.10.0.min.js"></script> <!-- Bootstrap UI Tabs-->
+
+   <link href="css/bootstrap.min.css" rel="stylesheet">  <!-- Bootstrap is used for the UI -->
    <link href="css/phonebook.css" rel="stylesheet">
 
-   <!-- This is for using $resource for REST services -->
-   <!-- <script src="js/services.js"></script> -->
+   <link  href="css/angular-snap.css" rel="stylesheet">
+   <script src="lib/snap.js"></script>
+   <script src="lib/angular-snap.js"></script>
 
 </head>
 
 <body>
-   <div class="container"> <!-- Bootstrap centering-->
-      <header> </header>
 
-      <nav class="row">
-         <!-- Note use of Bootstrap navigation via "pills" -->
-         <ul class="nav nav-pills">
-            <li id="menu-list"><a href="/#/">List</a></li>
-            <li id="menu-new"><a href="/#/new">New Contact</a></li>
-            <li id="menu-about"><a href="/#/about">About</a></li>
-         </ul>
-      </nav>
+   <snap-drawer>
+      I'm a left drawer!
+      <p><button class="btn btn-primary" snap-close>Close</button></p>
+   </snap-drawer>
 
-      <!-- Note use of a loading display - from O'Reilly angular book -->
-      <div butterbar>Loading...</div>
+   <snap-content>
+      <div class="container"> <!-- Bootstrap centering-->
+         <header>
+            <h2>Angular Phonebook</h2>
 
-      <div class="row">
-         <div class="col-md-10">
-            <!-- This is where Angular will swap in our templates -->
-            <div ng-view></div>
+            <nav class="row">
+               <!-- Note use of Bootstrap navigation via "pills" -->
+               <ul class="nav nav-pills">
+                  <li id="menu-list"><a href="/#/">List</a></li>
+                  <li id="menu-new"><a href="/#/new">New Contact</a></li>
+                  <li id="menu-loaddata"><a href="/#/load">Load Data</a></li>
+                  <li id="menu-about"><a href="/#/about">About</a></li>
+                  <li id="menu-snap"><button class="btn btn-primary" snap-toggle="left">Menu</button></li>
+               </ul>
+            </nav>
+         </header>
+
+         <div butterbar>Loading...</div>  <!-- Note use of a loading display - from O'Reilly angular book -->
+
+         <div class="row">
+            <div class="col-md-10">
+               <div ng-view></div>     <!-- This is where Angular will swap in our templates -->
+            </div>
          </div>
+
       </div>
+   </snap-content>
 
-   </div>
-
+   <!--
+      Load all other JS files at the end. This way they are not blocking the initial startup. It makes
+      the application appear to run faster.
+   -->
    <script src="lib/jquery-2.1.0.js"></script>    <!-- Angular will use jquery if available (otherwise builtin jqLite) -->
    <script src="lib/bootstrap.min.js"></script>   <!-- Bootstrap requires jquery -->
+
    <script src="lib/ng-grid-2.0.7.min.js"></script>
-   <script src="lib/moment.min.js"></script>
    <link  href="css/ng-grid.min.css" rel="stylesheet">
+
+   <script src="lib/moment.min.js"></script>
+
+   <!-- Load our JS scripts required for the main screen to load -->
+   <script src="js/directives.js"></script>
+   <script src="js/controllers.js"></script>
+   <script src="js/filters.js"></script>
+
 </body>
 
 </html>
