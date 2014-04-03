@@ -1,10 +1,3 @@
-Heroku
-   App URL: http://phonebookangular.herokuapp.com/
-   Git URL: git@heroku.com:phonebookangular.git
-
-   Use the following code to set up your app for local development:
-
-   git clone git@heroku.com:phonebookangular.git -o heroku
 
 Suggestions from ng-newsletter
 
@@ -40,3 +33,4 @@ that accesses a [MongoDB](http://www.mongodb.org/) database for persistence.
 
 # MongoDB/mongodb-native-driver
 The `save()` method doesn't do an update it's inserting.
+

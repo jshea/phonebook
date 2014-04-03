@@ -29,10 +29,17 @@ app.configure(function () {
    app.use(express.bodyParser());               // This clears out rec.body?
    app.use(express.static(__dirname + '/app')); // Serve static files from the "app" subfolder
 });
+// yabba dabba
+var db = "";
 
+// Connect to local mongo
 // var mongoclient = new MongoClient(new Server("localhost", 27017));  // Connect to Mongo on the local host, default port
-var mongoclient = new MongoClient(new Server("mongodb://heroku:b575b02d54d4571297827cb51c6905e0@oceanic.mongohq.com:10067/app23707720"));  // Connect to Mongo on mongohq
-var db = mongoclient.db("contacts");                                // Create a handle to the contacts database
+// db = mongoclient.db("contacts");                                // Create a handle to the contacts database
+
+// Connect to Mongo on heroku/mongohq
+MongoClient.connect(process.env.MONGOHQ_URL, function (err, database) {
+   db = database;
+});
 
 
 /*
