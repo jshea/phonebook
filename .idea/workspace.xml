@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="34966a91-47c5-4fe4-a426-30dc5a769eb5" name="Default" comment="Add ability to run on heroku.&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Procfile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/doc/notes.txt" afterPath="$PROJECT_DIR$/app/doc/notes.txt" />
+    <list default="true" id="34966a91-47c5-4fe4-a426-30dc5a769eb5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -30,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="14" selection-start="1805" selection-end="1805" vertical-scroll-proportion="0.64761907" vertical-offset="306" max-vertical-offset="1411">
+            <state line="50" column="14" selection-start="1805" selection-end="1805" vertical-scroll-proportion="-20.923077" vertical-offset="306" max-vertical-offset="1411">
               <folding />
             </state>
           </provider>
@@ -87,10 +83,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="server.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="2" selection-start="1663" selection-end="1663" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="10710">
+            <state line="285" column="0" selection-start="8023" selection-end="8023" vertical-scroll-proportion="0.7990762" vertical-offset="4153" max-vertical-offset="10710">
               <folding />
             </state>
           </provider>
@@ -134,8 +130,8 @@
         <option value="$PROJECT_DIR$/TODO.md" />
         <option value="$PROJECT_DIR$/app/doc/notes.txt" />
         <option value="$PROJECT_DIR$/heroku.txt" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/server.js" />
       </list>
     </option>
   </component>
@@ -385,7 +381,11 @@
       <created>1396559330521</created>
       <updated>1396559330521</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add ability to run on heroku.&#10;">
+      <created>1396566422138</created>
+      <updated>1396566422138</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -417,7 +417,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24944974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17243367" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17243367" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3916084" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -453,7 +453,8 @@
     <MESSAGE value="Add tabs to view detail.&#10;" />
     <MESSAGE value="Add loaddata menu option, snap/sliding drawer, now using bower for web libs.&#10;" />
     <MESSAGE value="Add ability to run on heroku." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add ability to run on heroku." />
+    <MESSAGE value="Add ability to run on heroku.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add ability to run on heroku.&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -741,16 +742,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
+    <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="2" selection-start="1663" selection-end="1663" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="10710">
+        <state line="50" column="14" selection-start="1805" selection-end="1805" vertical-scroll-proportion="-20.923077" vertical-offset="306" max-vertical-offset="1411">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
+    <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="14" selection-start="1805" selection-end="1805" vertical-scroll-proportion="0.64761907" vertical-offset="306" max-vertical-offset="1411">
+        <state line="285" column="0" selection-start="8023" selection-end="8023" vertical-scroll-proportion="0.7990762" vertical-offset="4153" max-vertical-offset="10710">
           <folding />
         </state>
       </provider>

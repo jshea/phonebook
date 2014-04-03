@@ -276,13 +276,13 @@ app.del("*", function (req, res) {
 /*
  * Fire up the server and start listening!
  */
-mongoclient.open(function (err, mongoclient) {
-   if (err) { throw err; }
+//mongoclient.open(function (err, mongoclient) {
+//   if (err) { throw err; }
 
    app.listen(app.get('port'), function () {
       console.log("Express server started on port 3000");
    });
-});
+//});
 
 // Load data for creating test data/dummey people objects
 var firstName      = require('./data/firstname.json'),
