@@ -9,20 +9,21 @@ Add mapping (Google maps) of the users home with [ui-map](https://github.com/ang
 ## Date picker
 Add a date picker for the birthday [ui datepicker](http://angular-ui.github.io/bootstrap/#/datepicker)
 
-## TinyMCE
-WYSIWYG text editing [ui tinymce](https://github.com/angular-ui/ui-tinymce)
+## Table/Grid with sorting, pagination and data entry
+Enhanced table features. [ng-grid](http://ngmodules.org/modules/ng-grid)
 
-## Table/Grid with sorting & pagination
-Enhanced table features. Think IBF. [ng-grid](http://ngmodules.org/modules/ng-grid)
-
-## Grid - Filtered size
+## Grid - Figure out how to get filtered size
 [ng-Grid](https://github.com/angular-ui/ng-grid/issues/305)
 
-## Local Storage
-Local data storage for disconnected use [angular-local-storage](https://github.com/grevory/angular-local-storage)
+## Local Storage / Work In Progress
+Local data storage for disconnected use [angular-local-storage](https://github.com/grevory/angular-local-storage).
+[breezejs] (http://www.breezejs.com/)
 
 ## Offline use
 Web/browser [appcache](http://appcachefacts.info/) and hybrid [phonegap](http://phonegap.com/)
+
+## Toasts
+[AngularJS-Toaster](https://github.com/jirikavi/AngularJS-Toaster)
 
 ## Charting
 [ui-chart](http://ngmodules.org/modules/ui-chart) or others
@@ -39,8 +40,13 @@ Web/browser [appcache](http://appcachefacts.info/) and hybrid [phonegap](http://
 ## Calendar
 [ui-calendar](https://github.com/angular-ui/ui-calendar)
 
+## Schedule/Gantt/Calendar
+[dhtmlxScheduler](http://www.dhtmlx.com/docs/products/dhtmlxScheduler/index.shtml)
+
 ## File upload
+[angular-file-upload] (https://github.com/danialfarid/angular-file-upload)
 
 ## CSV export
+[ng-csv] (https://github.com/asafdav/ng-csv)
 
 ## Image upload/view

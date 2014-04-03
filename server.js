@@ -1,4 +1,6 @@
 
+"use strict";
+
 /*
  * Database is contacts
  * Collections are people, log
@@ -22,12 +24,14 @@ var express = require("express"),
 
 // app.use(express.bodyParser());
 app.configure(function () {
+   app.set('port', process.env.PORT || 3000);   // If we're running in Heroku, the port will be assigned
    app.use(express.methodOverride());           // Allows use of "put" & "del" methods?
    app.use(express.bodyParser());               // This clears out rec.body?
    app.use(express.static(__dirname + '/app')); // Serve static files from the "app" subfolder
 });
 
-var mongoclient = new MongoClient(new Server("localhost", 27017));  // Connect to Mongo on the local host, default port
+// var mongoclient = new MongoClient(new Server("localhost", 27017));  // Connect to Mongo on the local host, default port
+var mongoclient = new MongoClient(new Server("mongodb://heroku:b575b02d54d4571297827cb51c6905e0@oceanic.mongohq.com:10067/app23707720"));  // Connect to Mongo on mongohq
 var db = mongoclient.db("contacts");                                // Create a handle to the contacts database
 
 
@@ -268,7 +272,7 @@ app.del("*", function (req, res) {
 mongoclient.open(function (err, mongoclient) {
    if (err) { throw err; }
 
-   app.listen(3000, function () {
+   app.listen(app.get('port'), function () {
       console.log("Express server started on port 3000");
    });
 });

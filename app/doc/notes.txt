@@ -1,18 +1,28 @@
-Use resolve to prevent route changing until data is ready/rendered
-   http://www.ng-newsletter.com/advent2013/#!/day/3
+Heroku
+   App URL: http://phonebookangular.herokuapp.com/
+   Git URL: git@heroku.com:phonebookangular.git
 
-Setting configs in angular. Could this be used to set the destination
-for data retrieval/storage (RESTful service vs local storage)?
-   http://www.ng-newsletter.com/advent2013/#!/day/5
+   Use the following code to set up your app for local development:
 
-Move list screen filters to the controller for performance.
-   http://www.ng-newsletter.com/advent2013/#!/day/7
+   git clone git@heroku.com:phonebookangular.git -o heroku
 
-Move the $http calls from the individual controllers to a provider?
-   http://www.ng-newsletter.com/advent2013/#!/day/8
+Suggestions from ng-newsletter
 
-Splash Screen
-   http://www.ng-newsletter.com/advent2013/#!/day/21
+   Use resolve to prevent route changing until data is ready/rendered
+      http://www.ng-newsletter.com/advent2013/#!/day/3
+
+   Setting configs in angular. Could this be used to set the destination
+   for data retrieval/storage (RESTful service vs local storage)?
+      http://www.ng-newsletter.com/advent2013/#!/day/5
+
+   Move list screen filters to the controller for performance.
+      http://www.ng-newsletter.com/advent2013/#!/day/7
+
+   Move the $http calls from the individual controllers to a provider?
+      http://www.ng-newsletter.com/advent2013/#!/day/8
+
+   Splash Screen
+      http://www.ng-newsletter.com/advent2013/#!/day/21
 
 
 These are items that are not working or I just don't understand!

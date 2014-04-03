@@ -18,7 +18,7 @@ directives.directive("butterbar", ["$rootScope",
          }
       };
    }
-]);
+   ]);
 
 directives.directive("focus",
    function () {
@@ -27,5 +27,4 @@ directives.directive("focus",
             element[0].focus();
          }
       };
-   }
-);
+   });
