@@ -1,5 +1,7 @@
 "use strict";
 
+var url = "http://phonebookangular.herokuapp.com/";
+
 // Note we're importing Angular plugins as well as our own
 var app = angular.module("phonebook", ["ngRoute",                 // Routing service, $routProvider
                                        "ngGrid",                  // Grid plugin (list of people on opening screen)
@@ -54,7 +56,7 @@ app.config(["$routeProvider", function ($routeProvider) {
 app.controller("ListCtrl", function ($scope, $http, $location) {
    $scope.contacts = [];
 
-   $http.get("contactpicklist")
+   $http.get(url + "contactpicklist")
       .success(function (data, status, headers, config) {
          $scope.contacts = data;
       })
@@ -106,7 +108,7 @@ app.controller("ListCtrl", function ($scope, $http, $location) {
 
 app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams) {
    // contactId is what the parameter was named in our routes
-   $http.get("contacts/" + $routeParams.contactId)
+   $http.get(url + "contacts/" + $routeParams.contactId)
       .success(function (data, status, headers, config) {
          $scope.contact = data;
          $scope.age = moment().diff(data.birthday, "years");
@@ -146,7 +148,7 @@ app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams) {
 
 
 app.controller("EditCtrl", function ($scope, $location, $http, $routeParams) {
-   $http.get("contacts/" + $routeParams.contactId)
+   $http.get(url + "contacts/" + $routeParams.contactId)
       .success(function (data, status, headers, config) {
          $scope.contact = data;
       })
