@@ -228,7 +228,7 @@ app.post("/reinitialize", function (req, res) {
    var newPeople = [],
       i;
 
-   for (i = 1; i <= 10000; i++) {
+   for (i = 1; i <= 1000; i++) {
       newPeople.push(createPerson());
    }
 
