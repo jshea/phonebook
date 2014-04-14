@@ -29,7 +29,7 @@ app.configure(function () {
    app.use(express.bodyParser());               // This clears out rec.body?
    app.use(express.static(__dirname + '/app')); // Serve static files from the "app" subfolder
 });
-// yabba dabba
+
 var db = "";
 
 // Connect to local mongo

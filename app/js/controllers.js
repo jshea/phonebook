@@ -1,6 +1,7 @@
 "use strict";
 
-var url = "http://phonebookangular.herokuapp.com/";
+var url = "http://phonebookangular.herokuapp.com/";   // Heroku
+//var url = "/";                                        // Local mongo/rest service
 
 // Note we're importing Angular plugins as well as our own
 var app = angular.module("phonebook", ["ngRoute",                 // Routing service, $routProvider
@@ -19,32 +20,32 @@ app.config(["$routeProvider", function ($routeProvider) {
    $routeProvider
       .when("/", {
          controller: "ListCtrl",
-         templateUrl: "/views/list.html"
+         templateUrl: "views/list.html"
       })
 
       .when("/edit/:contactId", {
          controller: "EditCtrl",
-         templateUrl: "/views/edit.html"
+         templateUrl: "views/edit.html"
       })
 
       .when("/view/:contactId", {
          controller: "ViewCtrl",
-         templateUrl: "/views/viewDetail.html"
+         templateUrl: "views/viewDetail.html"
       })
 
       .when("/new", {
          controller: "NewCtrl",
-         templateUrl: "/views/edit.html"
+         templateUrl: "views/edit.html"
       })
 
       .when("/load", {
          controller: "LoadDataCtrl",
-         templateUrl: "/views/list.html" // Why is templateUrl necessary? When removed, this route doesn't work!
+         templateUrl: "views/list.html" // Why is templateUrl necessary? When removed, this route doesn't work!
       })
 
       .when("/about", {
          controller: "AboutCtrl",
-         templateUrl: "/views/about.html"
+         templateUrl: "views/about.html"
       })
 
       .otherwise({
