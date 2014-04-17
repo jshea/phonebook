@@ -1,13 +1,14 @@
 "use strict";
 
-var url = "http://phonebookangular.herokuapp.com/";   // Heroku
-//var url = "/";                                        // Local mongo/rest service
+//var url = "http://phonebookangular.herokuapp.com/";   // Heroku
+var url = "/";                                        // Local mongo/rest service
 
 // Note we're importing Angular plugins as well as our own
 var app = angular.module("phonebook", ["ngRoute",                 // Routing service, $routProvider
                                        "ngGrid",                  // Grid plugin (list of people on opening screen)
                                        "ui.bootstrap",            // Angular directives implementing Bootstrap (tabs)
                                        "snap",                    // Side drawer
+                                       "toaster",                 // Popup messages (toasts)
 //                                     "ui.tinymce",              // wysiwyg editor
 //                                     "ui-map",                  // Google maps
                                        "phonebook.directives"]);  // Our directives
@@ -40,7 +41,7 @@ app.config(["$routeProvider", function ($routeProvider) {
 
       .when("/load", {
          controller: "LoadDataCtrl",
-         templateUrl: "views/list.html" // Why is templateUrl necessary? When removed, this route doesn't work!
+         templateUrl: "views/list.html" // TODO - Why is templateUrl necessary? When removed, this route doesn't work!
       })
 
       .when("/about", {
@@ -54,7 +55,7 @@ app.config(["$routeProvider", function ($routeProvider) {
 }]);
 
 
-app.controller("ListCtrl", function ($scope, $http, $location) {
+app.controller("ListCtrl", function ($scope, $http, $location, toaster) {
    $scope.contacts = [];
 
    $http.get(url + "contactpicklist")
@@ -62,12 +63,19 @@ app.controller("ListCtrl", function ($scope, $http, $location) {
          $scope.contacts = data;
       })
       .error(function (data, status, headers, config) {
-         // called asynchronously if an error occurs or server returns response with an error status.
+         toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
       });
 
    $scope.gridOptions = {
       data: "contacts",
       columnDefs: [
+         // These are here for the filtering to work.
+         // TODO - Filtering no longer works :(
+         // http://stackoverflow.com/questions/17977869/how-to-filter-my-data-ng-grid
+         {field: "firstname", visible: false},
+         {field: "lastname",  visible: false},
+         {field: "phonenumbers[0].number", visible: false},
+
          // Make a row clickable
          // http://stackoverflow.com/questions/19822133/angularjs-ng-grid-pass-row-column-field-into-ng-click-event
          {
@@ -75,11 +83,7 @@ app.controller("ListCtrl", function ($scope, $http, $location) {
             displayName: "Name",
             cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><a ng-click="loadById(row)">{{row.getProperty(col.field)}}</a></div>'
          },
-         {field: "phonenumbers[0].number", displayName: "Phone", cellFilter: "tel"},
-         // These are here for the filtering to work.
-         {field: "firstname", visible: false},
-         {field: "lastname",  visible: false},
-         {field: "phonenumbers[0].number", visible: false}
+         {field: "phonenumbers[0].number", displayName: "Phone", width: "125", cellFilter: "tel"}
       ],
       enableColumnReordering: true,
       enableSorting: true,
@@ -97,7 +101,6 @@ app.controller("ListCtrl", function ($scope, $http, $location) {
    };
 
    $scope.loadById = function (row) {
-      console.log(row.entity);
       $location.path("/view/" + row.entity._id);
    };
 
@@ -107,7 +110,7 @@ app.controller("ListCtrl", function ($scope, $http, $location) {
 });
 
 
-app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams) {
+app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams, toaster) {
    // contactId is what the parameter was named in our routes
    $http.get(url + "contacts/" + $routeParams.contactId)
       .success(function (data, status, headers, config) {
@@ -121,7 +124,7 @@ app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams) {
 //         };
       })
       .error(function (data, status, headers, config) {
-         // called asynchronously if an error occurs or server returns response with an error status.
+         toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/" + $routeParams.contactId + " failed.");
       });
 
    $scope.edit = function () {
@@ -131,11 +134,12 @@ app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams) {
    $scope.remove = function () {
       $http.delete("contacts/" + $scope.contact._id)
          .success(function (data, status, headers, config) {
+            toaster.pop("success", "Delete Successful", "Contact has been deleted");
             $scope.contact = data;
             $location.path("/");
          })
          .error(function (data, status, headers, config) {
-            // called asynchronously if an error occurs or server returns response with an error status.
+            toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/" + $routeParams.contactId + " failed.");
          });
 
 //       Contact.delete(contact._id); // Should also be able to do it this way if Contact is injected
@@ -148,34 +152,36 @@ app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams) {
 });
 
 
-app.controller("EditCtrl", function ($scope, $location, $http, $routeParams) {
+app.controller("EditCtrl", function ($scope, $location, $http, $routeParams, toaster) {
    $http.get(url + "contacts/" + $routeParams.contactId)
       .success(function (data, status, headers, config) {
          $scope.contact = data;
       })
       .error(function (data, status, headers, config) {
-         // called asynchronously if an error occurs or server returns response with an error status.
+         toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/" + $routeParams.contactId + " failed.");
       });
 
    $scope.save = function () {
       $http.post("contacts/" + $scope.contact._id, $scope.contact)
          .success(function (data, status, headers, config) {
+            toaster.pop("success", "Add Successful", data.firstname + " " + data.lastname + " has been updated");
             $scope.contact = data;
             $location.path("/view/" + $scope.contact._id);
          })
          .error(function (data, status, headers, config) {
-            // called asynchronously if an error occurs or server returns response with an error status.
+            toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/" + $routeParams.contactId + " failed.");
          });
    };
 
    $scope.remove = function () {
       $http.delete("contacts/" + $scope.contact._id)
          .success(function (data, status, headers, config) {
+            toaster.pop("success", "Delete Successful", "Contact has been deleted");
             $scope.contact = data;
             $location.path("/");
          })
          .error(function (data, status, headers, config) {
-            // called asynchronously if an error occurs or server returns response with an error status.
+            toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/" + $routeParams.contactId + " failed.");
          });
 
 //       Contact.delete(contact._id); // Should also be able to do it this way if Contact is injected
@@ -188,7 +194,7 @@ app.controller("EditCtrl", function ($scope, $location, $http, $routeParams) {
 });
 
 
-app.controller("NewCtrl", function ($scope, $location, $http) {
+app.controller("NewCtrl", function ($scope, $location, $http, toaster) {
 
    $scope.contact = {
       phonenumbers: [ ],
@@ -199,11 +205,12 @@ app.controller("NewCtrl", function ($scope, $location, $http) {
    $scope.save = function () {
       $http.post("contacts", $scope.contact)
          .success(function (data, status, headers, config) {
+            toaster.pop("success", "Add Successful", data.firstname + " " + data.lastname + " has been added");
             $scope.contact = data;
             $location.path("/view/" + $scope.contact._id);
          })
          .error(function (data, status, headers, config) {
-            // called asynchronously if an error occurs or server returns response with an error status.
+            toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/ failed.");
          });
    };
 
@@ -217,7 +224,7 @@ app.controller("PhonenumberCtrl", function ($scope) {
 
    $scope.addNumber = function () {
       // In case phonenumbers isn't defined, initialize it to an empty array
-      if (typeof $scope.contact.phonenumbers === "undefined" || $scope.contact.phonenumbers === null) {
+      if ($scope.contact.phonenumbers === "undefined" || $scope.contact.phonenumbers === null) {
          $scope.contact.phonenumbers = [];
       }
       var phonenumbers = $scope.contact.phonenumbers;
@@ -234,7 +241,7 @@ app.controller("EmailCtrl", function ($scope) {
 
    $scope.addEmail = function () {
       // In case email isn't defined, initialize it to an empty array
-      if (typeof $scope.contact.email === "undefined" || $scope.contact.email === null) {
+      if ($scope.contact.email === "undefined" || $scope.contact.email === null) {
          $scope.contact.email = [];
       }
       var email = $scope.contact.email;
@@ -251,7 +258,7 @@ app.controller("ChildrenCtrl", function ($scope) {
 
    $scope.addChild = function () {
       // In case children isn't defined, initialize it to an empty array
-      if (typeof $scope.contact.children === "undefined" || $scope.contact.children === null) {
+      if ($scope.contact.children === "undefined" || $scope.contact.children === null) {
          $scope.contact.children = [];
       }
       var children = $scope.contact.children;
@@ -276,7 +283,7 @@ app.controller("AboutCtrl", [
  * Controller for reinitializing the database
  */
 
-app.controller("LoadDataCtrl", function ($scope, $location, $http) {
+app.controller("LoadDataCtrl", function ($scope, $location, $http, toaster) {
 //   console.log("Made it to LoadDataCtrl");
    $scope.contacts = [];
 
@@ -286,8 +293,7 @@ app.controller("LoadDataCtrl", function ($scope, $location, $http) {
          $location.path("/");
       })
       .error(function (data, status, headers, config) {
-         // called asynchronously if an error occurs or server returns response with an error status.
-         console.log("Error calling /reinitialize");
+         toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "reinitialize failed.");
       });
 
    $("#menu-list").addClass("active");

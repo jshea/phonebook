@@ -58,8 +58,8 @@
 <div class="row">
    <!-- Birthday -->
    <div class="col-sm-4">
-      <strong>Birthday</strong>
-      <br>{{contact.birthday | date:"mediumDate"}} ({{age}})
+      <strong>Birthday</strong>                    <!-- Only show age (in years) if they are more than 1 year old -->
+      <br>{{contact.birthday | date:"mediumDate"}} <span ng-show="age >= 1">({{age}})</span>
    </div>
 
    <!-- Spouse -->

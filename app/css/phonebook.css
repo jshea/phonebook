@@ -1,9 +1,11 @@
+/* for ngGrid */
 .gridStyle {
     border: 1px solid rgb(212,212,212);
-    width: 350px;
+    width: 300px;
     height: 600px
 }
 
+/* for snap - draggable shelf */
 snap-content {
     background-color: #fff;
     border-left: 1px solid #ccc;

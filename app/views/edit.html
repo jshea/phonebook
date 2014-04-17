@@ -1,6 +1,6 @@
 <h2>Edit Contact</h2>
 
-<form name="contactForm" ng-submit="save()" novalidate> <!-- Disable HTML5 validation, we'll use Angular -->
+<form name="contactForm" novalidate> <!-- Disable HTML5 validation, we'll use Angular -->
 
    <!-- First Name -->
    <div class="form-group" ng-class="{ 'has-error' : contactForm.firstname.$invalid && !contactForm.firstname.$pristine }">
@@ -149,12 +149,13 @@
       <!--
          Only show when updating. The _id property is created by mongo when saving. If it's present then we're updating.
          If the forms state is invalid, button displays grayed out.
+         Note the save() function for Save and Add are in different controllers.
       -->
       <span ng-show="contact._id">
-         <button type="button" class="btn btn-primary" ng-disabled="contactForm.$invalid">Save</button>
+         <button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="contactForm.$invalid">Save</button>
       </span>
       <span ng-hide="contact._id">
-         <button type="button" class="btn btn-primary" ng-disabled="contactForm.$invalid">Add</button>
+         <button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="contactForm.$invalid">Add</button>
       </span>
       <button type="button" class="btn btn-danger" ng-click="remove()" ng-show="contact._id">Delete</button>
    </div>
