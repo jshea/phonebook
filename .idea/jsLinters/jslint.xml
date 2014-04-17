@@ -2,9 +2,10 @@
 <project version="4">
   <component name="JSLintConfiguration">
     <option indent="3" />
-    <option maxerr="50" />
+    <option maxerr="500" />
     <option plusplus="true" />
     <option todo="true" />
+    <option undef="true" />
   </component>
 </project>
 

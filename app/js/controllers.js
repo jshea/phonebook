@@ -17,6 +17,10 @@ app.config(function (snapRemoteProvider) {
    snapRemoteProvider.globalOptions.disable = 'right';
 });
 
+
+/*
+ * Routing for the application
+ */
 app.config(["$routeProvider", function ($routeProvider) {
    $routeProvider
       .when("/", {
@@ -55,6 +59,10 @@ app.config(["$routeProvider", function ($routeProvider) {
 }]);
 
 
+
+/*
+ * Controller for the main screen containing a grid with a listing of all contacts
+ */
 app.controller("ListCtrl", function ($scope, $http, $location, toaster) {
    $scope.contacts = [];
 
@@ -110,6 +118,9 @@ app.controller("ListCtrl", function ($scope, $http, $location, toaster) {
 });
 
 
+/*
+ * Controller for viewing a contact
+ */
 app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams, toaster) {
    // contactId is what the parameter was named in our routes
    $http.get(url + "contacts/" + $routeParams.contactId)
@@ -132,17 +143,13 @@ app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams, toa
    };
 
    $scope.remove = function () {
-      $http.delete("contacts/" + $scope.contact._id)
+      $http.delete(url + "contacts/" + $scope.contact._id)
          .success(function (data, status, headers, config) {
             toaster.pop("success", "Delete Successful", "Contact has been deleted");
-            $scope.contact = data;
-            $location.path("/");
          })
          .error(function (data, status, headers, config) {
             toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/" + $routeParams.contactId + " failed.");
          });
-
-//       Contact.delete(contact._id); // Should also be able to do it this way if Contact is injected
       $location.path("/");
    };
 
@@ -152,6 +159,9 @@ app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams, toa
 });
 
 
+/*
+ * Controller for the edit screen when updating an existing contact
+ */
 app.controller("EditCtrl", function ($scope, $location, $http, $routeParams, toaster) {
    $http.get(url + "contacts/" + $routeParams.contactId)
       .success(function (data, status, headers, config) {
@@ -162,11 +172,11 @@ app.controller("EditCtrl", function ($scope, $location, $http, $routeParams, toa
       });
 
    $scope.save = function () {
-      $http.post("contacts/" + $scope.contact._id, $scope.contact)
+      $http.post(url + "contacts/" + $scope.contact._id, $scope.contact)
          .success(function (data, status, headers, config) {
-            toaster.pop("success", "Add Successful", data.firstname + " " + data.lastname + " has been updated");
             $scope.contact = data;
             $location.path("/view/" + $scope.contact._id);
+            toaster.pop("success", "Update Successful", data.firstname + " " + data.lastname + " has been updated");
          })
          .error(function (data, status, headers, config) {
             toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/" + $routeParams.contactId + " failed.");
@@ -174,17 +184,13 @@ app.controller("EditCtrl", function ($scope, $location, $http, $routeParams, toa
    };
 
    $scope.remove = function () {
-      $http.delete("contacts/" + $scope.contact._id)
+      $http.delete(url + "contacts/" + $scope.contact._id)
          .success(function (data, status, headers, config) {
             toaster.pop("success", "Delete Successful", "Contact has been deleted");
-            $scope.contact = data;
-            $location.path("/");
          })
          .error(function (data, status, headers, config) {
             toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/" + $routeParams.contactId + " failed.");
          });
-
-//       Contact.delete(contact._id); // Should also be able to do it this way if Contact is injected
       $location.path("/");
    };
 
@@ -194,6 +200,9 @@ app.controller("EditCtrl", function ($scope, $location, $http, $routeParams, toa
 });
 
 
+/*
+ * Controller for the edit screen when adding a new contact
+ */
 app.controller("NewCtrl", function ($scope, $location, $http, toaster) {
 
    $scope.contact = {
@@ -203,11 +212,11 @@ app.controller("NewCtrl", function ($scope, $location, $http, toaster) {
    };
 
    $scope.save = function () {
-      $http.post("contacts", $scope.contact)
+      $http.post(url + "contacts", $scope.contact)
          .success(function (data, status, headers, config) {
-            toaster.pop("success", "Add Successful", data.firstname + " " + data.lastname + " has been added");
             $scope.contact = data;
             $location.path("/view/" + $scope.contact._id);
+            toaster.pop("success", "Add Successful", data.firstname + " " + data.lastname + " has been added");
          })
          .error(function (data, status, headers, config) {
             toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/ failed.");
@@ -220,6 +229,9 @@ app.controller("NewCtrl", function ($scope, $location, $http, toaster) {
 });
 
 
+/*
+ * Controller for the phone number section of the edit screen
+ */
 app.controller("PhonenumberCtrl", function ($scope) {
 
    $scope.addNumber = function () {
@@ -237,6 +249,9 @@ app.controller("PhonenumberCtrl", function ($scope) {
 });
 
 
+/*
+ * Controller for the email section of the edit screen
+ */
 app.controller("EmailCtrl", function ($scope) {
 
    $scope.addEmail = function () {
@@ -254,6 +269,9 @@ app.controller("EmailCtrl", function ($scope) {
 });
 
 
+/*
+ * Controller for the children section of the edit screen
+ */
 app.controller("ChildrenCtrl", function ($scope) {
 
    $scope.addChild = function () {
@@ -271,6 +289,9 @@ app.controller("ChildrenCtrl", function ($scope) {
 });
 
 
+/*
+ * Controller for the about screen
+ */
 app.controller("AboutCtrl", [
    function () {
       $("#menu-list").removeClass("active");
@@ -282,15 +303,14 @@ app.controller("AboutCtrl", [
 /*
  * Controller for reinitializing the database
  */
-
 app.controller("LoadDataCtrl", function ($scope, $location, $http, toaster) {
-//   console.log("Made it to LoadDataCtrl");
    $scope.contacts = [];
 
-   $http.post("reinitialize")
+   $http.post(url + "reinitialize")
       .success(function (data, status, headers, config) {
          $scope.contacts = data;
          $location.path("/");
+         toaster.pop("success", "Data Reload", "The sample data has been reinitialized");
       })
       .error(function (data, status, headers, config) {
          toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "reinitialize failed.");

@@ -33,13 +33,16 @@ app.configure(function () {
 var db = "";
 
 // Connect to local mongo
-//var mongoclient = new MongoClient(new Server("localhost", 27017));  // Connect to Mongo on the local host, default port
-//db = mongoclient.db("contacts");                                // Create a handle to the contacts database
+var mongoclient = new MongoClient(new Server("localhost", 27017));  // Connect to Mongo on the local host, default port
+db = mongoclient.db("contacts");                                // Create a handle to the contacts database
+mongoclient.open(function (err, mongoclient) {
+   if (err) { throw err; }
+});
 
 // Connect to Mongo on heroku/mongohq
-MongoClient.connect(process.env.MONGOHQ_URL, function (err, database) {
-   db = database;
-});
+//MongoClient.connect(process.env.MONGOHQ_URL, function (err, database) {
+//   db = database;
+//});
 
 
 /*
@@ -276,13 +279,9 @@ app.del("*", function (req, res) {
 /*
  * Fire up the server and start listening!
  */
-//mongoclient.open(function (err, mongoclient) {
-//   if (err) { throw err; }
-
-   app.listen(app.get('port'), function () {
-      console.log("Express server started on port 3000");
-   });
-//});
+app.listen(app.get('port'), function () {
+   console.log("Express server started on port 3000");
+});
 
 // Load data for creating test data/dummey people objects
 var firstName      = require('./data/firstname.json'),
@@ -377,248 +376,3 @@ function createPerson() {
 
    return p;
 }
-
-
-/**
- * This is dummy test data for the /flintstones endpoint
- *
- * @type {Array}
- */
-var testData = [
-   {
-      "firstname": "Fred",
-      "lastname":  "Flintstone",
-      "address": {
-         "street": "345 Cave Stone Rd",
-         "city":   "Bedrock",
-         "state":  "NA",
-         "zip":    "123"
-      },
-      "phonenumbers": [
-         {
-            "type":   "mobile",
-            "number": "111"
-         }
-      ],
-      "email": [
-         {
-            "type":    "personal",
-            "account": "Fred@Flintstone.com"
-         }
-      ],
-      "birthday":  "1970-01-01",
-      "spouse":    "Wilma",
-      "children": [
-         {
-            "sex":  "girl",
-            "name": "Pebbles"
-         }
-      ]
-   },
-
-   {
-      "firstname":   "Wilma",
-      "lastname":    "Flintstone",
-      "address": {
-         "street": "345 Cave Stone Rd",
-         "city":   "Bedrock",
-         "state":  "NA",
-         "zip":    "123"
-      },
-      "phonenumbers": [
-         {
-            "type":   "mobile",
-            "number": "222"
-         }
-      ],
-      "email": [
-         {
-            "type":    "personal",
-            "account": "Wilma@Flintstone.com"
-         }
-      ],
-      "birthday":  "1970-02-01",
-      "spouse":    "Fred",
-      "children": [
-         {
-            "sex":  "girl",
-            "name": "Pebbles"
-         }
-      ]
-   },
-
-   {
-      "firstname":   "Barney",
-      "lastname":    "Rubble",
-      "address": {
-         "street": "123 Granite Way",
-         "city":        "Bedrock",
-         "state":       "NA",
-         "zip":         "123"
-      },
-      "phonenumbers": [
-         {
-            "type":   "work",
-            "number": "333"
-         }
-      ],
-      "email": [
-         {
-            "type":    "personal",
-            "account": "Barney@Rubble.com"
-         }
-      ],
-      "birthday":  "1970-03-01",
-      "spouse":    "Betty",
-      "children": [
-         {
-            "sex":  "boy",
-            "name": "Bam Bam"
-         }
-      ]
-   },
-
-   {
-      "firstname":   "Betty",
-      "lastname":    "Rubble",
-      "address": {
-         "street": "123 Granite Way",
-         "city":        "Bedrock",
-         "state":       "NA",
-         "zip":         "123"
-      },
-      "phonenumbers": [
-         {
-            "type":   "work",
-            "number": "333"
-         }
-      ],
-      "email": [
-         {
-            "type":    "personal",
-            "account": "Betty@Rubble.com"
-         }
-      ],
-      "birthday":  "1970-04-01",
-      "spouse":    "Barney",
-      "children": [
-         {
-            "sex":  "boy",
-            "name": "Bam Bam"
-         }
-      ]
-   }
-];
-
-
-/*
-// Find
-var query = { "grade" : 100 };
-
-db.collection("grades").find(query).toArray(function(err, docs) {
-   if (err) { throw err; }
-   // console.dir(docs);
-});
-
-db.collection("grades").find(query).each(function(err, docs) {
-   if (err) { throw err; }
-   // console.dir(docs);
-});
-
-
-
-// FindOne
-var query = { "grade" : 100 };
-
-db.collection("grades").findOne(query, function(err, doc) {
-   if (err) { throw err; }
-   // console.dir(doc);
-});
-
-// FindAndModify
-var query = { "name" : "comments" };
-var sort = [];
-var operator = { "$inc" : { "counter" : 1 } };
-var options = { "new" : true };
-
-db.collection("counters").findAndModify(query, sort, operator, options, function(err, doc) {
-   if (err) { throw err; }
-
-   if (!doc) {
-      // console.log("No counter found for comments.");
-   }
-   else {
-      // console.log("Number of comments: " + doc.counter);
-   }
-});
-
-
-// Insert
-// Note the returned value (inserted) is an array even if it's one document
-var doc = { "_id" : "calvin", "age" : 6 };
-
-db.collection("students").insert(doc, function(err, inserted) {
-    if (err) { throw err; }
-    // console.dir("Successfully inserted: " + JSON.stringify(inserted));
-});
-
-
-// Save
-// If doc doesn't exist (defined as not having a _id field) it will be inserted.
-// If it does exist (has _id) an update will be performed
-
-var query = { "assignment" : "hw2" };
-
-db.collection("grades").findOne(query, function(err, doc) {
-   if (err) { throw err; }
-
-   doc["date_returned"] = new Date();
-
-   db.collection("grades").save(doc, function(err, saved) {
-      if (err) { throw err; }
-      // console.dir("Successfully saved " + saved + " document!");
-      return saved;
-   });
-});
-
-
-// Update
-query["_id"] = doc["_id"];
-doc["date_returned"] = new Date();
-
-db.collection("grades").update(query, doc, function(err, updated) {
-   if (err) { throw err; }
-   // console.dir("Successfully updated " + updated + " document!");
-});
-
- // Multi update
-var query = { };
-var operator = { "$unset" : { "date_returned" : "" } };
-var options = { "multi" : true };
-
-db.collection("grades").update(query, operator, options, function(err, updated) {
-   if (err) { throw err; }
-   // console.dir("Successfully updated " + updated + " documents!");
-});
-
- // Upsert
-// Data will be inserted if a matching document isn't found
-var query = { "student" : "Frank", "assignment" : "hw1" };
-//var operator = { "student" : "Frank", "assignment" : "hw1", "grade" : 100 };
-var operator = { "$set" : { "date_returned" : new Date(), "grade" : 100 } };
-var options = { "upsert" : true };
-
-db.collection("grades").update(query, operator, options, function(err, upserted) {
-    if (err) { throw err; }
-    // console.dir("Successfully upserted " + upserted + " document!");
-});
-
- // Remove
-var query = { "assignment" : "hw3" };
-
-db.collection("grades").remove(query, function(err, removed) {
-   if (err) { throw err; }
-   // console.dir("Successfully updated " + removed + " documents!");
-});
-
-*/
