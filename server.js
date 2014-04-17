@@ -33,16 +33,16 @@ app.configure(function () {
 var db = "";
 
 // Connect to local mongo
-var mongoclient = new MongoClient(new Server("localhost", 27017));  // Connect to Mongo on the local host, default port
-db = mongoclient.db("contacts");                                // Create a handle to the contacts database
-mongoclient.open(function (err, mongoclient) {
-   if (err) { throw err; }
-});
+//var mongoclient = new MongoClient(new Server("localhost", 27017));  // Connect to Mongo on the local host, default port
+//db = mongoclient.db("contacts");                                // Create a handle to the contacts database
+//mongoclient.open(function (err, mongoclient) {
+//   if (err) { throw err; }
+//});
 
 // Connect to Mongo on heroku/mongohq
-//MongoClient.connect(process.env.MONGOHQ_URL, function (err, database) {
-//   db = database;
-//});
+MongoClient.connect(process.env.MONGOHQ_URL, function (err, database) {
+   db = database;
+});
 
 
 /*

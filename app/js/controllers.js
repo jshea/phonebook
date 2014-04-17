@@ -1,7 +1,7 @@
 "use strict";
 
-//var url = "http://phonebookangular.herokuapp.com/";   // Heroku
-var url = "/";                                        // Local mongo/rest service
+var url = "http://phonebookangular.herokuapp.com/";   // Heroku
+//var url = "/";                                        // Local mongo/rest service
 
 // Note we're importing Angular plugins as well as our own
 var app = angular.module("phonebook", ["ngRoute",                 // Routing service, $routProvider
