@@ -26,6 +26,11 @@
     "snapjs": "*",
     "AngularJS-Toaster": "~0.4.6",
     "angular": "~1.2.16",
-    "angular-animate": "~1.2.16"
+    "angular-animate": "~1.2.16",
+    "angular-google-maps": "~1.0.18",
+    "underscore": "~1.6.0"
+  },
+  "resolutions": {
+    "underscore": "~1.5.x"
   }
 }

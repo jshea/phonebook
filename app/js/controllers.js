@@ -1,7 +1,7 @@
 "use strict";
 
-var url = "http://phonebookangular.herokuapp.com/";   // Heroku
-//var url = "/";                                        // Local mongo/rest service
+//var url = "http://phonebookangular.herokuapp.com/";   // Heroku - Running from Heroku hosted & Cordova compiled
+var url = "/";                                        // Local mongo/rest service
 
 // Note we're importing Angular plugins as well as our own
 var app = angular.module("phonebook", ["ngRoute",                 // Routing service, $routProvider
@@ -9,9 +9,11 @@ var app = angular.module("phonebook", ["ngRoute",                 // Routing ser
                                        "ui.bootstrap",            // Angular directives implementing Bootstrap (tabs)
                                        "snap",                    // Side drawer
                                        "toaster",                 // Popup messages (toasts)
-//                                     "ui.tinymce",              // wysiwyg editor
-//                                     "ui-map",                  // Google maps
+                                       "google-maps",             // Another Google maps http://angular-google-maps.org/use
                                        "phonebook.directives"]);  // Our directives
+
+//                                     "ui.tinymce",              // wysiwyg editor
+//                                     "ui-map",                  // Google maps from angular-ui
 
 app.config(function (snapRemoteProvider) {
    snapRemoteProvider.globalOptions.disable = 'right';
@@ -122,17 +124,50 @@ app.controller("ListCtrl", function ($scope, $http, $location, toaster) {
  * Controller for viewing a contact
  */
 app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams, toaster) {
+   // We need to initialize our map with dummy data, otherwise it doesn't display.
+   $scope.map = {
+      center: {
+         latitude: 45,
+         longitude: -73
+      },
+      zoom: 8
+   };
+
    // contactId is what the parameter was named in our routes
    $http.get(url + "contacts/" + $routeParams.contactId)
       .success(function (data, status, headers, config) {
          $scope.contact = data;
          $scope.age = moment().diff(data.birthday, "years");
 
-//         $scope.mapOptions = {
-//            center: new google.maps.LatLng(35.784, -78.670),
-//            zoom: 15,
-//            mapTypeId: google.maps.MapTypeId.ROADMAP
-//         };
+         var googleAddress = data.address.street + " " + data.address.city + " " + data.address.state + " " + data.address.zip;
+
+         var location;
+         var geocoder = new google.maps.Geocoder();
+         geocoder.geocode({ 'address': googleAddress}, function (results, status) {
+            if (status === google.maps.GeocoderStatus.OK) {
+               location = results[0].geometry.location;
+
+               // Note - I'm using a development branch (1.1) of angular-google-maps cause I was getting this bug
+               // https://github.com/nlaplante/angular-google-maps/issues/325
+               $scope.map = {
+                  center: {
+                     latitude:  location.lat(),
+                     longitude: location.lng()
+                  },
+                  zoom: 14
+                };
+               // Tell angular to refresh bindings because we updated $scope in a callback
+               $scope.$apply();
+            } else {
+               toaster.pop("error", "Geocode was not successful", status);
+            }
+         });
+
+//       $scope.mapOptions = {
+//          center: new google.maps.LatLng(35.784, -78.670),
+//          zoom: 15,
+//          mapTypeId: google.maps.MapTypeId.ROADMAP
+//       };
       })
       .error(function (data, status, headers, config) {
          toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/" + $routeParams.contactId + " failed.");

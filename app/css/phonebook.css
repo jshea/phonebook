@@ -10,3 +10,7 @@ snap-content {
     background-color: #fff;
     border-left: 1px solid #ccc;
 }
+
+.angular-google-map-container {
+    height: 400px;
+}

@@ -89,13 +89,12 @@
    </div>
 </div>
 
-<!--
+
 <div class="row">
-   <section id="map" ng-controller="MapCtrl" >
-      <div ui-map="myMap" ui-options="mapOptions" class="map-canvas"></div>
-   </section>
+   <google-map center="map.center" zoom="map.zoom">
+      <marker coords="map.center"></marker>
+   </google-map>
 </div>
--->
 
 <!-- edit and remove are functions we've defined in our controller -->
 <button type="button" ng-click="edit()"   class="btn btn-primary">Edit</button>
