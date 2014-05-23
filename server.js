@@ -17,32 +17,31 @@
  *
  */
 var express = require("express"),
+   methodOverride = require("method-override"),
+   bodyParser = require("body-parser"),
    app = express(),
    MongoClient = require("mongodb").MongoClient,
    Server = require("mongodb").Server,
-   ObjectID = require("mongodb").ObjectID;      // Used to create Mongo ObjectID's from string representations of _id
+   ObjectID = require("mongodb").ObjectID;   // Used to create Mongo ObjectID's from string representations of _id
 
-// app.use(express.bodyParser());
-app.configure(function () {
-   app.set('port', process.env.PORT || 3000);   // If we're running in Heroku, the port will be assigned
-   app.use(express.methodOverride());           // Allows use of "put" & "del" methods?
-   app.use(express.bodyParser());               // This clears out rec.body?
-   app.use(express.static(__dirname + '/app')); // Serve static files from the "app" subfolder
-});
+app.use(express.static(__dirname + '/app')); // Serve static files from the "app" subfolder
+app.use(methodOverride());                   // Allows use of "put" & "del" methods?
+app.use(bodyParser());                       // This clears out rec.body?
+app.listen(process.env.PORT || 3000);        // If we're running in Heroku, the port will be assigned
 
 var db = "";
 
 // Connect to local mongo
-//var mongoclient = new MongoClient(new Server("localhost", 27017));  // Connect to Mongo on the local host, default port
-//db = mongoclient.db("contacts");                                // Create a handle to the contacts database
-//mongoclient.open(function (err, mongoclient) {
-//   if (err) { throw err; }
-//});
+var mongoclient = new MongoClient(new Server("localhost", 27017));  // Connect to Mongo on the local host, default port
+db = mongoclient.db("contacts");                                // Create a handle to the contacts database
+mongoclient.open(function (err, mongoclient) {
+   if (err) { throw err; }
+});
 
 // Connect to Mongo on heroku/mongohq
-MongoClient.connect(process.env.MONGOHQ_URL, function (err, database) {
-   db = database;
-});
+// MongoClient.connect(process.env.MONGOHQ_URL, function (err, database) {
+//    db = database;
+// });
 
 
 /*
@@ -231,7 +230,7 @@ app.post("/reinitialize", function (req, res) {
    var newPeople = [],
       i;
 
-   for (i = 1; i <= 1000; i++) {
+   for (i = 1; i <= 500; i++) {
       newPeople.push(createPerson());
    }
 

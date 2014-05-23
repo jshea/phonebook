@@ -38,10 +38,10 @@ npm install
 
 Start the database server
 ````
-\mongo\mongod --dbpath=\mongodata
+"\Program Files\MongoDB 2.6 Standard\bin\mongod.exe" --dbpath=\mongodata
 ````
 
-Start the Web Service after starting the database
+Start the Web Service after starting the database (insert paths as required!)
 ````
-node \YOUR PATH TO THE APPLICATION\server.js
+node server.js
 ````

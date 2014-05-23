@@ -1,7 +1,10 @@
 <h3>Contacts List</h3>
 
+<!-- https://github.com/angular-ui/ng-grid/issues/439
+Filter <input type="text" ng-model="scope.gridOptions.filterOptions.filterText" placeholder="Search">
+-->
 
-Filter <input type="text" ng-model="filterOptions.filterText" placeholder="Search">
- {{totalFilteredItemsLength}} people
+Filter <input type="text" ng-model="filterOptions.filterText" placeholder="Search" />
+<!--  {{totalFilteredItemsLength}} people -->
 
 <div class="gridStyle" ng-grid="gridOptions"></div>

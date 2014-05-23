@@ -91,9 +91,19 @@
 
 
 <div class="row">
-   <google-map center="map.center" zoom="map.zoom" draggable="true">
-      <marker coords="map.center"></marker>
-   </google-map>
+   <!-- For extra small have two column border to scroll above/below map with fingers -->
+   <div class="col-xs-2 col-sm-1">
+   </div>
+
+   <!-- For extra small we make the map 8 cols wide -->
+   <div class="col-xs-8 col-sm-10">
+      <google-map center="map.center" zoom="map.zoom" draggable="true">
+         <marker coords="map.center"></marker>
+      </google-map>
+   </div>
+
+   <div class="col-xs-2 col-sm-1">
+   </div>
 </div>
 
 <!-- edit and remove are functions we've defined in our controller -->

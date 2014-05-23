@@ -70,17 +70,28 @@ app.controller("ListCtrl", function ($scope, $http, $location, toaster) {
 
    $http.get(url + "contactpicklist")
       .success(function (data, status, headers, config) {
+         // Add a function to each element that returns the formatted
+         // full name to be used by ng-grid.
+         angular.forEach(data, function (row) {
+            row.getFullName = function () {
+               return this.lastname + ", " + this.firstname;
+            };
+         });
+
          $scope.contacts = data;
       })
       .error(function (data, status, headers, config) {
          toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
       });
 
+   $scope.filterOptions = {
+      filterText: "" // Do we really have to initialize filtering to a blank string?
+   };
+
    $scope.gridOptions = {
       data: "contacts",
       columnDefs: [
          // These are here for the filtering to work.
-         // TODO - Filtering no longer works :(
          // http://stackoverflow.com/questions/17977869/how-to-filter-my-data-ng-grid
          {field: "firstname", visible: false},
          {field: "lastname",  visible: false},
@@ -89,7 +100,7 @@ app.controller("ListCtrl", function ($scope, $http, $location, toaster) {
          // Make a row clickable
          // http://stackoverflow.com/questions/19822133/angularjs-ng-grid-pass-row-column-field-into-ng-click-event
          {
-            field: "lastname + ', ' + firstname",
+            field: "getFullName()",
             displayName: "Name",
             cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><a ng-click="loadById(row)">{{row.getProperty(col.field)}}</a></div>'
          },
@@ -97,11 +108,7 @@ app.controller("ListCtrl", function ($scope, $http, $location, toaster) {
       ],
       enableColumnReordering: true,
       enableSorting: true,
-      filterOptions: $scope.filterOptions
-   };
-
-   $scope.filterOptions = {
-      filterText: ""
+      filterOptions: $scope.filterOptions // Also tried setting ng-model to the direct scope object - still doesn't work anymore!
    };
 
    // The desire is to show the filtered size of the grid (grid.length?). Not working here
@@ -127,10 +134,10 @@ app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams, toa
    // We need to initialize our map with dummy data, otherwise it doesn't display.
    $scope.map = {
       center: {
-         latitude: 45,
-         longitude: -73
+         latitude: 39,
+         longitude: -98
       },
-      zoom: 8
+      zoom: 14
    };
 
    // contactId is what the parameter was named in our routes
@@ -139,35 +146,30 @@ app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams, toa
          $scope.contact = data;
          $scope.age = moment().diff(data.birthday, "years");
 
+         // Google address format - used to geocode (lookup) lat/lon for this address
          var googleAddress = data.address.street + " " + data.address.city + " " + data.address.state + " " + data.address.zip;
 
+         // Get lat/lon for an address
          var location;
          var geocoder = new google.maps.Geocoder();
          geocoder.geocode({ 'address': googleAddress}, function (results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
                location = results[0].geometry.location;
 
-               // Note - I'm using a development branch (1.1) of angular-google-maps cause I was getting this bug
-               // https://github.com/nlaplante/angular-google-maps/issues/325
+               // Set ng-map to the lat/lon for this address
                $scope.map = {
                   center: {
                      latitude:  location.lat(),
                      longitude: location.lng()
                   },
                   zoom: 14
-                };
+               };
                // Tell angular to refresh bindings because we updated $scope in a callback
                $scope.$apply();
             } else {
                toaster.pop("error", "Geocode was not successful", status);
             }
          });
-
-//       $scope.mapOptions = {
-//          center: new google.maps.LatLng(35.784, -78.670),
-//          zoom: 15,
-//          mapTypeId: google.maps.MapTypeId.ROADMAP
-//       };
       })
       .error(function (data, status, headers, config) {
          toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/" + $routeParams.contactId + " failed.");

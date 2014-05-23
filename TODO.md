@@ -3,9 +3,6 @@ To Do
 
 Functionality to add to the Phonebook/Contact Manager learning example. This list isn't in any particular order.
 
-## Mapping
-Add mapping (Google maps) of the users home with [ui-map](https://github.com/angular-ui/ui-map)
-
 ## Date picker
 Add a date picker for the birthday [ui datepicker](http://angular-ui.github.io/bootstrap/#/datepicker)
 
@@ -16,17 +13,16 @@ Enhanced table features. [ng-grid](http://ngmodules.org/modules/ng-grid)
 [ng-Grid](https://github.com/angular-ui/ng-grid/issues/305)
 
 ## Local Storage / Work In Progress
-Local data storage for disconnected use [angular-local-storage](https://github.com/grevory/angular-local-storage).
-[breezejs] (http://www.breezejs.com/)
+Local data storage for disconnected use [angular-local-storage](https://github.com/grevory/angular-local-storage),
+[breezejs] (http://www.breezejs.com/), Mongo like interface to 
+localstorage [indexed](http://fluidbyte.net/indexed-query-inexeddb-like-mongo/)
 
 ## Offline use
-Web/browser [appcache](http://appcachefacts.info/) and hybrid [phonegap](http://phonegap.com/)
-
-## Toasts
-[AngularJS-Toaster](https://github.com/jirikavi/AngularJS-Toaster)
+Web/browser [appcache](http://appcachefacts.info/), mobile hybrid [phonegap](http://phonegap.com/) and
+desktop/laptop [chrome apps](https://developer.chrome.com/apps/about_apps)
 
 ## Charting
-[ui-chart](http://ngmodules.org/modules/ui-chart) or others
+[ui-chart](http://ngmodules.org/modules/ui-chart) or others (chartjs, D3...)
 
 ## Touch
 [ngTouch](http://docs.angularjs.org/api/ngTouch)
