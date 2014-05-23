@@ -40,7 +40,11 @@ var db = "";
 
 // Connect to Mongo on heroku/mongohq
 MongoClient.connect(process.env.MONGOHQ_URL, function (err, database) {
-    db = database;
+   if (err) {
+      throw err;
+   } else {
+      db = database;
+   }
 });
 
 
