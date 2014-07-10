@@ -4,7 +4,7 @@ To Do
 Functionality to add to the Phonebook/Contact Manager learning example. This list isn't in any particular order.
 
 ## Date picker
-Add a date picker for the birthday [ui datepicker](http://angular-ui.github.io/bootstrap/#/datepicker)
+Add a date picker for the birthday [ui datepicker](http://angular-ui.github.io/bootstrap/)
 
 ## Table/Grid with sorting, pagination and data entry
 Enhanced table features. [ng-grid](http://ngmodules.org/modules/ng-grid)
@@ -13,12 +13,12 @@ Enhanced table features. [ng-grid](http://ngmodules.org/modules/ng-grid)
 [ng-Grid](https://github.com/angular-ui/ng-grid/issues/305)
 
 ## Local Storage / Work In Progress
-Local data storage for disconnected use [angular-local-storage](https://github.com/grevory/angular-local-storage),
+Local data storage for disconnected use [angular-localForage](https://github.com/ocombe/angular-localForage),
 [breezejs] (http://www.breezejs.com/), Mongo like interface to 
 localstorage [indexed](http://fluidbyte.net/indexed-query-inexeddb-like-mongo/)
 
 ## Offline use
-Web/browser [appcache](http://appcachefacts.info/), mobile hybrid [phonegap](http://phonegap.com/) and
+Web/browser [appcache](http://appcachefacts.info/), mobile hybrid [Cordova](http://cordova.apache.org/) and
 desktop/laptop [chrome apps](https://developer.chrome.com/apps/about_apps)
 
 ## Charting

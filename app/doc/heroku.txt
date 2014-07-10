@@ -1,0 +1,20 @@
+
+Heroku
+
+heroku logs - to see logs
+
+   App URL: http://phonebookangular.herokuapp.com/
+   Git URL: git@heroku.com:phonebookangular.git
+
+   Use the following code to set up your app for local development:
+
+   git clone git@heroku.com:phonebookangular.git -o heroku
+
+C:\Users\...>git remote -v
+heroku  git@heroku.com:phonebookangular.git (fetch)
+heroku  git@heroku.com:phonebookangular.git (push)
+origin  https://github.com/jshea/phonebook-angular.git (fetch)
+origin  https://github.com/jshea/phonebook-angular.git (push)
+
+
+C:\Users\...>git push heroku master

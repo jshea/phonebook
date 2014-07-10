@@ -24,6 +24,8 @@ var express = require("express"),
    Server = require("mongodb").Server,
    ObjectID = require("mongodb").ObjectID;   // Used to create Mongo ObjectID's from string representations of _id
 
+app.set("jsonp callback name", "JSON_CALLBACK");        // Set default JSONP callback name - http://expressjs.com/4x/api.html
+
 app.use(express.static(__dirname + '/app')); // Serve static files from the "app" subfolder
 app.use(methodOverride());                   // Allows use of "put" & "del" methods?
 app.use(bodyParser());                       // This clears out rec.body?

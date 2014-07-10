@@ -1,7 +1,7 @@
 "use strict";
 
-//var url = "http://phonebookangular.herokuapp.com/";   // Heroku - Running from Heroku hosted & Cordova compiled
-var url = "/";                                        // Local mongo/rest service
+var url = "http://phonebookangular.herokuapp.com/";   // Heroku - Running Cordova compiled with data from Heroku hosted services
+//var url = "/";                                        // Local mongo/rest service and Heroku web app
 
 // Note we're importing Angular plugins as well as our own
 var app = angular.module("phonebook", ["ngRoute",                 // Routing service, $routProvider
@@ -152,7 +152,7 @@ app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams, toa
          // Get lat/lon for an address
          var location;
          var geocoder = new google.maps.Geocoder();
-         geocoder.geocode({ 'address': googleAddress}, function (results, status) {
+         geocoder.geocode({ "address": googleAddress }, function (results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
                location = results[0].geometry.location;
 

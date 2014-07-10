@@ -1,6 +1,9 @@
 
 
 /*
+
+This is a cheat sheet of NodeJS CRUD operations
+
 // Find
 var query = { "grade" : 100 };
 

@@ -1,0 +1,36 @@
+
+For building an Android apk
+http://cordova.apache.org/docs/en/3.5.0//guide_platforms_android_index.md.html#Android%20Platform%20Guide
+
+Change URL variable in controllers.js to point to "http://phonebookangular.herokuapp.com/"
+
+Install Java, Ant, Android SDK
+
+Set Paths
+
+Set Env variables
+
+
+
+sudo npm install -g cordova
+
+mkdir Cordova
+cd Cordova/
+
+cordova create phonebook com.jtshea Phonebook1
+   Arguments
+      phonebook - Directory to be created for the project
+      com.jtshea - Projects reverse domain-style identifier
+      Phonebook - Applications display title
+
+cd phonebook/
+cordova platform add android
+(drag and drop your www folder)
+
+cordova build
+
+cordova -v				// Show version
+npm info cordova			// Tons of potentially interesting info
+
+sudo npm update -g cordova		// Update cordova
+cordova platform update android	// Update the android platform for a project

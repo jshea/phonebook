@@ -3,21 +3,21 @@
 
 <head>
    <meta name="viewport" content="width=device-width, initial-scale=1">
-
    <meta name="mobile-web-app-capable" content="yes">           <!-- Allow saving a link to mobile device home screen -->
-   <link rel="icon" sizes="196x196" href="phonebook.196.png">   <!-- Icon for link to mobile device home screen -->
+
+   <link href="phonebook.196.png" rel="icon" sizes="196x196">   <!-- Icon for link to mobile device home screen -->
    <title>Phonebook - Angular</title>                           <!-- Also used for mobile device home screen link title -->
 
    <!-- Load the JS libraries and our files that are required for the main screen to load -->
-   <script src="lib/jquery.min.js"></script>          <!-- Angular will use jquery if available (otherwise builtin jqLite) -->
+   <script src="lib/jquery.min.js"></script>                    <!-- Angular will use jquery if available (otherwise builtin jqLite) -->
 
    <script src="lib/angular.min.js"></script>
    <script src="lib/angular-animate.min.js"></script>
    <script src="lib/angular-route.min.js"></script>
 
-   <script src="lib/ui-bootstrap-tpls-0.10.0.min.js"></script> <!-- Bootstrap UI Tabs-->
+   <script src="lib/ui-bootstrap-tpls-0.10.0.min.js"></script>  <!-- Bootstrap UI Tabs-->
 
-   <link href="css/bootstrap.min.css" rel="stylesheet">  <!-- Bootstrap is used for the UI -->
+   <link href="css/bootstrap.min.css" rel="stylesheet">         <!-- Bootstrap is used for the UI -->
    <link href="css/phonebook.css" rel="stylesheet">
 
    <link  href="css/angular-snap.min.css" rel="stylesheet">
@@ -32,7 +32,6 @@
 <body>
 
    <snap-drawer>
-      I'm a left drawer!
       <p><button class="btn btn-primary" snap-close>Close</button></p>
 
       Tools/Libraries used in this app
