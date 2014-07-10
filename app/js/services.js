@@ -3,23 +3,15 @@
 //var url = "http://phonebookangular.herokuapp.com/";   // Heroku - Running Cordova compiled with data from Heroku hosted services
 var url = "/";                                        // Local mongo/rest service and Heroku web app
 
-app.factory("DataFactory", function DataFactory($http, toaster) {
-
-   DataFactory.getAllContacts = function () {
-      $http.get(url + "contactpicklist")
-         .success(function (data, status, headers, config) {
-            // Add a function to each element that returns formatted full name - used by ng-grid.
-            angular.forEach(data, function (row) {
-               row.getFullName = function () {
-                  return this.lastname + ", " + this.firstname;
-               };
+angular.module("phonebook").factory("DataFactory", function ($http, toaster) {
+   return {
+      getAllContacts: function (callback) {
+         $http.get(url + "contactpicklist")
+            .success(callback)
+            .error(function (data, status, headers, config) {
+               toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
             });
-
-            return data;
-         })
-         .error(function (data, status, headers, config) {
-            toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
-         });
+      }
    };
 //      ,
 //      getContactById: function (id) {
