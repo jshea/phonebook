@@ -10,7 +10,8 @@ var app = angular.module("phonebook", ["ngRoute",                 // Routing ser
                                        "snap",                    // Side drawer
                                        "toaster",                 // Popup messages (toasts)
                                        "google-maps",             // Another Google maps http://angular-google-maps.org/use
-                                       "phonebook.directives"]);  // Our directives
+                                       "phonebook.directives",    // Our directives
+                                       "DataFactory"]);           // Our services & factories
 
 //                                     "ui.tinymce",              // wysiwyg editor
 //                                     "ui-map",                  // Google maps from angular-ui
@@ -61,28 +62,11 @@ app.config(["$routeProvider", function ($routeProvider) {
 }]);
 
 
-
 /*
  * Controller for the main screen containing a grid with a listing of all contacts
  */
-app.controller("ListCtrl", function ($scope, $http, $location, toaster) {
-   $scope.contacts = [];
-
-   $http.get(url + "contactpicklist")
-      .success(function (data, status, headers, config) {
-         // Add a function to each element that returns the formatted
-         // full name to be used by ng-grid.
-         angular.forEach(data, function (row) {
-            row.getFullName = function () {
-               return this.lastname + ", " + this.firstname;
-            };
-         });
-
-         $scope.contacts = data;
-      })
-      .error(function (data, status, headers, config) {
-         toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
-      });
+app.controller("ListCtrl", function ($scope, DataFactory, $location, toaster) {
+   $scope.contacts = DataFactory.getAllContacts();
 
    $scope.filterOptions = {
       filterText: "" // Do we really have to initialize filtering to a blank string?
@@ -130,7 +114,7 @@ app.controller("ListCtrl", function ($scope, $http, $location, toaster) {
 /*
  * Controller for viewing a contact
  */
-app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams, toaster) {
+app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams) {
    // We need to initialize our map with dummy data, otherwise it doesn't display.
    $scope.map = {
       center: {
