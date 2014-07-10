@@ -1,7 +1,7 @@
 "use strict";
 
-var url = "http://phonebookangular.herokuapp.com/";   // Heroku - Running Cordova compiled with data from Heroku hosted services
-//var url = "/";                                        // Local mongo/rest service and Heroku web app
+//var url = "http://phonebookangular.herokuapp.com/";   // Heroku - Running Cordova compiled with data from Heroku hosted services
+var url = "/";                                        // Local mongo/rest service and Heroku web app
 
 // Note we're importing Angular plugins as well as our own
 var app = angular.module("phonebook", ["ngRoute",                 // Routing service, $routProvider
