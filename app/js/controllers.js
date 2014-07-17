@@ -118,7 +118,7 @@ app.controller("ListCtrl", function ($scope, DataFactory, $location, toaster) {
 /*
  * Controller for viewing a contact
  */
-app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams) {
+app.controller("ViewCtrl", function ($scope, $location, $routeParams, DataFactory) {
    // We need to initialize our map with dummy data, otherwise it doesn't display.
    $scope.map = {
       center: {
@@ -129,52 +129,42 @@ app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams) {
    };
 
    // contactId is what the parameter was named in our routes
-   $http.get(url + "contacts/" + $routeParams.contactId)
-      .success(function (data, status, headers, config) {
-         $scope.contact = data;
-         $scope.age = moment().diff(data.birthday, "years");
+   DataFactory.getContact($routeParams.contactId, function (data, status, headers, config) {
+      $scope.contact = data;
+      $scope.age = moment().diff(data.birthday, "years");
 
-         // Google address format - used to geocode (lookup) lat/lon for this address
-         var googleAddress = data.address.street + " " + data.address.city + " " + data.address.state + " " + data.address.zip;
+      // Google address format - used to geocode (lookup) lat/lon for this address
+      var googleAddress = data.address.street + " " + data.address.city + " " + data.address.state + " " + data.address.zip;
 
-         // Get lat/lon for an address
-         var location;
-         var geocoder = new google.maps.Geocoder();
-         geocoder.geocode({ "address": googleAddress }, function (results, status) {
-            if (status === google.maps.GeocoderStatus.OK) {
-               location = results[0].geometry.location;
+      // Get lat/lon for an address
+      var location;
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ "address": googleAddress }, function (results, status) {
+         if (status === google.maps.GeocoderStatus.OK) {
+            location = results[0].geometry.location;
 
-               // Set ng-map to the lat/lon for this address
-               $scope.map = {
-                  center: {
-                     latitude:  location.lat(),
-                     longitude: location.lng()
-                  },
-                  zoom: 14
-               };
-               // Tell angular to refresh bindings because we updated $scope in a callback
-               $scope.$apply();
-            } else {
-               toaster.pop("error", "Geocode was not successful", status);
-            }
-         });
-      })
-      .error(function (data, status, headers, config) {
-         toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/" + $routeParams.contactId + " failed.");
+            // Set ng-map to the lat/lon for this address
+            $scope.map = {
+               center: {
+                  latitude:  location.lat(),
+                  longitude: location.lng()
+               },
+               zoom: 14
+            };
+            // Tell angular to refresh bindings because we updated $scope in a callback
+            $scope.$apply();
+         } else {
+            toaster.pop("error", "Geocode was not successful", status);
+         }
       });
+   });
 
    $scope.edit = function () {
       $location.path("/edit/" + $scope.contact._id);
    };
 
    $scope.remove = function () {
-      $http.delete(url + "contacts/" + $scope.contact._id)
-         .success(function (data, status, headers, config) {
-            toaster.pop("success", "Delete Successful", "Contact has been deleted");
-         })
-         .error(function (data, status, headers, config) {
-            toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/" + $routeParams.contactId + " failed.");
-         });
+      DataFactory.removeContact($scope.contact._id);
       $location.path("/");
    };
 
@@ -187,35 +177,20 @@ app.controller("ViewCtrl", function ($scope, $location, $http, $routeParams) {
 /*
  * Controller for the edit screen when updating an existing contact
  */
-app.controller("EditCtrl", function ($scope, $location, $http, $routeParams, toaster) {
-   $http.get(url + "contacts/" + $routeParams.contactId)
-      .success(function (data, status, headers, config) {
-         $scope.contact = data;
-      })
-      .error(function (data, status, headers, config) {
-         toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/" + $routeParams.contactId + " failed.");
-      });
+app.controller("EditCtrl", function ($scope, $location, $routeParams, DataFactory) {
+   DataFactory.getContact($routeParams.contactId, function (data, status, headers, config) {
+      $scope.contact = data;
+   });
 
    $scope.save = function () {
-      $http.post(url + "contacts/" + $scope.contact._id, $scope.contact)
-         .success(function (data, status, headers, config) {
-            $scope.contact = data;
-            $location.path("/view/" + $scope.contact._id);
-            toaster.pop("success", "Update Successful", data.firstname + " " + data.lastname + " has been updated");
-         })
-         .error(function (data, status, headers, config) {
-            toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/" + $routeParams.contactId + " failed.");
-         });
+      DataFactory.updateContact($routeParams.id, $scope.contact, function (data, status, headers, config) {
+         $scope.contact = data;
+         $location.path("/view/" + $scope.contact._id);
+      });
    };
 
    $scope.remove = function () {
-      $http.delete(url + "contacts/" + $scope.contact._id)
-         .success(function (data, status, headers, config) {
-            toaster.pop("success", "Delete Successful", "Contact has been deleted");
-         })
-         .error(function (data, status, headers, config) {
-            toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/" + $routeParams.contactId + " failed.");
-         });
+      DataFactory.removeContact($scope.contact._id);
       $location.path("/");
    };
 
@@ -228,8 +203,9 @@ app.controller("EditCtrl", function ($scope, $location, $http, $routeParams, toa
 /*
  * Controller for the edit screen when adding a new contact
  */
-app.controller("NewCtrl", function ($scope, $location, $http, toaster) {
+app.controller("NewCtrl", function ($scope, $location, DataFactory) {
 
+   // Create an empty contact to bind to the Add Screen
    $scope.contact = {
       phonenumbers: [ ],
       email: [ ],
@@ -237,15 +213,10 @@ app.controller("NewCtrl", function ($scope, $location, $http, toaster) {
    };
 
    $scope.save = function () {
-      $http.post(url + "contacts", $scope.contact)
-         .success(function (data, status, headers, config) {
-            $scope.contact = data;
-            $location.path("/view/" + $scope.contact._id);
-            toaster.pop("success", "Add Successful", data.firstname + " " + data.lastname + " has been added");
-         })
-         .error(function (data, status, headers, config) {
-            toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts/ failed.");
-         });
+      DataFactory.addContact($scope.contact, function (data, status, headers, config) {
+         $scope.contact = data;
+         $location.path("/view/" + $scope.contact._id);
+      });
    };
 
    $("#menu-list").removeClass("active");
@@ -328,18 +299,23 @@ app.controller("AboutCtrl", [
 /*
  * Controller for reinitializing the database
  */
-app.controller("LoadDataCtrl", function ($scope, $location, $http, toaster) {
+app.controller("LoadDataCtrl", function ($scope, $location, DataFactory) {
    $scope.contacts = [];
 
-   $http.post(url + "reinitialize")
-      .success(function (data, status, headers, config) {
-         $scope.contacts = data;
-         $location.path("/");
-         toaster.pop("success", "Data Reload", "The sample data has been reinitialized");
-      })
-      .error(function (data, status, headers, config) {
-         toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "reinitialize failed.");
-      });
+//   $http.post(url + "reinitialize")
+//      .success(function (data, status, headers, config) {
+//         $scope.contacts = data;
+//         $location.path("/");
+//         toaster.pop("success", "Data Reload", "The sample data has been reinitialized");
+//      })
+//      .error(function (data, status, headers, config) {
+//         toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "reinitialize failed.");
+//      });
+
+   DataFactory.initializeData(function (data, status, headers, config) {
+      $scope.contacts = data;
+      $location.path("/");
+   });
 
    $("#menu-list").addClass("active");
    $("#menu-new").removeClass("active");

@@ -22,20 +22,20 @@ var express = require("express"),
    app = express(),
    MongoClient = require("mongodb").MongoClient,
    Server = require("mongodb").Server,
-   ObjectID = require("mongodb").ObjectID;   // Used to create Mongo ObjectID's from string representations of _id
+   ObjectID = require("mongodb").ObjectID;            // Used to create Mongo ObjectID's from string representations of _id
 
-app.set("jsonp callback name", "JSON_CALLBACK");        // Set default JSONP callback name - http://expressjs.com/4x/api.html
+app.set("jsonp callback name", "JSON_CALLBACK");      // Set default JSONP callback name - http://expressjs.com/4x/api.html
 
-app.use(express.static(__dirname + '/app')); // Serve static files from the "app" subfolder
-app.use(methodOverride());                   // Allows use of "put" & "del" methods?
-app.use(bodyParser());                       // This clears out rec.body?
-app.listen(process.env.PORT || 3000);        // If we're running in Heroku, the port will be assigned
+app.use(express.static(__dirname + '/app'));          // Serve static files from the "app" subfolder
+app.use(methodOverride());                            // Allows use of "put" & "del" methods?
+app.use(bodyParser.urlencoded({extended: true}));   // This clears out rec.body?
+app.listen(process.env.PORT || 3000);                 // If we're running in Heroku, the port will be available via env var
 
 var db = "";
 
 // Connect to local mongo
-var mongoclient = new MongoClient(new Server("localhost", 27017));  // Connect to Mongo on the local host, default port
-db = mongoclient.db("contacts");                                // Create a handle to the contacts database
+var mongoclient = new MongoClient(new Server("localhost", 27017));   // Connect to Mongo on the local host, default port
+db = mongoclient.db("contacts");                                     // Create a handle to the contacts database
 mongoclient.open(function (err, mongoclient) {
    if (err) { throw err; }
 });
@@ -275,7 +275,7 @@ app.put("*", function (req, res) {
    // console.log("A PUT that wasn't found", req.params);
    res.send("Page Not Found", 404);
 });
-app.del("*", function (req, res) {
+app.delete("*", function (req, res) {
    // console.log("A DELETE that wasn't found", req.params);
    res.send("Page Not Found", 404);
 });
