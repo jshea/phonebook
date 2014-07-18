@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34966a91-47c5-4fe4-a426-30dc5a769eb5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/chartFactory.js" afterPath="$PROJECT_DIR$/app/js/chartFactory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/metrics.html" afterPath="$PROJECT_DIR$/app/views/metrics.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers.js" afterPath="$PROJECT_DIR$/app/js/controllers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Phonebook.iws" />
@@ -40,20 +38,20 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="metrics.html" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="metrics.html" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/views/metrics.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.25908557" vertical-offset="0" max-vertical-offset="853">
+                <state vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="357">
                   <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="chartFactory.js" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="chartFactory.js" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/js/chartFactory.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
+                <state vertical-scroll-proportion="0.73492604" vertical-offset="0" max-vertical-offset="879">
                   <caret line="38" column="11" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
                   <folding />
                 </state>
@@ -74,21 +72,21 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="controllers.js" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="controllers.js" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.48267898" vertical-offset="3866" max-vertical-offset="5066">
-                  <caret line="252" column="6" selection-start-line="252" selection-start-column="6" selection-end-line="252" selection-end-column="6" />
+                <state vertical-scroll-proportion="0.44341803" vertical-offset="3866" max-vertical-offset="5066">
+                  <caret line="250" column="73" selection-start-line="250" selection-start-column="73" selection-end-line="250" selection-end-column="73" />
                   <folding>
-                    <element signature="e#8666#8734#0" expanded="false" />
-                    <element signature="e#8787#9261#0" expanded="false" />
-                    <element signature="e#9266#9327#0" expanded="false" />
-                    <element signature="e#9374#9783#0" expanded="false" />
-                    <element signature="e#9410#9685#0" expanded="false" />
-                    <element signature="e#9788#9852#0" expanded="false" />
-                    <element signature="e#9902#10338#0" expanded="false" />
-                    <element signature="e#10343#10384#0" expanded="false" />
-                    <element signature="e#10413#10569#0" expanded="false" />
+                    <element signature="e#8680#8748#0" expanded="false" />
+                    <element signature="e#8801#9275#0" expanded="false" />
+                    <element signature="e#9280#9341#0" expanded="false" />
+                    <element signature="e#9388#9797#0" expanded="false" />
+                    <element signature="e#9424#9699#0" expanded="false" />
+                    <element signature="e#9802#9866#0" expanded="false" />
+                    <element signature="e#9916#10352#0" expanded="false" />
+                    <element signature="e#10357#10398#0" expanded="false" />
+                    <element signature="e#10427#10583#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -145,9 +143,9 @@
         <option value="$PROJECT_DIR$/app/views/edit.html" />
         <option value="$PROJECT_DIR$/app/js/services.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
-        <option value="$PROJECT_DIR$/app/js/controllers.js" />
         <option value="$PROJECT_DIR$/app/js/chartFactory.js" />
         <option value="$PROJECT_DIR$/app/views/metrics.html" />
+        <option value="$PROJECT_DIR$/app/js/controllers.js" />
       </list>
     </option>
   </component>
@@ -234,6 +232,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Phonebook" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Phonebook" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -514,7 +530,11 @@
       <created>1405648829991</created>
       <updated>1405648829991</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Fixed DataFactory, adding charts - not finished">
+      <created>1405716113727</created>
+      <updated>1405716113727</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -988,37 +1008,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
+    <entry file="file://$PROJECT_DIR$/app/views/metrics.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48267898" vertical-offset="3866" max-vertical-offset="5066">
-          <caret line="252" column="6" selection-start-line="252" selection-start-column="6" selection-end-line="252" selection-end-column="6" />
-          <folding>
-            <element signature="e#8666#8734#0" expanded="false" />
-            <element signature="e#8787#9261#0" expanded="false" />
-            <element signature="e#9266#9327#0" expanded="false" />
-            <element signature="e#9374#9783#0" expanded="false" />
-            <element signature="e#9410#9685#0" expanded="false" />
-            <element signature="e#9788#9852#0" expanded="false" />
-            <element signature="e#9902#10338#0" expanded="false" />
-            <element signature="e#10343#10384#0" expanded="false" />
-            <element signature="e#10413#10569#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="357">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/chartFactory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
+        <state vertical-scroll-proportion="0.73492604" vertical-offset="0" max-vertical-offset="879">
           <caret line="38" column="11" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/metrics.html">
+    <entry file="file://$PROJECT_DIR$/app/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25908557" vertical-offset="0" max-vertical-offset="853">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.44341803" vertical-offset="3866" max-vertical-offset="5066">
+          <caret line="250" column="73" selection-start-line="250" selection-start-column="73" selection-end-line="250" selection-end-column="73" />
+          <folding>
+            <element signature="e#8680#8748#0" expanded="false" />
+            <element signature="e#8801#9275#0" expanded="false" />
+            <element signature="e#9280#9341#0" expanded="false" />
+            <element signature="e#9388#9797#0" expanded="false" />
+            <element signature="e#9424#9699#0" expanded="false" />
+            <element signature="e#9802#9866#0" expanded="false" />
+            <element signature="e#9916#10352#0" expanded="false" />
+            <element signature="e#10357#10398#0" expanded="false" />
+            <element signature="e#10427#10583#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

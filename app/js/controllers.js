@@ -248,7 +248,7 @@ app.controller("MetricsCtrl", function ($scope, $location, DataFactory, chartFac
          contactCount.push(state.count);
       });
 
-      $scope.barChart = chartFactory.getBarChartData(states);
+      $scope.barChart = chartFactory.getBarChartData(states, contactCount);
       $scope.pieChart = chartFactory.getPieChartData(contactCount);
    });
 
