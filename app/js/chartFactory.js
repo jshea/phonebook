@@ -5,7 +5,7 @@ app.factory('chartFactory', function () {
             labels: states,
             datasets: [
                {
-                  label: "Weekly Work Hours Distribution",
+                  label: "Distribution of contacts by state",
                   fillColor: "rgba(151,187,205,0.5)",
                   strokeColor: "rgba(151,187,205,0.8)",
                   highlightFill: "rgba(151,187,205,0.75)",
@@ -15,25 +15,26 @@ app.factory('chartFactory', function () {
             ]
          };
       },
-      getPieChartData: function (states, contactCount) {
+      getPieChartData: function (contactCount) {
          return [
             {
-               value: employee.accrual.sick,
+//               value: employee.accrual.sick,
+               value: contactCount[0],
                color: "#F7464A",
                highlight: "#FF5A5E",
-               label: "Sick Days"
+               label: "We like"
             },
             {
-               value: employee.accrual.vacation,
+               value: 20,
                color: "#46BFBD",
                highlight: "#5AD3D1",
-               label: "Vacation Days"
+               label: "Tolerated"
             },
             {
-               value: employee.accrual.personalholiday,
+               value: 5,
                color: "#FDB45C",
                highlight: "#FFC870",
-               label: "Personal Holidays"
+               label: "Can we delete these people please?"
             }
          ];
       }

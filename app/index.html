@@ -9,7 +9,7 @@
    <title>Phonebook/Contact Manager</title>                     <!-- Also used for mobile device home screen link title -->
 
    <!-- Load the JS libraries and our files that are required for the main screen to load -->
-   <script src="lib/jquery-2.1.1.js"></script>                    <!-- Angular will use jquery if available (otherwise builtin jqLite) -->
+   <script src="lib/jquery-2.1.1.js"></script>                 <!-- Angular will use jquery if available (otherwise builtin jqLite) -->
 
    <script src="lib/angular.js"></script>
    <script src="lib/angular-route.js"></script>
@@ -49,31 +49,30 @@
    </snap-drawer>
 
    <snap-content>
-      <div class="container"> <!-- Bootstrap centering-->
+      <div class="container-fluid"> <!-- Bootstrap centering-->
          <header>
 
             <nav class="navbar navbar-default" role="navigation">
-               <div class="container-fluid">
-                  <!-- Brand and toggle get grouped for better mobile display -->
-                  <div class="navbar-header">
-                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                     </button>
-                     <a class="navbar-brand" href="#">Phonebook/Contact Manager</a>
-                  </div>
+               <!-- Brand and toggle get grouped for better mobile display -->
+               <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#">Phonebook/Contact Manager</a>
+               </div>
 
-                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                     <ul class="nav navbar-nav">
-                        <li id="menu-list"><a href="/#/">List</a></li>
-                        <li id="menu-new"><a href="/#/new">New Contact</a></li>
-                        <li id="menu-loaddata"><a href="/#/load">Load Data</a></li>
-                        <li id="menu-about"><a href="/#/about">About</a></li>
-                        <li id="menu-snap" snap-toggle="left">Menu</li>
-                     </ul>
-                  </div>
+               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                     <li id="menu-list"><a href="/#/">List</a></li>
+                     <li id="menu-new"><a href="/#/new">New Contact</a></li>
+                     <li id="menu-loaddata"><a href="/#/load">Load Data</a></li>
+                     <li id="menu-metrics"><a href="/#/metrics">Metrics</a></li>
+                     <li id="menu-about"><a href="/#/about">About</a></li>
+                     <li id="menu-snap" snap-toggle="left">Menu</li>
+                  </ul>
                </div>
             </nav>
          </header>
