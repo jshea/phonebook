@@ -21,38 +21,41 @@ app.factory("DataFactory", function ($http, toaster) {
       },
       addContact: function (contact, callback) {
          $http.post(url + "contacts/", contact)
-            .success(
-               callback
-//               , toaster.pop("success", "Add Successful", "New contact has been added")
-            )
+            .success(callback)
             .error(function () {
                toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
             });
       },
-      updateContact: function (id, contact) {
-         $http.post(url + "contacts/" + id, contact)
-            .success(function (data, status, headers, config) {
-               toaster.pop("success", "Update Successful", data.firstname + " " + data.lastname + " has been updated");
-            })
+      updateContact: function (id, contact, callback) {
+//         console.dir(contact);
+         $http.put(url + "contacts/" + id, contact)
+            .success(callback)
             .error(function () {
                toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
             });
       },
       removeContact: function (id) {
          $http.delete(url + "contacts/" + id)
-            .success(function () {
-               toaster.pop("success", "Delete Successful", "Contact has been deleted");
-            })
+            .success()
             .error(function () {
+               toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
+            });
+      },
+      getMetricsState: function (callback) {
+         $http.get(url + "metrics/state")
+            .success(callback)
+            .error(function (data, status, headers, config) { // Add http error info to error toasts?
                toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
             });
       },
       initializeData: function (callback) {
          $http.post(url + "reinitialize")
-            .success(function (data, status, headers, config) {
-               callback(data, status, headers, config);
-               toaster.pop("success", "Delete Successful", "Contact has been deleted");
-            })
+            // Note - this works but we're mixing ui in with a http/rest module. probably not a good practice.
+//            .success(function (data, status, headers, config) {
+//               callback(data, status, headers, config);
+//               toaster.pop("success", "Delete Successful", "Contact has been deleted");
+//            })
+            .success(callback)
             .error(function () {
                toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
             });

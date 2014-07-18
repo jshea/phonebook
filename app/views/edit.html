@@ -24,41 +24,48 @@
    </div>
 
 
-   <tabset>    <!-- From ui-bootstrap -->
+   <div class="panel"> <!-- Begin Tab panel -->
+      <ul id="myTab" class="nav nav-tabs">
+         <li class="active"><a href="#address" data-toggle="tab" target="_blank">Address</a></li>
+         <li><a href="#contactinfo" data-toggle="tab" target="_blank">Contact Info</a></li>
+         <li><a href="#personal" data-toggle="tab" target="_blank">Personal</a></li>
+      </ul>
 
-      <tab heading="Address">
+      <div id="myTabContent" class="tab-content"> <!-- Begin my tab content. -->
 
-         <div class="form-group">
-            <label class="control-label col-md-2" for="street">Street:</label>
-            <div class="col-md-10">
-               <input type="text" ng-model="contact.address.street" class="form-control" id="street">
+         <div class="tab-pane fade in active" id="address">
+
+            <div class="form-group">
+               <label class="control-label col-md-2" for="street">Street:</label>
+               <div class="col-md-10">
+                  <input type="text" ng-model="contact.address.street" class="form-control" id="street">
+               </div>
             </div>
-         </div>
-         <div class="form-group">
-            <label class="control-label col-md-2" for="city">City:</label>
-            <div class="col-md-10">
-               <input type="text" ng-model="contact.address.city" class="form-control" id="city">
+            <div class="form-group">
+               <label class="control-label col-md-2" for="city">City:</label>
+               <div class="col-md-10">
+                  <input type="text" ng-model="contact.address.city" class="form-control" id="city">
+               </div>
             </div>
-         </div>
-         <div class="form-group">
-            <label class="control-label col-md-2" for="state">State:</label>
-            <div class="col-md-10">
-               <input type="text" ng-model="contact.address.state" class="form-control" id="state">   <!-- TODO - Convert to dropdown -->
+            <div class="form-group">
+               <label class="control-label col-md-2" for="state">State:</label>
+               <div class="col-md-10">
+                  <input type="text" ng-model="contact.address.state" class="form-control" id="state">   <!-- TODO - Convert to dropdown -->
+               </div>
             </div>
-         </div>
-         <div class="form-group">
-            <label class="control-label col-md-2" for="zip">Zip:</label>
-            <div class="col-md-10">
-               <input type="text" ng-model="contact.address.zip" class="form-control" id="zip">
+            <div class="form-group">
+               <label class="control-label col-md-2" for="zip">Zip:</label>
+               <div class="col-md-10">
+                  <input type="text" ng-model="contact.address.zip" class="form-control" id="zip">
+               </div>
             </div>
+
          </div>
 
-      </tab>
 
+         <div class="tab-pane fade" id="contactinfo">
 
-      <tab heading="Contact Info">
-
-         <div class="form-group">
+            <div class="form-group">
             <label class="control-label col-md-2" for="phoneNumbers">Phone numbers:</label>
 
             <!--Phone-->
@@ -76,9 +83,8 @@
             </div>
          </div>
 
-
-         <!-- eMail -->
-         <div class="form-group" ng-class="{ 'has-error' : contactForm.emailaddress.$invalid && !contactForm.emailaddress.$pristine }">
+            <!-- eMail -->
+            <div class="form-group" ng-class="{ 'has-error' : contactForm.emailaddress.$invalid && !contactForm.emailaddress.$pristine }">
             <label class="control-label col-md-2" for="phoneNumbers">Email Accounts:</label>
 
             <div id="eMail" ng-controller="EmailCtrl" class="col-md-10">
@@ -96,30 +102,28 @@
                </button>
             </div>
          </div>
-      </tab>
+         </div>
 
-      <tab heading="Personal">
+         <div class="tab-pane fade" id="personal">
 
-         <!-- Birthday -->
-         <div class="form-group">
+            <!-- Birthday -->
+            <div class="form-group">
             <label class="control-label col-md-2" for="birthday">Birthday:</label>
             <div class="col-md-10">
                <input type="date" ng-model="contact.birthday" class="form-control" id="birthday">
             </div>
          </div>
 
-
-         <!-- Spouse -->
-         <div class="form-group">
+            <!-- Spouse -->
+            <div class="form-group">
             <label class="control-label col-md-2" for="spouse">Spouse:</label>
             <div class="col-md-10">
                <input type="text" ng-model="contact.spouse" class="form-control" id="spouse">
             </div>
          </div>
 
-
-         <!-- Children -->
-         <div class="form-group">
+            <!-- Children -->
+            <div class="form-group">
             <label class="control-label col-md-2" for="children">Children:</label>
 
             <div id="children" ng-controller="ChildrenCtrl" class="col-md-10">
@@ -135,14 +139,14 @@
                </button>
             </div>
          </div>
-      </tab>
+         </div>
 
-      <!--
-      <tab heading="Notes">
-         <textarea ui-tinymce ng-model="contact.notes"></textarea>
-      </tab>
-      -->
-   </tabset>
+         <!--
+         tab notes
+            <textarea ui-tinymce ng-model="contact.notes"></textarea>
+         -->
+      </div>
+   </div>
 
 
    <div>

@@ -24,11 +24,12 @@ var express = require("express"),
    Server = require("mongodb").Server,
    ObjectID = require("mongodb").ObjectID;            // Used to create Mongo ObjectID's from string representations of _id
 
-app.set("jsonp callback name", "JSON_CALLBACK");      // Set default JSONP callback name - http://expressjs.com/4x/api.html
+// app.set("jsonp callback name", "JSON_CALLBACK");      // Set default JSONP callback name - http://expressjs.com/4x/api.html
 
 app.use(express.static(__dirname + '/app'));          // Serve static files from the "app" subfolder
 app.use(methodOverride());                            // Allows use of "put" & "del" methods?
-app.use(bodyParser.urlencoded({extended: true}));   // This clears out rec.body?
+app.use(bodyParser.urlencoded({ extended: false }));  // parse application/x-www-form-urlencoded
+app.use(bodyParser.json());                           // parse application/json
 app.listen(process.env.PORT || 3000);                 // If we're running in Heroku, the port will be available via env var
 
 var db = "";
@@ -106,13 +107,13 @@ app.get("/contacts/:id", function (req, res) {
 app.post("/contacts", function (req, res) {
 
    var person = req.body;
-   // console.log("PUT /contacts, req.body: " + JSON.stringify(person));
+//   console.log("POST /contacts, req.body: " + JSON.stringify(person));
 
    db.collection("people").insert(person, function (err, result) {      // insert takes an object or array of objects
       if (err) {
          throw err;
       } else {
-         // console.dir("Successfully inserted: " + JSON.stringify(result[0])); // Note the returned value (result) is an array even if it’s one document
+//         console.dir("Successfully inserted: " + JSON.stringify(result[0])); // Note the returned value (result) is an array even if it’s one document
 
          res.send(result[0]);
       }
@@ -124,23 +125,23 @@ app.post("/contacts", function (req, res) {
 /*
  * Update a contact
  */
-app.post("/contacts/:id", function (req, res) {
-   // console.log("Updating a contact");
-
+app.put("/contacts/:id", function (req, res) {
    var person = req.body;
+//   console.log("Updating a contact " + JSON.stringify(person));
+
    person._id = new ObjectID(person._id);   // Convert _id to a mongo ObjectID
 
    db.collection("people").update({"_id" : person._id}, person, function (err, result) {
       if (err) {
          throw err;
       } else {
-         // console.dir("Successfully updated: " + JSON.stringify(result));
+//         console.dir("Successfully updated: " + JSON.stringify(result));
 
          db.collection("people").findOne({"_id" : person._id}, function (err, doc) {
             if (err) {
                throw err;
             } else {
-               // console.dir("Successfully retrieved one contact: " + JSON.stringify(doc));
+//               console.dir("Successfully retrieved one contact: " + JSON.stringify(doc));
                res.send(doc);
             }
          });
@@ -153,7 +154,7 @@ app.post("/contacts/:id", function (req, res) {
 /*
  * Delete a contact
  */
-app.del("/contacts/:id", function (req, res) {
+app.delete("/contacts/:id", function (req, res) {
    // console.log("Deleting contact id", req.params.id);
 
    db.collection("people").remove({"_id" : new ObjectID(req.params.id)}, function (err, removed) {
@@ -161,7 +162,7 @@ app.del("/contacts/:id", function (req, res) {
          throw err;
       } else {
          // console.dir("Successfully removed " + removed + " documents!");
-         res.send("Contact deleted", 200);
+         res.send(200, "Contact deleted");
       }
    });
 });
@@ -170,7 +171,7 @@ app.del("/contacts/:id", function (req, res) {
 /*
  * Delete all contacts
  */
-app.del("/contacts", function (req, res) {
+app.delete("/contacts", function (req, res) {
    // console.log("Deleting contact id", req.params.id);
 
    db.collection("people").remove({}, function (err, removed) {
@@ -200,32 +201,6 @@ app.get("/metrics/state", function (req, res) {
          res.send(docs);
       }
    });
-});
-
-
-/**
- * Reset the database. This deletes all data and loads the sample/test data
- */
-app.post("/flintstones", function (req, res) {
-
-   db.collection("people").remove(function (err, removed) {
-      if (err) {
-         throw err;
-      } else {
-         // console.dir("Successfully removed " + removed + " documents!");
-
-         db.collection("people").insert(testData, function (err, result) {      // insert takes an object or array of objects
-            if (err) {
-               throw err;
-            } else {
-               // console.dir("Successfully inserted: " + JSON.stringify(result.length) + " documents"); // Note the returned value (result) is an array even if it’s one document
-
-               res.send(result);
-            }
-         });
-      }
-   });
-
 });
 
 
@@ -265,19 +240,19 @@ app.post("/reinitialize", function (req, res) {
  */
 app.get("*", function (req, res) {
    // console.log("A GET that wasn't found", req.params);
-   res.send("Page Not Found", 404);
+   res.send(404, "Page Not Found");
 });
 app.post("*", function (req, res) {
    // console.log("A POST that wasn't found", req.params);
-   res.send("Page Not Found", 404);
+   res.send(404, "Page Not Found");
 });
 app.put("*", function (req, res) {
    // console.log("A PUT that wasn't found", req.params);
-   res.send("Page Not Found", 404);
+   res.send(404, "Page Not Found");
 });
 app.delete("*", function (req, res) {
    // console.log("A DELETE that wasn't found", req.params);
-   res.send("Page Not Found", 404);
+   res.send(404, "Page Not Found");
 });
 
 

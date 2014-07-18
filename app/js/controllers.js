@@ -6,7 +6,6 @@ var url = "/";                                        // Local mongo/rest servic
 // Note we're importing Angular plugins as well as our own
 var app = angular.module("phonebook", ["ngRoute",                 // Routing service, $routProvider
                                        "ngGrid",                  // Grid plugin (list of people on opening screen)
-                                       "ui.bootstrap",            // Angular directives implementing Bootstrap (tabs)
                                        "snap",                    // Side drawer
                                        "toaster",                 // Popup messages (toasts)
                                        "google-maps",             // Another Google maps http://angular-google-maps.org/use
@@ -40,6 +39,11 @@ app.config(["$routeProvider", function ($routeProvider) {
       .when("/new", {
          controller: "NewCtrl",
          templateUrl: "views/edit.html"
+      })
+
+      .when("/metrics", {
+         controller: "MetricsCtrl",
+         templateUrl: "views/metrics.html"
       })
 
       .when("/load", {
@@ -118,7 +122,7 @@ app.controller("ListCtrl", function ($scope, DataFactory, $location, toaster) {
 /*
  * Controller for viewing a contact
  */
-app.controller("ViewCtrl", function ($scope, $location, $routeParams, DataFactory) {
+app.controller("ViewCtrl", function ($scope, $location, $routeParams, DataFactory, toaster) {
    // We need to initialize our map with dummy data, otherwise it doesn't display.
    $scope.map = {
       center: {
@@ -165,6 +169,7 @@ app.controller("ViewCtrl", function ($scope, $location, $routeParams, DataFactor
 
    $scope.remove = function () {
       DataFactory.removeContact($scope.contact._id);
+      toaster.pop("success", "Delete Successful", "Contact has been deleted");
       $location.path("/");
    };
 
@@ -177,7 +182,7 @@ app.controller("ViewCtrl", function ($scope, $location, $routeParams, DataFactor
 /*
  * Controller for the edit screen when updating an existing contact
  */
-app.controller("EditCtrl", function ($scope, $location, $routeParams, DataFactory) {
+app.controller("EditCtrl", function ($scope, $location, $routeParams, DataFactory, toaster) {
    DataFactory.getContact($routeParams.contactId, function (data, status, headers, config) {
       $scope.contact = data;
    });
@@ -185,12 +190,14 @@ app.controller("EditCtrl", function ($scope, $location, $routeParams, DataFactor
    $scope.save = function () {
       DataFactory.updateContact($routeParams.id, $scope.contact, function (data, status, headers, config) {
          $scope.contact = data;
+         toaster.pop("success", "Update Successful", data.firstname + " " + data.lastname + " has been updated");
          $location.path("/view/" + $scope.contact._id);
       });
    };
 
    $scope.remove = function () {
       DataFactory.removeContact($scope.contact._id);
+      toaster.pop("success", "Contact deleted");
       $location.path("/");
    };
 
@@ -203,7 +210,7 @@ app.controller("EditCtrl", function ($scope, $location, $routeParams, DataFactor
 /*
  * Controller for the edit screen when adding a new contact
  */
-app.controller("NewCtrl", function ($scope, $location, DataFactory) {
+app.controller("NewCtrl", function ($scope, $location, DataFactory, toaster) {
 
    // Create an empty contact to bind to the Add Screen
    $scope.contact = {
@@ -215,9 +222,35 @@ app.controller("NewCtrl", function ($scope, $location, DataFactory) {
    $scope.save = function () {
       DataFactory.addContact($scope.contact, function (data, status, headers, config) {
          $scope.contact = data;
+         toaster.pop("success", "Add Successful", data.firstname + " " + data.lastname + " has been added")
          $location.path("/view/" + $scope.contact._id);
       });
    };
+
+   $("#menu-list").removeClass("active");
+   $("#menu-new").addClass("active");
+   $("#menu-about").removeClass("active");
+});
+
+
+/*
+ * Controller for the metrics screen with sample charts
+ */
+app.controller("MetricsCtrl", function ($scope, $location, DataFactory, chartFactory) {
+
+   DataFactory.getMetricsState(function (data, status, headers, config) {
+      $scope.metricsByState = data;
+
+      var states = [];
+      var contactCount = [];
+      $scope.metricsByState.forEach(function (state) {
+         states.push(state._id);
+         contactCount.push(state.count);
+      });
+
+      $scope.barChart = chartFactory.getBarChartData(states);
+      $scope.pieChart = chartFactory.getPieChartData(contactCount);
+   });
 
    $("#menu-list").removeClass("active");
    $("#menu-new").addClass("active");
@@ -299,21 +332,12 @@ app.controller("AboutCtrl", [
 /*
  * Controller for reinitializing the database
  */
-app.controller("LoadDataCtrl", function ($scope, $location, DataFactory) {
+app.controller("LoadDataCtrl", function ($scope, $location, DataFactory, toaster) {
    $scope.contacts = [];
-
-//   $http.post(url + "reinitialize")
-//      .success(function (data, status, headers, config) {
-//         $scope.contacts = data;
-//         $location.path("/");
-//         toaster.pop("success", "Data Reload", "The sample data has been reinitialized");
-//      })
-//      .error(function (data, status, headers, config) {
-//         toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "reinitialize failed.");
-//      });
 
    DataFactory.initializeData(function (data, status, headers, config) {
       $scope.contacts = data;
+      toaster.pop("success", "Data Reload", "The sample data has been reinitialized");
       $location.path("/");
    });
 
