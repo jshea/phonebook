@@ -21,6 +21,7 @@ app.controller("ViewCtrl", function ($scope, $location, $routeParams, DataFactor
       // Google address format - used to geocode (lookup) lat/lon for this address
       var googleAddress = data.address.street + " " + data.address.city + " " + data.address.state + " " + data.address.zip;
 
+      // todo - This won't work when offline - need to add network test
       // Get lat/lon for an address
       var location;
       var geocoder = new google.maps.Geocoder();

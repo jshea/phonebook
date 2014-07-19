@@ -1,0 +1,52 @@
+CACHE MANIFEST
+# v1
+# This is a list of all phonebook artifacts to be
+# cached locally. This enables off line use.
+index.html
+favicon.ico
+phonebook.196.png
+controllers/aboutController.js
+controllers/editController.js
+controllers/listController.js
+controllers/loadDataController.js
+controllers/metricsController.js
+controllers/newController.js
+controllers/viewController.js
+css/angular-snap.css
+css/bootstrap.css
+css/ng-grid.css
+css/phonebook.css
+css/toaster.css
+fonts/glyphicons-halflings-regular.eot
+fonts/glyphicons-halflings-regular.svg
+fonts/glyphicons-halflings-regular.ttf
+fonts/glyphicons-halflings-regular.woff
+js/chartFactory.js
+js/directives.js
+js/filters.js
+js/jtsutil.js
+js/services.js
+lib/angles.js
+lib/angular.js
+lib/angular-animate.js
+lib/angular-google-maps.min.js
+lib/angular-route.js
+lib/angular-snap.js
+lib/bootstrap.js
+lib/chart.js
+lib/jquery-2.1.1.js
+lib/moment.js
+lib/ng-grid.js
+lib/snap.js
+lib/toaster.js
+lib/underscore.js
+views/about.html
+views/edit.html
+views/list.html
+views/metrics.html
+views/viewDetail.html
+
+# This is to whitelist AJAX network calls
+ # http://quickleft.com/blog/using-the-html5-application-cache
+ NETWORK:
+ *
