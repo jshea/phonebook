@@ -109,8 +109,16 @@
    <script src="lib/angles.js"></script>
 
    <!-- Load our JS scripts required for the main screen to load -->
+   <!-- For production these would be concatenated and minified -->
+   <script src="controllers/listController.js"></script>       <!-- First because this sets up the module -->
+   <script src="controllers/aboutController.js"></script>
+   <script src="controllers/editController.js"></script>
+   <script src="controllers/loadDataController.js"></script>
+   <script src="controllers/metricsController.js"></script>
+   <script src="controllers/newController.js"></script>
+   <script src="controllers/viewController.js"></script>
+
    <script src="js/directives.js"></script>
-   <script src="js/controllers.js"></script>
    <script src="js/filters.js"></script>
    <script src="js/services.js"></script>
    <script src="js/chartFactory.js"></script>
