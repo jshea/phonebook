@@ -3,9 +3,9 @@
 /*
  * Controller for the metrics screen with sample charts
  */
-app.controller("MetricsCtrl", function ($scope, $location, DataFactory, chartFactory) {
+app.controller("MetricsCtrl", function ($scope, $location, HttpFactory, chartFactory) {
 
-   DataFactory.getMetricsState(function (data, status, headers, config) {
+   HttpFactory.getMetricsState(function (data, status, headers, config) {
       $scope.metricsByState = data;
 
       var states = [];

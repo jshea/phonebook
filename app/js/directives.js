@@ -6,14 +6,14 @@ directives.directive("butterbar", ["$rootScope",
    function ($rootScope) {
       return {
          link: function (scope, element, attrs) {
-            element.addClass("hide");
+            element.addClass("hidden");
 
             $rootScope.$on("$routeChangeStart", function () {
-               element.removeClass("hide");
+               element.removeClass("hidden");
             });
 
             $rootScope.$on("$routeChangeSuccess", function () {
-               element.addClass("hide");
+               element.addClass("hidden");
             });
          }
       };

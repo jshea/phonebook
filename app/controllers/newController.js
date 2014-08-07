@@ -3,7 +3,7 @@
 /*
  * Controller for the edit screen when adding a new contact
  */
-app.controller("NewCtrl", function ($scope, $location, DataFactory, toaster) {
+app.controller("NewCtrl", function ($scope, $location, HttpFactory, toaster) {
 
    // Create an empty contact to bind to the Add Screen
    $scope.contact = {
@@ -13,7 +13,7 @@ app.controller("NewCtrl", function ($scope, $location, DataFactory, toaster) {
    };
 
    $scope.save = function () {
-      DataFactory.addContact($scope.contact, function (data, status, headers, config) {
+      HttpFactory.addContact($scope.contact, function (data, status, headers, config) {
          $scope.contact = data;
          toaster.pop("success", "Add Successful", data.firstname + " " + data.lastname + " has been added")
          $location.path("/view/" + $scope.contact._id);

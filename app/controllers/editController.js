@@ -3,13 +3,13 @@
 /*
  * Controller for the edit screen when updating an existing contact
  */
-app.controller("EditCtrl", function ($scope, $location, $routeParams, DataFactory, toaster) {
-   DataFactory.getContact($routeParams.contactId, function (data, status, headers, config) {
+app.controller("EditCtrl", function ($scope, $location, $routeParams, HttpFactory, toaster) {
+   HttpFactory.getContact($routeParams.contactId, function (data, status, headers, config) {
       $scope.contact = data;
    });
 
    $scope.save = function () {
-      DataFactory.updateContact($routeParams.id, $scope.contact, function (data, status, headers, config) {
+      HttpFactory.updateContact($routeParams.id, $scope.contact, function (data, status, headers, config) {
          $scope.contact = data;
          toaster.pop("success", "Update Successful", data.firstname + " " + data.lastname + " has been updated");
          $location.path("/view/" + $scope.contact._id);
@@ -17,7 +17,7 @@ app.controller("EditCtrl", function ($scope, $location, $routeParams, DataFactor
    };
 
    $scope.remove = function () {
-      DataFactory.removeContact($scope.contact._id);
+      HttpFactory.removeContact($scope.contact._id);
       toaster.pop("success", "Contact deleted");
       $location.path("/");
    };

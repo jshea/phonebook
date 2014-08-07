@@ -3,33 +3,36 @@
 //var url = "http://phonebookangular.herokuapp.com/";   // Heroku - Running Cordova compiled with data from Heroku hosted services
 var url = "/";                                        // Local mongo/rest service and Heroku web app
 
-app.factory("DataFactory", function ($http, toaster) {
+app.factory("HttpFactory", function (localForageAppId, $http, toaster) {
    return {
-      getAllContacts: function (callback) {
+      getAllContacts: function (successCallback) {
          $http.get(url + "contactpicklist")
-            .success(callback)
+            .success(function (data, status, headers, config) {
+               successCallback(data, status, headers, config);
+               localforage.setItem(localForageAppId, data);    // Save latest copy of the server data locally
+            })
             .error(function (data, status, headers, config) { // Add http error info to error toasts?
                toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
             });
       },
-      getContact: function (id, callback) {
+      getContact: function (id, successCallback) {
          $http.get(url + "contacts/" + id)
-            .success(callback)
+            .success(successCallback)
             .error(function () {
                toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
             });
       },
-      addContact: function (contact, callback) {
+      addContact: function (contact, successCallback) {
          $http.post(url + "contacts/", contact)
-            .success(callback)
+            .success(successCallback)
             .error(function () {
                toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
             });
       },
-      updateContact: function (id, contact, callback) {
+      updateContact: function (id, contact, successCallback) {
 //         console.dir(contact);
          $http.put(url + "contacts/" + id, contact)
-            .success(callback)
+            .success(successCallback)
             .error(function () {
                toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
             });
@@ -41,21 +44,21 @@ app.factory("DataFactory", function ($http, toaster) {
                toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
             });
       },
-      getMetricsState: function (callback) {
+      getMetricsState: function (successCallback) {
          $http.get(url + "metrics/state")
-            .success(callback)
+            .success(successCallback)
             .error(function (data, status, headers, config) { // Add http error info to error toasts?
                toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
             });
       },
-      initializeData: function (callback) {
+      initializeData: function (successCallback) {
          $http.post(url + "reinitialize")
             // Note - this works but we're mixing ui in with a http/rest module. probably not a good practice.
 //            .success(function (data, status, headers, config) {
-//               callback(data, status, headers, config);
+//               successCallback(data, status, headers, config);
 //               toaster.pop("success", "Delete Successful", "Contact has been deleted");
 //            })
-            .success(callback)
+            .success(successCallback)
             .error(function () {
                toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
             });

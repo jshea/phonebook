@@ -9,7 +9,7 @@
    <title>Phonebook/Contact Manager</title>                     <!-- Also used for mobile device home screen link title -->
 
    <!-- Load the JS libraries and our files that are required for the main screen to load -->
-   <script src="lib/jquery-2.1.1.js"></script>                 <!-- Angular will use jquery if available (otherwise builtin jqLite) -->
+   <script src="lib/jquery.js"></script>                 <!-- Angular will use jquery if available (otherwise builtin jqLite) -->
 
    <script src="lib/angular.js"></script>
    <script src="lib/angular-route.js"></script>
@@ -103,14 +103,15 @@
 
    <script src="lib/underscore.js"></script>
    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
-   <script src="lib/angular-google-maps.min.js"></script>
+   <script src="lib/angular-google-maps.js"></script>
 
-   <script src="lib/chart.js"></script>
+   <script src="lib/Chart.js"></script>
    <script src="lib/angles.js"></script>
 
    <!-- Load our JS scripts required for the main screen to load -->
    <!-- For production these would be concatenated and minified -->
-   <script src="controllers/listController.js"></script>       <!-- First because this sets up the module -->
+   <script src="controllers/phonebook.js"></script>       <!-- First because this sets up the module -->
+   <script src="controllers/listController.js"></script>
    <script src="controllers/aboutController.js"></script>
    <script src="controllers/editController.js"></script>
    <script src="controllers/loadDataController.js"></script>
@@ -118,10 +119,13 @@
    <script src="controllers/newController.js"></script>
    <script src="controllers/viewController.js"></script>
 
+   <script src="services/dataFactory.js"></script>
+   <script src="services/forageFactory.js"></script>
+   <script src="services/httpFactory.js"></script>
+
    <script src="js/directives.js"></script>
    <script src="js/filters.js"></script>
-   <script src="js/services.js"></script>
-   <script src="js/chartFactory.js"></script>
+   <script src="services/chartFactory.js"></script>
 
 </body>
 

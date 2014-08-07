@@ -3,10 +3,10 @@
 /*
  * Controller for reinitializing the database
  */
-app.controller("LoadDataCtrl", function ($scope, $location, DataFactory, toaster) {
+app.controller("LoadDataCtrl", function ($scope, $location, HttpFactory, toaster) {
    $scope.contacts = [];
 
-   DataFactory.initializeData(function (data, status, headers, config) {
+   HttpFactory.initializeData(function (data, status, headers, config) {
       $scope.contacts = data;
       toaster.pop("success", "Data Reload", "The sample data has been reinitialized");
       $location.path("/");

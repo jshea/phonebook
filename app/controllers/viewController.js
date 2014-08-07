@@ -3,7 +3,7 @@
 /*
  * Controller for viewing a contact
  */
-app.controller("ViewCtrl", function ($scope, $location, $routeParams, DataFactory, toaster) {
+app.controller("ViewCtrl", function ($scope, $location, $routeParams, HttpFactory, toaster) {
    // We need to initialize our map with dummy data, otherwise it doesn't display.
    $scope.map = {
       center: {
@@ -14,7 +14,7 @@ app.controller("ViewCtrl", function ($scope, $location, $routeParams, DataFactor
    };
 
    // contactId is what the parameter was named in our routes
-   DataFactory.getContact($routeParams.contactId, function (data, status, headers, config) {
+   HttpFactory.getContact($routeParams.contactId, function (data, status, headers, config) {
       $scope.contact = data;
       $scope.age = moment().diff(data.birthday, "years");
 
@@ -50,7 +50,7 @@ app.controller("ViewCtrl", function ($scope, $location, $routeParams, DataFactor
    };
 
    $scope.remove = function () {
-      DataFactory.removeContact($scope.contact._id);
+      HttpFactory.removeContact($scope.contact._id);
       toaster.pop("success", "Delete Successful", "Contact has been deleted");
       $location.path("/");
    };
