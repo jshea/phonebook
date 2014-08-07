@@ -2,41 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34966a91-47c5-4fe4-a426-30dc5a769eb5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular-google-maps.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular-localForage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/angular-mocks.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/services/dataFactory.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/services/forageFactory.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/tests/httpFactoryTest.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/karma.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/localforage.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/phonebook.js" />
-      <change type="DELETED" beforePath="C:\Users\jshea\Dropbox\Development\Angular\Phonebook\app\lib\angular-google-maps.min.js" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\jshea\Dropbox\Development\Angular\Phonebook\app\js\chartFactory.js" afterPath="$PROJECT_DIR$/app/services/chartFactory.js" />
-      <change type="MOVED" beforePath="C:\Users\jshea\Dropbox\Development\Angular\Phonebook\app\js\services.js" afterPath="$PROJECT_DIR$/app/services/httpFactory.js" />
-      <change type="MOVED" beforePath="C:\Users\jshea\Dropbox\Development\Angular\Phonebook\app\lib\chart.js" afterPath="$PROJECT_DIR$/app/lib/Chart.js" />
-      <change type="MOVED" beforePath="C:\Users\jshea\Dropbox\Development\Angular\Phonebook\app\lib\jquery-2.1.1.js" afterPath="$PROJECT_DIR$/app/lib/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/angles.js" afterPath="$PROJECT_DIR$/app/lib/angles.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/angular-animate.js" afterPath="$PROJECT_DIR$/app/lib/angular-animate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/angular-route.js" afterPath="$PROJECT_DIR$/app/lib/angular-route.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/angular-snap.css" afterPath="$PROJECT_DIR$/app/css/angular-snap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/angular-snap.js" afterPath="$PROJECT_DIR$/app/lib/angular-snap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/angular.js" afterPath="$PROJECT_DIR$/app/lib/angular.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/bower.json" afterPath="$PROJECT_DIR$/app/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/directives.js" afterPath="$PROJECT_DIR$/app/js/directives.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/editController.js" afterPath="$PROJECT_DIR$/app/controllers/editController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/jtsutil.js" afterPath="$PROJECT_DIR$/app/js/jtsutil.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/listController.js" afterPath="$PROJECT_DIR$/app/controllers/listController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/loadDataController.js" afterPath="$PROJECT_DIR$/app/controllers/loadDataController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/metricsController.js" afterPath="$PROJECT_DIR$/app/controllers/metricsController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/moment.js" afterPath="$PROJECT_DIR$/app/lib/moment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/newController.js" afterPath="$PROJECT_DIR$/app/controllers/newController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/ng-grid.css" afterPath="$PROJECT_DIR$/app/css/ng-grid.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/ng-grid.js" afterPath="$PROJECT_DIR$/app/lib/ng-grid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/lib/snap.js" afterPath="$PROJECT_DIR$/app/lib/snap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/viewController.js" afterPath="$PROJECT_DIR$/app/controllers/viewController.js" />
+      <change type="DELETED" beforePath="C:\Users\jshea\Dropbox\Development\Angular\Phonebook\app\lib\chart.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Phonebook.iws" />
@@ -65,7 +31,7 @@
           <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-1.6494465" vertical-offset="1506" max-vertical-offset="2346">
+                <state vertical-scroll-proportion="-1.0642858" vertical-offset="1506" max-vertical-offset="2346">
                   <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
                   <folding />
                 </state>
@@ -132,23 +98,6 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Chart.js" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/lib/Chart.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="56542">
-                  <caret line="3317" column="0" selection-start-line="3317" selection-start-column="0" selection-end-line="3317" selection-end-column="0" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                    <marker date="1407446630392" expanded="true" signature="74750:74793" placeholder="..." />
-                    <marker date="1407446630392" expanded="true" signature="86123:86166" placeholder="..." />
-                    <marker date="1407446630392" expanded="true" signature="93161:93206" placeholder="..." />
-                    <marker date="1407446630392" expanded="true" signature="106234:106277" placeholder="..." />
-                    <marker date="1407446630392" expanded="true" signature="115566:115611" placeholder="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="jquery.js" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/lib/jquery.js">
               <provider selected="true" editor-type-id="text-editor">
@@ -166,7 +115,7 @@
           <file leaf-file-name="httpFactory.js" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/services/httpFactory.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.14964789" vertical-offset="34" max-vertical-offset="1547">
+                <state vertical-scroll-proportion="0.09815242" vertical-offset="34" max-vertical-offset="1547">
                   <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
                   <folding />
                 </state>
@@ -334,6 +283,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Phonebook" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Phonebook" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -613,7 +580,11 @@
       <created>1405730964343</created>
       <updated>1405730964343</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Adding localstorage - not finished. Add karma/jasmine tests - not tested. Update several libraries.">
+      <created>1407446966974</created>
+      <updated>1407446966974</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -640,12 +611,12 @@
     <frame x="0" y="0" width="1811" height="1040" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32928178" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928178" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32837406" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15041783" sideWeight="0.18945634" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15041783" sideWeight="0.81054366" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15041783" sideWeight="0.18895027" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15041783" sideWeight="0.8110497" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3916084" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
@@ -939,7 +910,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/services/httpFactory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14964789" vertical-offset="34" max-vertical-offset="1547">
+        <state vertical-scroll-proportion="0.09815242" vertical-offset="34" max-vertical-offset="1547">
           <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
           <folding />
         </state>
@@ -1101,24 +1072,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/lib/Chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="56542">
-          <caret line="3317" column="0" selection-start-line="3317" selection-start-column="0" selection-end-line="3317" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <marker date="1407446630392" expanded="true" signature="74750:74793" placeholder="..." />
-            <marker date="1407446630392" expanded="true" signature="86123:86166" placeholder="..." />
-            <marker date="1407446630392" expanded="true" signature="93161:93206" placeholder="..." />
-            <marker date="1407446630392" expanded="true" signature="106234:106277" placeholder="..." />
-            <marker date="1407446630392" expanded="true" signature="115566:115611" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6494465" vertical-offset="1506" max-vertical-offset="2346">
+        <state vertical-scroll-proportion="-1.0642858" vertical-offset="1506" max-vertical-offset="2346">
           <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
