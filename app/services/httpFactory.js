@@ -8,6 +8,7 @@ app.factory("httpFactory", function (localForageAppId, $http, toaster) {
       getAllContacts: function (successCallback) {
          $http.get(url + "contactpicklist")
             .success(function (data, status, headers, config) {
+               localforage.setItem(localForageAppId, data);
                successCallback(data, status, headers, config);
             })
             .error(function (data, status, headers, config) { // Add http error info to error toasts?
