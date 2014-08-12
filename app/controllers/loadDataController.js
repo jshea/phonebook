@@ -3,13 +3,16 @@
 /*
  * Controller for reinitializing the database
  */
-app.controller("LoadDataCtrl", function ($scope, $location, HttpFactory, toaster) {
+app.controller("LoadDataCtrl", function ($scope, $location, dataFactory, toaster) {
    $scope.contacts = [];
 
-   HttpFactory.initializeData(function (data, status, headers, config) {
-      $scope.contacts = data;
-      toaster.pop("success", "Data Reload", "The sample data has been reinitialized");
-      $location.path("/");
+   dataFactory.initializeData(function (data, status, headers, config) {
+      if (data.result === "success") {
+         toaster.pop("success", "Data Reload", "The sample data has been reinitialized");
+         $location.path("/");
+      } else {
+         toaster.pop("error", "Reinitialization failed", "The call to reload data failed.");
+      }
    });
 
    $("#menu-list").addClass("active");

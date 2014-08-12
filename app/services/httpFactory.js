@@ -3,13 +3,12 @@
 //var url = "http://phonebookangular.herokuapp.com/";   // Heroku - Running Cordova compiled with data from Heroku hosted services
 var url = "/";                                        // Local mongo/rest service and Heroku web app
 
-app.factory("HttpFactory", function (localForageAppId, $http, toaster) {
+app.factory("httpFactory", function (localForageAppId, $http, toaster) {
    return {
       getAllContacts: function (successCallback) {
          $http.get(url + "contactpicklist")
             .success(function (data, status, headers, config) {
                successCallback(data, status, headers, config);
-               localforage.setItem(localForageAppId, data);    // Save latest copy of the server data locally
             })
             .error(function (data, status, headers, config) { // Add http error info to error toasts?
                toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
@@ -30,7 +29,6 @@ app.factory("HttpFactory", function (localForageAppId, $http, toaster) {
             });
       },
       updateContact: function (id, contact, successCallback) {
-//         console.dir(contact);
          $http.put(url + "contacts/" + id, contact)
             .success(successCallback)
             .error(function () {

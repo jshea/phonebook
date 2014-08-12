@@ -167,6 +167,14 @@ app.factory('forageFactory', function (localForageAppId) {
          });
       },
 
+      initializeData: function (successCallback) {
+         // Save updated contacts list back to localForage and
+         // return the updated contact to our caller.
+         localforage.setItem(localForageAppId, testData, function(data) {
+            successCallback(data);
+         });
+      },
+
       getMetricsState: function (successCallback) {
          var states = {};
          localforage.getItem(localForageAppId, function (data) {

@@ -1,7 +1,7 @@
 describe("httpFactory Test", function () {         // create a test Suite
 
    // Arrange
-   var service, backend;
+   var service, backend, google;
 
    beforeEach(angular.mock.module("phonebook"));   // create phonebook module
 
@@ -10,6 +10,15 @@ describe("httpFactory Test", function () {         // create a test Suite
       backend = $httpBackend;
 //      sessionStorage.setItem("activeUser", "username");
    }));
+
+   beforeEach(function () {
+//      google = { maps : {
+//            OverlayView : function () { },
+//            Marker :      function () { },
+//            InfoWindow :  function () { }
+//         }
+//      };
+   });
 
    // Act and Assert
    // Tests are called specs
@@ -22,14 +31,15 @@ describe("httpFactory Test", function () {         // create a test Suite
    });
 
    it("should getAllContacts", function () {
-      backend.expect("GET", "/contactpicklist")
-         .respond([{"lastname": "Shea","firstname": "Jim", "phonenumbers": ["555 555-1212"]}]);   // Mock the request
+      // Setup mock request and response with data
+      backend.expect("GET", "/contactpicklist").respond([{"lastname": "Shea","firstname": "Jim", "phonenumbers": ["555 555-1212"]}]);   // Mock the request
 
       service.getAllContacts(function (data) {     // Call our function
-         expect(data).toBeDefined();               // Test that response is defined
+         expect(data).toBeDefined();               // Test that data was returned
          expect(data[0].lastname).toEqual("Shea"); // Test we received our (mocked) data correctly
       });
+
+      backend.flush();     // Send back pending response from $httpBackend (i.e. resolves promise)
    });
 
-   backend.flush();     // Send back pending response from $httpBackend (i.e. resolves promise)
 });

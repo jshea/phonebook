@@ -15,9 +15,11 @@ module.exports = function (config) {
 
       // list of files / patterns to load in the browser
       files: [
+//         "lib/angular-google-maps.js",
          "lib/angular.js",
+         "lib/angular-mocks.js",
          "lib/angular-route.js",
-         "lib/jquery-2.1.1.js",
+         "lib/jquery.js",
          "lib/*.js",
          "js/*.js",
          "controllers/phonebook.js",

@@ -8,7 +8,6 @@ var app = angular.module("phonebook", [
    "toaster",                 // Popup messages (toasts)
    "google-maps",             // Another Google maps http://angular-google-maps.org/use
    "angles",
-   "LocalForageModule",
    "phonebook.directives"]);    // Our directives
 
 app.config(function (snapRemoteProvider) {

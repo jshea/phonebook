@@ -1,9 +1,8 @@
-app.factory('DataFactory', function (URL, $rootScope, httpFactory, forageFactory, localForageAppId) {
+app.factory('dataFactory', function ($rootScope, httpFactory, forageFactory, localForageAppId) {
    return {
       getAllContacts: function (successCallback) {
          if ($rootScope.online) {
             httpFactory.getAllContacts(successCallback);
-
          } else {
             forageFactory.getAllContacts(successCallback);
          }
@@ -19,9 +18,9 @@ app.factory('DataFactory', function (URL, $rootScope, httpFactory, forageFactory
 
       addContact: function (contact, successCallback) {
          if ($rootScope.online) {
-            httpFactory.addContact(successCallback);
+            httpFactory.addContact(contact, successCallback);
          } else {
-            forageFactory.addContact(successCallback);
+            forageFactory.addContact(contact, successCallback);
          }
       },
 
@@ -38,6 +37,14 @@ app.factory('DataFactory', function (URL, $rootScope, httpFactory, forageFactory
             httpFactory.removeContact(id);
          } else {
             forageFactory.removeContact(id);
+         }
+      },
+
+      initializeData: function (successCallback) {
+         if ($rootScope.online) {
+            httpFactory.initializeData(successCallback);
+         } else {
+            forageFactory.initializeData(successCallback);
          }
       },
 
