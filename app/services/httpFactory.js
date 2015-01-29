@@ -19,35 +19,35 @@ app.factory("httpFactory", function (localForageAppId, $http, toaster) {
          $http.get(url + "contacts/" + id)
             .success(successCallback)
             .error(function () {
-               toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
+               toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts failed.");
             });
       },
       addContact: function (contact, successCallback) {
          $http.post(url + "contacts/", contact)
             .success(successCallback)
             .error(function () {
-               toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
+               toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts failed.");
             });
       },
       updateContact: function (id, contact, successCallback) {
          $http.put(url + "contacts/" + id, contact)
             .success(successCallback)
             .error(function () {
-               toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
+               toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts failed.");
             });
       },
       removeContact: function (id) {
          $http.delete(url + "contacts/" + id)
             .success()
             .error(function () {
-               toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
+               toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contacts failed.");
             });
       },
       getMetricsState: function (successCallback) {
          $http.get(url + "metrics/state")
             .success(successCallback)
             .error(function (data, status, headers, config) { // Add http error info to error toasts?
-               toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
+               toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "metrics/state failed.");
             });
       },
       initializeData: function (successCallback) {
@@ -59,7 +59,14 @@ app.factory("httpFactory", function (localForageAppId, $http, toaster) {
 //            })
             .success(successCallback)
             .error(function () {
-               toaster.pop("error", "REST call failed", "The REST Web Service call to " + url + "contactpicklist failed.");
+               toaster.pop("error", "REST call failed", "The REST Web Service call to initialize data failed.");
+            });
+      },
+      getWeather: function (lat, lon, successCallback) {
+         $http.get(url + "weather/" + lat + "," + lon)
+            .success(successCallback)
+            .error(function (data, status, headers, config) { // Add http error info to error toasts?
+               toaster.pop("error", "REST call failed", "The REST Web Service call to retrieve weather failed.");
             });
       }
    };

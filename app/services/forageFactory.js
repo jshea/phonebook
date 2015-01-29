@@ -164,6 +164,7 @@ app.factory('forageFactory', function (localForageAppId) {
                   break;                        // Id's are supposed to be unique
                }
             }
+            localforage.setItem(localForageAppId, contacts);
          });
       },
 

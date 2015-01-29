@@ -58,9 +58,9 @@ app.factory('dataFactory', function ($rootScope, httpFactory, forageFactory, loc
 
       updateDirtyContacts: function () {
          // Additions, Updates and Deletions are stored in localForageAppId
-         // Updates have an isDirty property
+         // Updates have an isDirty property of true
          // Adds    isNew is true, _id has a temp value to be cleared out
-         // Deletes have a delete property
+         // Deletes have a isDeleted property
          localforage.getItem(localForageAppId, function (contacts) {
             contacts.forEach(function (contact) {
                if (contact.isDirty) {           // Is it updated?
@@ -79,6 +79,15 @@ app.factory('dataFactory', function ($rootScope, httpFactory, forageFactory, loc
                }
             });
          });
+      },
+
+      // We can only get weather info when we're online!
+      getWeather: function (lat, lon, successCallback) {
+         if ($rootScope.online) {
+            httpFactory.getWeather(lat, lon, successCallback);
+         } else {
+            successCallback("error");
+         }
       }
 
    };

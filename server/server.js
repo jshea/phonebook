@@ -1,6 +1,9 @@
 
 "use strict";
 
+// Key for forecast.io remember to not commit to SCM
+var forcastioKey = require('./forecast.io.key');
+
 /*
  * Database is contacts
  * Collections are people, log
@@ -16,15 +19,16 @@
  *   POST   /reinitialize  Reset data to 10,000 generated people
  *
  */
-var express = require("express"),
-   methodOverride = require("method-override"),
-   bodyParser = require("body-parser"),
+var express =     require("express"),
+   methodOverride=require("method-override"),
+   bodyParser =   require("body-parser"),
    app = express(),
-   MongoClient = require("mongodb").MongoClient,
-   Server = require("mongodb").Server,
-   ObjectID = require("mongodb").ObjectID;            // Used to create Mongo ObjectID's from string representations of _id
+   MongoClient =  require("mongodb").MongoClient,
+   Server =       require("mongodb").Server,
+   ObjectID =     require("mongodb").ObjectID,        // Used to create Mongo ObjectID's from string representations of _id
+   https =        require('https');                   // Used to make forecast.io weather call
 
-// app.set("jsonp callback name", "JSON_CALLBACK");      // Set default JSONP callback name - http://expressjs.com/4x/api.html
+// app.set("jsonp callback name", "JSON_CALLBACK");   // Set default JSONP callback name - http://expressjs.com/4x/api.html
 
 app.use(express.static(__dirname + '/app'));          // Serve static files from the "app" subfolder
 app.use(methodOverride());                            // Allows use of "put" & "del" methods?
@@ -124,6 +128,7 @@ app.post("/contacts", function (req, res) {
 
 /*
  * Update a contact
+ * Todo - is query param of id not used?
  */
 app.put("/contacts/:id", function (req, res) {
    var person = req.body;
@@ -204,6 +209,31 @@ app.get("/metrics/state", function (req, res) {
 });
 
 
+/*
+ * Get weather report from forecast.io
+ * db.people.aggregate([{$group: {_id: "$address.state", count: {$sum: 1}} }, {$sort: {_id: 1}} ])
+ */
+app.get("/weather/:lat,:lon", function (req, res) {
+   var url = "https://api.forecast.io/forecast/" + forcastioKey + "/" + req.params.lat + "," + req.params.lon;
+
+   //https://api.forecast.io/forecast/84e8eff7b90111065b15a8897a20acb8/37.8267,-122.423
+   //res.send(docs);
+
+   https.get(url, function (response) {
+      console.log("statusCode: ", response.statusCode);
+      console.log("headers: ", response.headers);
+
+      response.on("data", function (weatherData) {
+         res.send(weatherData);
+      });
+
+   }).on("error", function (error) {
+      console.error(error);
+      res.send("error");
+   });
+});
+
+
 /**
  * Reset the database. This deletes all data and loads the sample/test data
  */
@@ -263,7 +293,7 @@ app.listen(app.get('port'), function () {
    console.log("Express server started on port 3000");
 });
 
-// Load data for creating test data/dummey people objects
+// Load data for creating test data/dummy people objects
 var firstName      = require('./data/firstname.json'),
    lastName        = require('./data/lastname.json'),
    zipStateCity    = require('./data/zipstatecity.json'),

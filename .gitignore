@@ -1,7 +1,13 @@
 # Don't track bower components. They are installed
 # with "bower install" based upon the bower.json file.
-app/bower_components/**
+bower_components/**
 
 # Don't track node_modules. They are installed
 # with "npm install" based upon the package.json file.
-node_modules/**
+node_modules
+
+# app/dist is repopulated by gulp
+app/dist
+
+# Don't track our forcast.io api key!
+server/forcast.io.key

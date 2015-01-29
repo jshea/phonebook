@@ -7,10 +7,10 @@ app.controller("ViewCtrl", function ($scope, $location, $routeParams, dataFactor
    // We need to initialize our map with dummy data, otherwise it doesn't display.
    $scope.map = {
       center: {
-         latitude: 39,
-         longitude: -98
+         latitude: 39.5,
+         longitude: -98.35
       },
-      zoom: 14
+      zoom: 3
    };
 
    // contactId is what the parameter was named in our routes
@@ -37,6 +37,10 @@ app.controller("ViewCtrl", function ($scope, $location, $routeParams, dataFactor
                },
                zoom: 14
             };
+
+            //
+            $scope.weather = dataFactory.getWeather(location.lat(), location.lng());
+
             // Tell angular to refresh bindings because we updated $scope in a callback
             $scope.$apply();
          } else {
